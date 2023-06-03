@@ -1,0 +1,14 @@
+<div class="container-fluid">
+  <div class="row">
+    <h2>Bienvenidos al portal educativo</h2>
+    <div class="col-12 col-lg-6" *ngFor="let asignature of asignatureItems">
+      <section class="asignature-card d-flex flex-row justify-content-between">
+        <figure class="asignature-icon d-flex justify-content-center align-items-center"><fa-icon [icon]="asignature.icon"></fa-icon></figure>
+        <div class="d-flex w-100 flex-column justify-content-center align-items-center">
+          <h3 class="fw-bold">{{ asignature.title }}</h3>
+          <button class="card-btn fw-bold text-white">{{ btnName }}</button>
+        </div>
+      </section>
+    </div>
+  </div>
+</div>

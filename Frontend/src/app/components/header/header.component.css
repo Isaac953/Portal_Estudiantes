@@ -1,0 +1,41 @@
+.logo{
+  margin-left: 10px;
+}
+
+.perfil{
+  margin-right: 10px;
+  cursor: pointer;
+  position: relative;
+  display: inline-block;
+}
+
+.perfil-user{
+  width: 45px;
+  margin: 5px;
+}
+
+.perfil:hover > .perfil-nav {
+  display: block;
+  position: absolute;
+  right: -5px;
+  text-align: end;
+  background-color: #181818;
+}
+
+.perfil-nav {
+  display: none;
+  position: absolute;
+  min-width: 160px;
+  right: 0;
+}
+
+.nav-item {
+  font-size: 16px;
+  display: block;
+padding: 10px;
+}
+
+.nav-item:hover,
+.nav-item:focus {
+  background-color: #0d4c92;
+}

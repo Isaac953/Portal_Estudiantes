@@ -1,0 +1,39 @@
+h2{
+  text-align: center;
+}
+
+.asignature-card{
+  margin: 15px;
+  border-radius: 15px;
+  background-color: #5B8FB9;
+  height: 150px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.35),
+  0 6px 20px 0 rgba(0, 0, 0, 0.25);
+}
+
+.card-btn{
+  background-color: #2C3333;
+  border: none;
+  border-radius: 5px;
+  padding: 8px 12px;
+  font-size: 14px;
+  transition: 0.5s;
+}
+
+.card-btn:hover{
+  background-color: #434e4e;
+}
+
+.asignature-icon{
+  font-size: 55px;
+  height:inherit;
+  margin: 0px;
+  padding: 10px;
+  width: 30%;
+  border-radius: 15px 0px 0px 15px;
+  /* border-radius: 15px; */
+  background-color: #0014FF;
+}

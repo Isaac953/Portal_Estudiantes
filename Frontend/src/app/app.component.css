@@ -1,0 +1,33 @@
+/* Start Media Queries Screens 1024px */
+header {
+  background-color: #1B9C85;
+  height: 70px;
+}
+
+main {
+  background-color: #73BBC9;
+  height: 100vh;
+}
+
+footer {
+  background-color: #1B9C85;
+  height: 70px;
+}
+/* End Media Queries Screens 1024px */
+
+/* Start Media Queries Screens 1023px */
+@media screen and (max-width: 1023px) {
+  main {
+    height: 265vh;
+  }
+}
+/* End Media Queries Screens 1023px */
+
+/* Start Media Queries Screens 767px */
+@media screen and (max-width: 767px) {
+  main {
+    height: 120vh;
+  }
+}
+/* End Media Queries Screens 767px */
+
