@@ -19,3 +19,4 @@ Parte Frontend del proyecto para acceso a la educación del Hackaton creado en A
 - HT-01: Realizar la creción del proyecto con el framework Frontend Angular y hacer el diseño inicial del Layout.
 - HT-02: Completar diseño inicial de Layout.
 - HT-03: Hacer pruebas de consumo de API Rest.
+- HT-04: Creación de componentes y routing.
