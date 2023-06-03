@@ -1,0 +1,48 @@
+# Archivos y directorios generados por el entorno de desarrollo
+__pycache__/
+*.pyc
+*.pyo
+*.pyd
+
+# Archivos generados por IDEs o editores de texto
+.idea/
+.vscode/
+
+# Archivos de configuración local
+.env
+
+# Archivos de registro y errores
+*.log
+logs/
+
+# Archivos de base de datos
+db.sqlite3
+
+# Archivos estáticos generados por Django
+staticfiles/
+
+# Archivos de medios cargados por los usuarios
+media/
+
+# Archivos generados por herramientas de construcción
+/build/
+/dist/
+
+# Dependencias y directorios virtuales de Python
+.env/
+.env.bak/
+.env.*.bak/
+env/
+venv/
+env1/
+venv1/
+*.env
+
+# Archivos de registro de pruebas
+*.pytest_cache/
+pytest.ini
+
+# Otros archivos generados durante la ejecución
+*.swp
+*~
+.DS_Store
