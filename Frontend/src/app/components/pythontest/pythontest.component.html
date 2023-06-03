@@ -1,0 +1,20 @@
+<div class="d-flex flex-column">
+  <h2>Consumo API desde Python</h2>
+
+  <table>
+    <thead>
+      <tr>
+        <th>Id</th>
+        <th>Nombre</th>
+        <th>Precio</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr *ngFor="let clothe of clothes">
+        <td>{{clothe.id}}</td>
+        <td>{{clothe.name}}</td>
+        <td>{{clothe.price}}</td>
+      </tr>
+    </tbody>
+  </table>
+  </div>

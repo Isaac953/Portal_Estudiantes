@@ -9,19 +9,25 @@ import { FooterComponent } from './components/footer/footer.component';
 import { NgbModule } from '@ng-bootstrap/ng-bootstrap';
 
 import { FontAwesomeModule } from '@fortawesome/angular-fontawesome';
+import { TestComponent } from './components/test/test.component';
+import { HttpClientModule } from '@angular/common/http';
+import { PythontestComponent } from './components/pythontest/pythontest.component';
 
 @NgModule({
   declarations: [
     AppComponent,
     HeaderComponent,
     MainComponent,
-    FooterComponent
+    FooterComponent,
+    TestComponent,
+    PythontestComponent
   ],
   imports: [
     BrowserModule,
     AppRoutingModule,
     NgbModule,
-    FontAwesomeModule
+    FontAwesomeModule,
+    HttpClientModule
   ],
   providers: [],
   bootstrap: [AppComponent]

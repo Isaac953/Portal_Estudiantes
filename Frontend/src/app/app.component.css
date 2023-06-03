@@ -9,6 +9,11 @@ main {
   height: 100vh;
 }
 
+.test {
+  background-color: #73BBC9;
+  height: 100vh;
+}
+
 footer {
   background-color: #1B9C85;
   height: 70px;
