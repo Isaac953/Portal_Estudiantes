@@ -5,7 +5,7 @@
 }
 
 .logo-icon{
-  color: #0447c4;
+  color: #FC7300;
   margin-right: 8px;
 }
 
@@ -24,6 +24,7 @@
 .perfil:hover > .perfil-nav {
   display: block;
   position: absolute;
+  float: inline-start;
   right: -5px;
   text-align: end;
   background-color: #181818;
