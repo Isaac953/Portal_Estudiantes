@@ -1,5 +1,12 @@
 .logo{
   margin-left: 10px;
+  font-weight: 700;
+  margin-bottom: 0px;
+}
+
+.logo-icon{
+  color: #0447c4;
+  margin-right: 8px;
 }
 
 .perfil{

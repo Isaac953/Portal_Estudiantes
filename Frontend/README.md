@@ -20,3 +20,4 @@ Parte Frontend del proyecto para acceso a la educación del Hackaton creado en A
 - HT-02: Completar diseño inicial de Layout.
 - HT-03: Hacer pruebas de consumo de API Rest.
 - HT-04: Creación de componentes y routing.
+- HT-05: Ajustes finales a vista home.

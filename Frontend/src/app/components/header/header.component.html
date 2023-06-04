@@ -1,15 +1,6 @@
-<h1 class="logo">Logo</h1>
-
-<!-- <section class="perfil">
-  <div class="d-flex justify-content-center align-items-center">
-    <img class="perfil-user" src="{{imgProfile}}" alt="{{altname}}">
-    <span class="fw-bold fw-light">{{profile}}</span>
-  </div>
-  <ul class="perfil-nav text-white fw-normal">
-    <li class="nav-item">Cuenta</li>
-    <li class="nav-item">Cerrar Sesión</li>
-  </ul>
-</section> -->
+<a routerLink="/home" class="text-white text-decoration-none">
+  <h1 class="logo"><fa-icon class="logo-icon" [icon]="faChalkboard"></fa-icon>{{name}}</h1>
+</a>
 
 <section class="perfil">
   <div class="d-flex justify-content-center align-items-center">
@@ -17,7 +8,7 @@
     <span class="fw-bold fw-light">{{profile}}</span>
   </div>
   <div class="perfil-nav">
-    <li class="nav-item">Cuenta</li>
-    <li class="nav-item">Cerrar Sesión</li>
+    <li class="nav-item" *ngFor="let profile of profileMenu"><a routerLink="{{profile.routerLink}}"
+        class="text-white text-decoration-none">{{profile.title}}</a></li>
   </div>
 </section>

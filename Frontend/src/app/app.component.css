@@ -1,21 +1,16 @@
 /* Start Media Queries Screens 1024px */
 header {
-  background-color: #1B9C85;
+  background-color: #008659;
   height: 70px;
 }
 
 main {
-  background-color: #73BBC9;
-  height: 100vh;
-}
-
-.test {
-  background-color: #73BBC9;
+  background-color: #51bcee;
   height: 100vh;
 }
 
 footer {
-  background-color: #1B9C85;
+  background-color: #008659;
   height: 70px;
 }
 /* End Media Queries Screens 1024px */
