@@ -22,3 +22,4 @@ Parte Frontend del proyecto para acceso a la educación del Hackaton creado en A
 - HT-04: Creación de componentes y routing.
 - HT-05: Ajustes finales a vista home.
 - HT-06: Creación de Login Component.
+- HT-07: Creación de User Component.

@@ -1,0 +1,16 @@
+.profile-container{
+  width: 370px;
+  border: 2px solid white;
+  background-color: #ffffff1a;
+  border-radius: 12px;
+  padding: 15px;
+}
+
+.profile-img{
+  width: 80px;
+  margin-right: 15px;
+}
+
+.profile-data{
+  width: 100%;
+}
