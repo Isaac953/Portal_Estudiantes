@@ -40,10 +40,14 @@
 .nav-item {
   font-size: 16px;
   display: block;
-padding: 10px;
+  padding: 10px;
 }
 
 .nav-item:hover,
 .nav-item:focus {
   background-color: #0d4c92;
+}
+
+.nav-link{
+  height: 25px;
 }
