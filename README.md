@@ -37,12 +37,14 @@ Parte Frontend del proyecto para acceso a la educación del Hackaton creado en A
 
 4- Instalar iconos: ng add @fortawesome/angular-fontawesome y ver el siguiente sitio https://www.npmjs.com/package/@fortawesome/angular-fontawesome
 
-### Layout Principal (June 01, 02, 03)
+## Layout Principal (June 01, 02, 03, 04)
 
 - HT-01: Realizar la creción del proyecto con el framework Frontend Angular y hacer el diseño inicial del Layout.
 - HT-02: Completar diseño inicial de Layout.
 - HT-03: Hacer pruebas de consumo de API Rest.
+- HT-04: Creación de componentes y routing.
+- HT-05: Ajustes finales a vista home.
+- HT-06: Creación de Login Component.
+- HT-07: Creación de User Component.
 
 # Joaquin
-
-# Gilberto
