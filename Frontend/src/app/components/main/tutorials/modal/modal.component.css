@@ -1,0 +1,48 @@
+/* Start Media Queries Screens 1024px */
+.modal__container {
+  position: absolute;
+  top: -750px;
+
+  width: 85vw;
+
+  transition: all 0.7s;
+
+  box-shadow: var(--shadow-card);
+  border-radius: 12px;
+  background-color: #e8f9fd;
+}
+
+.enabled {
+  top: 7%;
+
+  transition: all 0.7s;
+}
+
+.modal__container--btn {
+  font-size: 3rem;
+  font-weight: bold;
+
+  position: relative;
+  top: 5px;
+  left: 47.4%;
+
+  display: flex;
+
+  width: 33px;
+  height: 48px;
+  margin-bottom: 12px;
+
+  cursor: pointer;
+  transition: 0.3s;
+
+  color: #0096ff;
+  border-style: none;
+  background: none;
+
+  justify-content: center;
+  align-items: center;
+}
+
+.modal__container--btn:hover {
+  color: #59ce8f;
+}

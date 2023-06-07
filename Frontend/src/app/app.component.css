@@ -15,20 +15,90 @@ footer {
   background-color: #1F8A70;
   height: 70px;
 }
+
+
+.modal {
+  position: absolute;
+  top: 0;
+  right: 0;
+  bottom: 0;
+  left: 0;
+
+  display: flex;
+  visibility: hidden;
+
+  width: 100%;
+  height: 100vh;
+
+  transition: all 1s;
+
+  opacity: 0;
+  background-color: rgba(0, 0, 0, 0.65);
+
+  align-items: center;
+  justify-content: center;
+
+   /*Temporalmente esta activo para trabajar en modal*/
+  /* opacity: 1;
+  visibility: visible; */
+  /*Temporalmente esta activo para trabajar en modal*/
+
+}
+
+.enabled {
+  visibility: visible;
+
+  transition: all 1s;
+
+  opacity: 1;
+}
+
+.disabled {
+  visibility: hidden;
+
+  transition: all 1s;
+
+  opacity: 0;
+}
 /* End Media Queries Screens 1024px */
 
 /* Start Media Queries Screens 1023px */
 @media screen and (max-width: 1023px) {
+  header {
+    height: 65px;
+  }
+
   main {
     height: 265vh;
   }
+
+  .modal {
+    height: 223.5vh;
+  }
+
+  footer {
+    height: 65px;
+  }
+
 }
 /* End Media Queries Screens 1023px */
 
 /* Start Media Queries Screens 767px */
 @media screen and (max-width: 767px) {
+  header {
+    height: 60px;
+  }
+
   main {
     height: 120vh;
+  }
+
+  footer {
+    height: 60px;
+  }
+
+  .modal {
+    height: 139.9vh;
   }
 }
 /* End Media Queries Screens 767px */

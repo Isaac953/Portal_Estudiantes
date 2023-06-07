@@ -1,6 +1,5 @@
 import { Component, OnInit } from '@angular/core';
 import { faCalculator, faMicroscope, faEarthAmericas, faBook } from '@fortawesome/free-solid-svg-icons';
-import { AsignatureService } from 'src/app/services/asignature.service';
 import { ActivatedRoute } from '@angular/router';
 
 @Component({
@@ -41,14 +40,13 @@ export class HomeComponent implements OnInit {
 
     sendAsignature = (id:any) => {
       this.idAsignatature = id;
-       this.asignatureService.idAsignature$.emit(this.idAsignatature);
       window.scrollTo(0, 0);
      // window.scrollTo(0, 0);
       // console.log(this.nameAsignature);
       // console.log(this.idAsignatature);
     };
 
-    constructor( private asignatureService: AsignatureService, private _route:ActivatedRoute
+    constructor( private _route:ActivatedRoute
     ) {}
 
     ngOnInit() {

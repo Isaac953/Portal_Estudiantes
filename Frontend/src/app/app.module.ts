@@ -13,6 +13,7 @@ import { HttpClientModule } from '@angular/common/http';
 import { HomeComponent } from './components/main/home/home.component';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { TutorialsComponent } from './components/main/tutorials/tutorials.component';
+import { ModalComponent } from './components/main/tutorials/modal/modal.component';
 
 @NgModule({
   declarations: [
@@ -23,6 +24,7 @@ import { TutorialsComponent } from './components/main/tutorials/tutorials.compon
     routingComponents,
     HomeComponent,
     TutorialsComponent,
+    ModalComponent,
   ],
   imports: [
     BrowserModule,

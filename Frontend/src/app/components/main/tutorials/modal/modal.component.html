@@ -1,0 +1,17 @@
+<div class="modal__container d-flex flex-column align-items-center justify-content-start" [ngClass]="modalSwitch">
+  <button class="modal__container--btn" (click)="closeModal()">
+    <fa-icon [icon]="faXmark"></fa-icon>
+  </button>
+
+  <div class="modal__container--info">
+    <h1 class="text-black">{{modalData.title}} {{modalTitle}}</h1>
+
+    <ul>
+      <li>Lectura</li>
+      <li>Enlace</li>
+      <li>Imagenes</li>
+    </ul>
+
+  </div>
+
+</div>

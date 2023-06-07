@@ -8,6 +8,7 @@
 .class-item a{
   width: 100%;
   text-align: left;
+  cursor: pointer;
 }
 
 .item-info{

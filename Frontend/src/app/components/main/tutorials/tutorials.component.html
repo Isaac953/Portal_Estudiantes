@@ -3,7 +3,7 @@
     <h2 class="fw-bold">Bienvenidos a la materia de {{ titleAsignature }}</h2>
     <div class="col-12 col-lg-6" *ngFor="let content of contentAsignatures">
       <section class="class-item d-flex flex-row justify-content-between">
-        <a class="text-white text-decoration-none fw-bold" href="#">
+        <a class="text-white text-decoration-none fw-bold" (click)="openModal(content, titleAsignature)">
           <div class="item-info">
             <fa-icon class="info-icon" [icon]="content.icon"></fa-icon>
             <span>{{content.title}} {{ titleAsignature
@@ -14,3 +14,4 @@
     </div>
   </div>
 </div>
+

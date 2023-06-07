@@ -1,16 +1,18 @@
 import { Component, OnInit  } from '@angular/core';
-import { AsignatureService } from 'src/app/services/asignature.service';
 import { ActivatedRoute } from '@angular/router';
 import { faPlay } from '@fortawesome/free-solid-svg-icons';
+import { ModalService } from 'src/app/services/modal.service';
 
 @Component({
   selector: 'app-tutorials',
   templateUrl: './tutorials.component.html',
-  styleUrls: ['./tutorials.component.css']
+  styleUrls: ['./tutorials.component.css'],
 })
 export class TutorialsComponent implements OnInit {
   titleAsignature: any;
   faPlay = faPlay;
+  modalSwitch: any;
+  dataAsignature: any;
 
   contentAsignatures: any[] = [
     {
@@ -35,8 +37,18 @@ export class TutorialsComponent implements OnInit {
     },
   ];
 
-  constructor(
-    private asignatureService: AsignatureService, private _route:ActivatedRoute
+  openModal = (arr_names: string[], title: string) => {
+    this.dataAsignature = arr_names;
+    this.modalSwitch = 'enabled';
+    this.modalService.modal$.emit(this.modalSwitch);
+    this.modalService.modalData$.emit(this.dataAsignature);
+    this.modalService.modalTitle$.emit(this.titleAsignature);
+    window.scrollTo(0, 0);
+    console.log(this.modalSwitch);
+  };
+
+
+  constructor(private _route:ActivatedRoute, private modalService: ModalService
   ) {}
 
   ngOnInit() {
