@@ -7,7 +7,7 @@
             [icon]="asignature.icon"></fa-icon></figure>
         <div class="d-flex w-100 flex-column justify-content-center align-items-center">
           <h3 class="fw-bold">{{ asignature.title }}</h3>
-          <button class="card-btn fw-bold text-white" routerLink="/home/tutorials" (click)="sendAsignature(asignature.title, asignature.id)">{{ asignature.button }}</button>
+          <button class="card-btn fw-bold text-white"  [routerLink]="['/tutorials', asignature.title]">{{ asignature.button }}</button>
         </div>
       </section>
     </div>

@@ -1,6 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { faCalculator, faMicroscope, faEarthAmericas, faBook } from '@fortawesome/free-solid-svg-icons';
 import { AsignatureService } from 'src/app/services/asignature.service';
+import { ActivatedRoute } from '@angular/router';
 
 @Component({
   selector: 'app-home',
@@ -9,7 +10,7 @@ import { AsignatureService } from 'src/app/services/asignature.service';
 })
 export class HomeComponent implements OnInit {
   nameAsignature: any;
-  idAsigntature: any;
+  idAsignatature: any;
   btnName = 'Contenido';
   asignatureItems: any[] = [
     {
@@ -38,19 +39,17 @@ export class HomeComponent implements OnInit {
     },
   ];
 
-  constructor(
-    private asignatureService: AsignatureService,
-  ) {}
-
-    sendAsignature = (asig: string, id: any) => {
-      this.nameAsignature = asig;
-      this.idAsigntature = id;
-      this.asignatureService.asignature$.emit(this.nameAsignature);
-      this.asignatureService.idAsignature$.emit(this.idAsigntature);
+    sendAsignature = (id:any) => {
+      this.idAsignatature = id;
+       this.asignatureService.idAsignature$.emit(this.idAsignatature);
       window.scrollTo(0, 0);
-      console.log(this.nameAsignature);
-      console.log(this.idAsigntature);
+     // window.scrollTo(0, 0);
+      // console.log(this.nameAsignature);
+      // console.log(this.idAsignatature);
     };
+
+    constructor( private asignatureService: AsignatureService, private _route:ActivatedRoute
+    ) {}
 
     ngOnInit() {
     }

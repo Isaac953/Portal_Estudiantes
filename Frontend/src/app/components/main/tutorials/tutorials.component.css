@@ -1,0 +1,21 @@
+.class-item{
+  box-shadow: var(--shadow-card);
+  border-radius: 10px;
+  margin: 12px 0px;
+  background-color: #27374D;
+}
+
+.class-item a{
+  width: 100%;
+  text-align: left;
+}
+
+.item-info{
+  padding: 12px 10px;
+  width: 100%;
+}
+
+.info-icon{
+  margin-right: 5px;
+}
+

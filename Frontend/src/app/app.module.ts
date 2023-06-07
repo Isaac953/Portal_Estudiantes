@@ -11,6 +11,8 @@ import { NgbModule } from '@ng-bootstrap/ng-bootstrap';
 import { FontAwesomeModule } from '@fortawesome/angular-fontawesome';
 import { HttpClientModule } from '@angular/common/http';
 import { HomeComponent } from './components/main/home/home.component';
+import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
+import { TutorialsComponent } from './components/main/tutorials/tutorials.component';
 
 @NgModule({
   declarations: [
@@ -20,6 +22,7 @@ import { HomeComponent } from './components/main/home/home.component';
     FooterComponent,
     routingComponents,
     HomeComponent,
+    TutorialsComponent,
   ],
   imports: [
     BrowserModule,
@@ -27,6 +30,7 @@ import { HomeComponent } from './components/main/home/home.component';
     NgbModule,
     FontAwesomeModule,
     HttpClientModule,
+    BrowserAnimationsModule,
   ],
   providers: [],
   bootstrap: [AppComponent]

@@ -6,18 +6,13 @@ import { Component } from '@angular/core';
   styleUrls: ['./login.component.css']
 })
 export class LoginComponent {
-  loginInputs: any[] = [
-    {
-      type: 'email',
-      name: 'email',
-      id: 'email',
-      placeHolder: 'Correo',
-    },
-    {
-      type: 'password',
-      name: 'password',
-      id: 'password',
-      placeHolder: 'Contraseña',
-    },
-  ];
+  emailUser: any;
+  passUser: any;
+
+sendUser = (email: string, pass: any) => {
+  this.emailUser = email;
+  this.passUser = pass;
+  alert(this.emailUser);
+  alert(this.passUser);
+};
 }

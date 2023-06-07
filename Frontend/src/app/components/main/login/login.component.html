@@ -1,9 +1,11 @@
 <form onsubmit="event.preventDefault()">
 <div class="login-container d-flex flex-column align-items-center justify-content-between">
   <h3 class="text-center fw-bold">Login</h3>
-  <div *ngFor="let loginInput of loginInputs">
-    <input class="login-input" type="{{loginInput.type}}" name="{{loginInput.name}}" id="{{loginInput.id}}"
-      placeholder="{{loginInput.placeHolder}}">
+  <div class="d-flex flex-column align-items-center">
+    <input class="login-input" type="email" name="email" id="email"
+      placeholder="Correo">
+      <input class="login-input" type="password" name="password" id="password"
+      placeholder="Contraseña">
   </div>
   <button class="login-btn fw-bold text-white" type="submit">Ingresar</button>
 </div>
