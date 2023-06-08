@@ -41,7 +41,10 @@ INSTALLED_APPS = [
     # Local Apps
     'usuarios.apps.UsuariosConfig',
     'cursos.apps.CursosConfig',
-    # Conection Api
+    # Third Apps
+    'rest_framework',
+
+    # Conection Api Rest
     'corsheaders',
 
     'rest_framework',
@@ -83,19 +86,19 @@ WSGI_APPLICATION = 'drf_api.wsgi.application'
 # https://docs.djangoproject.com/en/4.2/ref/settings/#databases
 
 DATABASES = {
-    # 'default': {
-    #     'ENGINE': 'django.db.backends.postgresql',
-    #     'NAME': config('POSTGRES_DB'),
-    #     'USER': config('POSTGRES_USER'),
-    #     'PASSWORD': config('POSTGRES_PASSWORD'),
-    #     'HOST': 'db',
-    #     'PORT': '5432',
-    # }
-
     'default': {
-        'ENGINE': 'django.db.backends.sqlite3',
-        'NAME': BASE_DIR / 'db.sqlite3',
+        'ENGINE': 'django.db.backends.postgresql',
+        'NAME': config('POSTGRES_DB'),
+        'USER': config('POSTGRES_USER'),
+        'PASSWORD': config('POSTGRES_PASSWORD'),
+        'HOST': 'db',
+        'PORT': '5432',
     }
+
+    # 'default': {
+    #     'ENGINE': 'django.db.backends.sqlite3',
+    #     'NAME': BASE_DIR / 'db.sqlite3',
+    # }
 }
 
 # Password validation
