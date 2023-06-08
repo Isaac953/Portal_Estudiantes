@@ -46,8 +46,6 @@ INSTALLED_APPS = [
 
     # Conection Api Rest
     'corsheaders',
-
-    'rest_framework',
 ]
 
 MIDDLEWARE = [
