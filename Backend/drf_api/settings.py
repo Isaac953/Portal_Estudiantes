@@ -43,6 +43,8 @@ INSTALLED_APPS = [
     'cursos.apps.CursosConfig',
     # Conection Api
     'corsheaders',
+
+    'rest_framework',
 ]
 
 MIDDLEWARE = [
