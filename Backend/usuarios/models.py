@@ -40,7 +40,7 @@ class Usuario(AbstractBaseUser):
     password = models.CharField(max_length=100)
     nombre = models.CharField(max_length=100)
     apellido = models.CharField(max_length=100)
-    email = models.EmailField(unique=True)
+    email = models.EmailField()
     sexo = models.CharField(max_length=1, choices=SEXO_CHOICES)
     is_active = models.BooleanField(default=True)
     is_staff = models.BooleanField(default=False)

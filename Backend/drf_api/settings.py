@@ -41,6 +41,8 @@ INSTALLED_APPS = [
     # Local Apps
     'usuarios.apps.UsuariosConfig',
     'cursos.apps.CursosConfig',
+    # Third Apps
+    'rest_framework',
 ]
 
 MIDDLEWARE = [
