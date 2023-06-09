@@ -1,24 +1,23 @@
 import { Injectable } from '@angular/core';
 import { HttpClient, HttpHeaders, HttpParams } from '@angular/common/http';
+import { Observable, throwError } from 'rxjs';
+import { catchError, retry } from 'rxjs/operators';
 
 @Injectable({
   providedIn: 'root'
 })
 export class LoginService {
 
-  private urlLogin = 'http://localhost:8001/users/login/student/';
-
-  params = new HttpParams({
-    fromObject: { Name : 'name',
-    Password : 'password',
-    }
-  });
+  public urlLogin = 'http://localhost:8001/users/login/student/';
 
   constructor(private httpClient: HttpClient) { }
 
-  sendData(){
-    let headers = new HttpHeaders({'Content-Type': 'application/x-www-form-urlencoded'});
-    // return this.httpClient.options(this.urlLogin);
-    return  this.httpClient.post(this.urlLogin, this.params, { headers });
+  sendData(data: any): Observable<any> {
+    console.log(data);
+    const headers = new HttpHeaders({'Content-Type':'application/json'});
+    // console.log(body);
+    return this.httpClient.post(this.urlLogin, data, {headers:headers});
+
+    // return this.httpClient.post<any>(this.urlLogin, body, {headers:headers});
   }
 }

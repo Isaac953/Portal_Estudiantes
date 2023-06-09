@@ -1,10 +1,12 @@
-<form [formGroup]="profileForm" (ngSubmit)="onSubmit()">
+<form [formGroup]="loginForm" (ngSubmit)="onSubmit()">
   <div class="login-container d-flex flex-column align-items-center justify-content-between">
     <h3 class="text-center fw-bold">Login</h3>
     <div class="d-flex flex-column align-items-center">
-      <input class="login-input" type="email" placeholder="Correo" formControlName="email">
+      <input class="login-input" type="username" placeholder="Usuario" formControlName="username">
       <input class="login-input" type="password" placeholder="Contraseña" formControlName="password">
     </div>
     <button class="login-btn fw-bold text-white" type="submit">Ingresar</button>
   </div>
 </form>
+
+<!-- <span>{{loginData.email}}</span> -->

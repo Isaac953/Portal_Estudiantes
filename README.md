@@ -46,5 +46,6 @@ Parte Frontend del proyecto para acceso a la educación del Hackaton creado en A
 - HT-05: Ajustes finales a vista home.
 - HT-06: Creación de Login Component.
 - HT-07: Creación de User Component.
-
-# Joaquin
+- HT-08: Creación y diseño inicial de vista de Tutorials Component.
+- HT-09: Implementar modal al abrir una clase de la lista en Materia.
+- HT-10: Consumir una Api Post del Login al ingresar datos.

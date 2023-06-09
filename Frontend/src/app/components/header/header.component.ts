@@ -12,11 +12,13 @@ export class HeaderComponent {
   altname = 'User';
   faChalkboard = faChalkboard;
   name = 'ElGradoSV';
+  id=2;
+  routerL = '/profile/' + this.id;
 
   profileMenu: any[] = [
     {
       title: 'Cuenta',
-      routerLink: '/user',
+      routerLink: this.routerL,
     },
     {
       title: 'Cerrar Sesion',

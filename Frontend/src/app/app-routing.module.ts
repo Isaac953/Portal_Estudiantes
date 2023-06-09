@@ -12,7 +12,7 @@ import { TutorialsComponent } from './components/main/tutorials/tutorials.compon
 const routes: Routes = [
   /* Routes */
   { path: 'home', component: HomeComponent },
-  { path: 'user', component: ProfileComponent },
+  { path: 'profile/:id', component: ProfileComponent },
   { path: 'login', component: LoginComponent },
   { path: 'tutorials/:asignature', component: TutorialsComponent },
   { path: 'test', component: TestComponent },

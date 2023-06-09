@@ -10,23 +10,25 @@ import { LoginService } from '../../../services/login.service';
 export class LoginComponent implements OnInit {
   loginData: any;
 
-  profileForm = new FormGroup({
-    email: new FormControl(''),
+  loginForm = new FormGroup({
+    username: new FormControl(''),
     password: new FormControl(''),
   });
+
+  dataLogin = {
+    "username":"isaac95",
+    "password":"123"
+    }
 
   constructor(private service: LoginService) { }
 
   onSubmit() {
-    console.warn(this.profileForm.value);
-    this.loginData = this.profileForm.value;
-    console.log(this.loginData);
-
-    this.service.sendData()
-    .subscribe(response => {
-      this.loginData = response;
-      console.log(this.loginData);
-    });
+    console.warn(this.loginForm.value);
+    // console.warn(this.loginForm.value);
+    // this.loginData = this.loginForm.value;
+    this.service.sendData(this.loginForm.value).subscribe((response)=>{
+      console.warn(response);
+    })
   }
   ngOnInit() {
 
