@@ -14,6 +14,9 @@ import { HomeComponent } from './components/main/home/home.component';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { TutorialsComponent } from './components/main/tutorials/tutorials.component';
 import { ModalComponent } from './components/main/tutorials/modal/modal.component';
+import { CommonModule } from '@angular/common';
+import { PythondbComponent } from './components/main/pythondb/pythondb.component';
+import { ReactiveFormsModule } from '@angular/forms';
 
 @NgModule({
   declarations: [
@@ -25,6 +28,7 @@ import { ModalComponent } from './components/main/tutorials/modal/modal.componen
     HomeComponent,
     TutorialsComponent,
     ModalComponent,
+    PythondbComponent,
   ],
   imports: [
     BrowserModule,
@@ -33,6 +37,8 @@ import { ModalComponent } from './components/main/tutorials/modal/modal.componen
     FontAwesomeModule,
     HttpClientModule,
     BrowserAnimationsModule,
+    CommonModule,
+    ReactiveFormsModule
   ],
   providers: [],
   bootstrap: [AppComponent]

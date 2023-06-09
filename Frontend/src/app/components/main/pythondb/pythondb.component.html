@@ -1,18 +1,34 @@
 <div class="d-flex flex-column">
   <h2>Consumo API desde Python</h2>
 
+  <h3>{{studentsData.codigo_estudiante}}</h3>
+  <div></div>
+  <div *ngFor="let student of studentsData">
+    <h3>{{student.codigo_estudiante}}</h3>
+      <h3>{{student.usuario.nombre}}</h3>
+      <h3>{{student.usuario.apellido}}</h3>
+      <h3>{{student.usuario.email}}</h3>
+      <h3>{{student.usuario.sexo}}</h3>
+  </div>
+  <!-- <h3 *ngFor="let estudent of studentsArray.usuario">{{estudent.nombre}}</h3> -->
+  <!-- <h3>{{studentsData.usuario.apellido}}</h3>
+  <h3>{{studentsData.usuario.email}}</h3>
+  <h3>{{studentsData.usuario.sexo}}</h3> -->
+
+  <!-- <div *ngFor="let estudent of studentsData.usuario">
+    <span>{{estudent.nombre}}</span>
+  </div> -->
+
   <table>
     <thead>
       <tr>
-        <th>Id</th>
-        <th>Uusario</th>
+        <!-- <th>{{studentsData.usuario.nombre}}</th> -->
       </tr>
     </thead>
     <tbody>
-      <tr *ngFor="let estudent of students">
+      <!-- <tr *ngFor="let estudent of students">
         <td>{{estudent.codigo_estudiante}}</td>
-        <td>{{estudent.username}}</td>
-      </tr>
+      </tr> -->
     </tbody>
   </table>
   </div>
