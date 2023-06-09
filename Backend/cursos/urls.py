@@ -1,13 +1,21 @@
 from django.urls import path
 from .views import (
+    CursoActualEstudianteView,
     CursosPorEstudianteListView,
     AsignaturaPorCursoListView,
     ContenidoPorAsignaturaListView,
     ContenidoDetailView,
     AsignaturasPorProfesorView,
+    ContenidoCreateView,
+    ContenidoProfesorDetailView,
 )
 
 urlpatterns = [
+    path(
+        'students/<int:id_estudiante>/courses/current/',
+        CursoActualEstudianteView.as_view(),
+        name='current_student_course'
+    ),
     path(
         'students/<int:id_student>/courses/',
         CursosPorEstudianteListView.as_view(),
@@ -32,5 +40,20 @@ urlpatterns = [
         'teachers/<int:id_teacher>/subjects/',
         AsignaturasPorProfesorView.as_view(),
         name='teacher_subjects'
+    ),
+    path(
+        'teachers/subjects/<int:asignatura>/contents/create/',
+        ContenidoCreateView.as_view(),
+        name='content_create'
+    ),
+    path(
+        'teachers/subjects/<int:id_subject>/contents/',
+        ContenidoPorAsignaturaListView.as_view(),
+        name='subject_contents'
+    ),
+    path(
+        'teachers/subjects/contents/<int:pk>/',
+        ContenidoProfesorDetailView.as_view(),
+        name='content_teacher_detail'
     ),
 ]
