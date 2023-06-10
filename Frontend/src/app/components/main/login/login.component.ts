@@ -1,5 +1,5 @@
 import { Component, OnInit } from '@angular/core';
-import { FormGroup, FormControl } from '@angular/forms';
+import { FormGroup, FormControl, Validators } from '@angular/forms';
 import { LoginService } from '../../../services/login.service';
 
 @Component({
@@ -8,26 +8,28 @@ import { LoginService } from '../../../services/login.service';
   styleUrls: ['./login.component.css']
 })
 export class LoginComponent implements OnInit {
-  loginData: any;
+  dataLogin: any;
+  dataLoginJ: any;
+  messageLogin: any;
 
   loginForm = new FormGroup({
     username: new FormControl(''),
     password: new FormControl(''),
   });
 
-  dataLogin = {
-    "username":"isaac95",
-    "password":"123"
-    }
-
   constructor(private service: LoginService) { }
 
   onSubmit() {
     console.warn(this.loginForm.value);
-    // console.warn(this.loginForm.value);
-    // this.loginData = this.loginForm.value;
     this.service.sendData(this.loginForm.value).subscribe((response)=>{
-      console.warn(response);
+      // console.warn(response);
+      localStorage.setItem('session', JSON.stringify(response));
+      this.dataLogin = localStorage.getItem('session');
+      this.dataLoginJ = JSON.parse(this.dataLogin);
+
+      console.log(this.dataLoginJ.message);
+      console.log(this.dataLoginJ.id_student);
+
     })
   }
   ngOnInit() {

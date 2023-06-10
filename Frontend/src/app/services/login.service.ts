@@ -12,12 +12,9 @@ export class LoginService {
 
   constructor(private httpClient: HttpClient) { }
 
+  // Servicio para validar datos de login en el servidor
   sendData(data: any): Observable<any> {
-    console.log(data);
     const headers = new HttpHeaders({'Content-Type':'application/json'});
-    // console.log(body);
     return this.httpClient.post(this.urlLogin, data, {headers:headers});
-
-    // return this.httpClient.post<any>(this.urlLogin, body, {headers:headers});
   }
 }
