@@ -1,6 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { FormGroup, FormControl, Validators } from '@angular/forms';
 import { LoginService } from '../../../services/login.service';
+import { LoadLoginService } from 'src/app/services/load-login.service';
 
 @Component({
   selector: 'app-login',
@@ -17,7 +18,7 @@ export class LoginComponent implements OnInit {
     password: new FormControl(''),
   });
 
-  constructor(private service: LoginService) { }
+  constructor(private service: LoginService, private loadLogin: LoadLoginService) { }
 
   onSubmit() {
     console.warn(this.loginForm.value);
@@ -29,7 +30,7 @@ export class LoginComponent implements OnInit {
 
       console.log(this.dataLoginJ.message);
       console.log(this.dataLoginJ.id_student);
-
+      this.loadLogin.messageLogin$.emit(this.dataLoginJ.message);
     })
   }
   ngOnInit() {

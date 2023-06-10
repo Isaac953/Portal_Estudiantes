@@ -27,3 +27,4 @@ Parte Frontend del proyecto para acceso a la educación del Hackaton creado en A
 - HT-09: Implementar modal al abrir una clase de la lista en Materia.
 - HT-10: Consumir una Api Post del Login al ingresar datos.
 - HT-11: Completar el Local Storage en el Login.
+- HT-11.5: Configurando rutas al estar validado el Login Parte I.

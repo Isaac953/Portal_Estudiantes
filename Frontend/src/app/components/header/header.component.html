@@ -1,8 +1,8 @@
-<a routerLink="/home" class="text-white text-decoration-none">
+<a routerLink="{{routerLogo}}" class="text-white text-decoration-none">
   <h1 class="logo"><fa-icon class="logo-icon" [icon]="faChalkboard"></fa-icon>{{name}}</h1>
 </a>
 
-<section class="perfil">
+<section class="perfil" *ngIf="messageLogin">
   <div class="d-flex justify-content-center align-items-center">
     <img class="perfil-user" src="{{imgProfile}}" alt="{{altname}}">
     <span class="fw-bold fw-light">{{profile}}</span>
