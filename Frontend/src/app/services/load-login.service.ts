@@ -5,6 +5,7 @@ import { EventEmitter, Injectable } from '@angular/core';
 })
 export class LoadLoginService {
   messageLogin$ = new EventEmitter<string>();
+  idUser$ = new EventEmitter<number>();
 
   constructor() { }
 }

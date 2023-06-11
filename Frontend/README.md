@@ -29,3 +29,4 @@ Parte Frontend del proyecto para acceso a la educación del Hackaton creado en A
 - HT-11: Completar el Local Storage en el Login.
 - HT-11.1: Configurando rutas al estar validado el Login Parte I.
 - HT-11.2: Configurando rutas al estar validado el Login Parte II.
+- HT-11.3: Controlar cargar la página al ingresar con el Login.

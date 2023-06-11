@@ -15,6 +15,7 @@ export class HomeComponent implements OnInit {
   responseApi: any;
   asignatureItems: any;
   faFileLines = faFileLines;
+
   // asignatureItems: any[] = [
   //   {
   //     id: 0,

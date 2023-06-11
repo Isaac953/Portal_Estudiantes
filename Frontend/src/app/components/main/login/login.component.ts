@@ -4,6 +4,7 @@ import { LoginService } from '../../../services/login.service';
 import { LoadLoginService } from 'src/app/services/load-login.service';
 import { GetDataService } from 'src/app/services/get-data.service';
 import { Router } from '@angular/router';
+import { faLaptopMedical } from '@fortawesome/free-solid-svg-icons';
 
 @Component({
   selector: 'app-login',
@@ -36,10 +37,14 @@ export class LoginComponent implements OnInit {
       console.log(this.dataLoginJ.message);
       console.log(this.dataLoginJ.id_student);
       this.loadLogin.messageLogin$.emit(this.dataLoginJ.message);
+      this.loadLogin.idUser$.emit(this.dataLoginJ.id_student);
       this.router.navigate(['/home']);
+
+      setTimeout(() => {
+        location.reload();
+    }, 0);
     })
   }
   ngOnInit() {
-
   }
 }
