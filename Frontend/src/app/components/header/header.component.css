@@ -30,7 +30,7 @@
   display: block;
   position: absolute;
   float: inline-start;
-  right: -5px;
+  right: 0;
   text-align: end;
   background-color: #181818;
 }

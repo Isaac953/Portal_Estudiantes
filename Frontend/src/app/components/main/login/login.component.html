@@ -5,7 +5,7 @@
       <input class="login-input" type="username" placeholder="Usuario" formControlName="username">
       <input class="login-input" type="password" placeholder="Contraseña" formControlName="password">
     </div>
-    <button class="login-btn fw-bold text-white" type="submit" [disabled]="!loginForm.valid">Ingresar</button>
+    <button class="login-btn fw-bold text-white" type="submit" [disabled]="!loginForm.valid" routerLink="{{routeC}}">Ingresar</button>
   </div>
 </form>
 <div *ngIf="dataLoginJ"><span>{{dataLoginJ.message}}</span></div>

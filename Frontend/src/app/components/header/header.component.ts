@@ -1,5 +1,7 @@
 import { Component, OnInit } from '@angular/core';
+import { Router } from '@angular/router';
 import { faChalkboard } from '@fortawesome/free-solid-svg-icons';
+import { GetDataService } from 'src/app/services/get-data.service';
 import { LoadLoginService } from 'src/app/services/load-login.service';
 
 @Component({
@@ -21,19 +23,18 @@ export class HeaderComponent implements OnInit {
   idUser= this.dataLoginJ.id_student;
   //Asignar el id de usuario a la ruta
   routerL = '/profile/' + this.idUser;
+  responseApi: any;
+  nameUser: any;
 
-  profileMenu: any[] = [
-    {
-      title: 'Cuenta',
-      routerLink: this.routerL,
-    },
-    {
-      title: 'Cerrar Sesion',
-      routerLink: '/login',
-    },
-  ];
+  constructor(private loadLogin: LoadLoginService, private lodadUser: GetDataService, private router: Router) {}
 
-  constructor(private loadLogin: LoadLoginService) {}
+  logOut = () => {
+    localStorage.clear();
+    this.messageLogin = null;
+    this.nameUser = '';
+    this.responseApi = '';
+    this.router.navigate(['/login']);
+  }
 
   ngOnInit() {
     this.loadLogin.messageLogin$.subscribe((mesage) => {
@@ -42,10 +43,22 @@ export class HeaderComponent implements OnInit {
       // console.log(this.messageLogin);
     });
 
-    if(this.messageLogin != null){
-      this.routerLogo = '/home'
+    if(this.messageLogin == null)
+    {
+      this.nameUser = '';
     }else{
-      this.routerLogo = '/login'
+      this.lodadUser.getProfile()
+      .subscribe(response => {
+        this.responseApi = response;
+        this.nameUser = this.responseApi.usuario.nombre;
+        console.log(this.nameUser);
+      });
+    }
+
+    if(this.messageLogin != null){
+      this.routerLogo = '/home';
+    }else{
+      this.routerLogo = '/login';
     }
   }
 }

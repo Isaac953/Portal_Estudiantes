@@ -5,10 +5,10 @@
 <section class="perfil" *ngIf="messageLogin">
   <div class="d-flex justify-content-center align-items-center">
     <img class="perfil-user" src="{{imgProfile}}" alt="{{altname}}">
-    <span class="fw-bold fw-light">{{profile}}</span>
+    <span class="fw-bold fw-light" *ngIf="messageLogin">{{nameUser}}</span>
   </div>
   <div class="perfil-nav">
-    <li class="nav-item" *ngFor="let profile of profileMenu"><a routerLink="{{profile.routerLink}}"
-        class="nav-link text-white text-decoration-none w-100">{{profile.title}}</a></li>
+    <li class="nav-item"><a routerLink="{{routerL}}" class="nav-link text-white text-decoration-none w-100">Cuenta</a></li>
+    <li class="nav-item"><a routerLink="/login" (click)="logOut()" class="nav-link text-white text-decoration-none w-100">Cerrar Sesión</a></li>
   </div>
 </section>

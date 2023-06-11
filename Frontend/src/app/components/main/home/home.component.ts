@@ -1,6 +1,7 @@
 import { Component, OnInit } from '@angular/core';
-import { faCalculator, faMicroscope, faEarthAmericas, faBook } from '@fortawesome/free-solid-svg-icons';
+import { faCalculator, faMicroscope, faEarthAmericas, faBook, faFileLines } from '@fortawesome/free-solid-svg-icons';
 import { ActivatedRoute } from '@angular/router';
+import { GetDataService } from 'src/app/services/get-data.service';
 
 @Component({
   selector: 'app-home',
@@ -11,32 +12,35 @@ export class HomeComponent implements OnInit {
   nameAsignature: any;
   idAsignatature: any;
   btnName = 'Contenido';
-  asignatureItems: any[] = [
-    {
-      id: 0,
-      title: 'Matemáticas',
-      icon: faCalculator,
-      button: this.btnName,
-    },
-    {
-      id: 1,
-      title: 'Ciencias',
-      icon: faMicroscope,
-      button: this.btnName,
-    },
-    {
-      id: 2,
-      title: 'Sociales',
-      icon: faEarthAmericas,
-      button: this.btnName,
-    },
-    {
-      id: 3,
-      title: 'Lenguaje',
-      icon: faBook,
-      button: this.btnName,
-    },
-  ];
+  responseApi: any;
+  asignatureItems: any;
+  faFileLines = faFileLines;
+  // asignatureItems: any[] = [
+  //   {
+  //     id: 0,
+  //     title: 'Matemáticas',
+  //     icon: faCalculator,
+  //     button: this.btnName,
+  //   },
+  //   {
+  //     id: 1,
+  //     title: 'Ciencias',
+  //     icon: faMicroscope,
+  //     button: this.btnName,
+  //   },
+  //   {
+  //     id: 2,
+  //     title: 'Sociales',
+  //     icon: faEarthAmericas,
+  //     button: this.btnName,
+  //   },
+  //   {
+  //     id: 3,
+  //     title: 'Lenguaje',
+  //     icon: faBook,
+  //     button: this.btnName,
+  //   },
+  // ];
 
     sendAsignature = (id:any) => {
       this.idAsignatature = id;
@@ -46,9 +50,18 @@ export class HomeComponent implements OnInit {
       // console.log(this.idAsignatature);
     };
 
-    constructor( private _route:ActivatedRoute
+    constructor( private _route:ActivatedRoute, private loadAsignature: GetDataService
     ) {}
 
     ngOnInit() {
+      this.asignatureItems = [];
+      this.loadAsignature.getAsignatures()
+      .subscribe(response => {
+        this.responseApi = response;
+        this.asignatureItems = this.responseApi;
+        console.log(this.asignatureItems);
+        // this.nameUser = this.responseApi.usuario.nombre;
+        // console.log(this.nameUser);
+      });
     }
 }
