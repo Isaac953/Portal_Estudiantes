@@ -1,3 +1,4 @@
+/* Start Media Queries Screens 1024px */
 .home-component{
   position: relative;
 }
@@ -35,8 +36,37 @@ h2{
   height:inherit;
   margin: 0px;
   padding: 10px;
-  width: 30%;
+  width: 180px;
   border-radius: 15px 0px 0px 15px;
   /* border-radius: 15px; */
   background-color: #4c6e99;
 }
+
+/* End Media Queries Screens 1024px */
+
+/* Start Media Queries Screens 1023px */
+@media screen and (max-width: 1023px) {
+  .asignature-card{
+    height: 140px;
+  }
+
+  .asignature-icon{
+    font-size: 52px;
+    width: 170px;
+  }
+
+}
+/* End Media Queries Screens 1023px */
+
+/* Start Media Queries Screens 767px */
+@media screen and (max-width: 767px) {
+  .asignature-card{
+    height: 130px;
+  }
+
+  .asignature-icon{
+    font-size: 49px;
+    width: 160px
+  }
+}
+/* End Media Queries Screens 767px */

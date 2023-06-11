@@ -12,11 +12,16 @@ export class ProfileComponent {
   responseApi: any;
   dataUser: any;
 
+    //Recuperar datos en localstorage de la sesion Login
+    loginData = localStorage.getItem('session');
+    dataLoginJ = JSON.parse(this.loginData || '{}');
+    messageLogin = this.dataLoginJ.message;
+    roleUser = this.dataLoginJ.rol;
+    //Asignar el id de usuario a la ruta
 
   constructor(private _route:ActivatedRoute, private lodadUser: GetDataService) {}
 
     ngOnInit() {
-      this.idUser = this._route.snapshot.paramMap.get('id');
 
       this.dataUser = [];
 

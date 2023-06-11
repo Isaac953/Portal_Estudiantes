@@ -1,3 +1,4 @@
+/* Start Media Queries Screens 1023px */
 .logo{
   margin-left: 10px;
   font-weight: 700;
@@ -56,3 +57,22 @@
 .nav-link{
   height: 25px;
 }
+
+/* End Media Queries Screens 1024px */
+
+/* Start Media Queries Screens 1023px */
+@media screen and (max-width: 1023px) {
+  .logo{
+    font-size: 32px;
+  }
+}
+/* End Media Queries Screens 1023px */
+
+/* Start Media Queries Screens 767px */
+@media screen and (max-width: 767px) {
+  .logo{
+    font-size: 28px;
+  }
+}
+/* End Media Queries Screens 767px */
+

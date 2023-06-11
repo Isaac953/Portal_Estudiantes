@@ -37,7 +37,7 @@ Parte Frontend del proyecto para acceso a la educación del Hackaton creado en A
 
 4- Instalar iconos: ng add @fortawesome/angular-fontawesome y ver el siguiente sitio https://www.npmjs.com/package/@fortawesome/angular-fontawesome
 
-## Layout Principal (June 01, 02, 03, 04)
+## Frontend de Portal de Estudiantes (June 01-11)
 
 - HT-01: Realizar la creción del proyecto con el framework Frontend Angular y hacer el diseño inicial del Layout.
 - HT-02: Completar diseño inicial de Layout.
@@ -49,3 +49,8 @@ Parte Frontend del proyecto para acceso a la educación del Hackaton creado en A
 - HT-08: Creación y diseño inicial de vista de Tutorials Component.
 - HT-09: Implementar modal al abrir una clase de la lista en Materia.
 - HT-10: Consumir una Api Post del Login al ingresar datos.
+- HT-11: Completar el Local Storage en el Login.
+- HT-11.1: Configurando rutas al estar validado el Login Parte I.
+- HT-11.2: Configurando rutas al estar validado el Login Parte II.
+- HT-11.3: Controlar cargar la página al ingresar con el Login.
+- HT-12: Agregar rol en local Storage y finalizar diseños de Perfil y Login.

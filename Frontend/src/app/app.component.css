@@ -1,18 +1,18 @@
 /* Start Media Queries Screens 1024px */
 header {
   width: 100%;
-  background-color: #1F8A70;
+  background-color: #16775f;
   height: 70px;
 }
 
 main {
-  background-color: rgba(13, 121, 215, 0.8);
+  background-color: rgba(0, 120, 226, 0.8);
   height: 100vh;
 }
 
 footer {
   width: 100%;
-  background-color: #1F8A70;
+  background-color: #16775f;
   height: 70px;
 }
 
@@ -90,7 +90,7 @@ footer {
   }
 
   main {
-    height: 120vh;
+    height: 130vh;
   }
 
   footer {
