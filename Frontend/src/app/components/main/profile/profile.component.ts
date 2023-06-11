@@ -10,7 +10,9 @@ import { GetDataService } from 'src/app/services/get-data.service';
 export class ProfileComponent {
   idUser: any;
   responseApi: any;
+  responseApiCourse: any;
   dataUser: any;
+  dataCourse: any;
 
     //Recuperar datos en localstorage de la sesion Login
     loginData = localStorage.getItem('session');
@@ -24,14 +26,31 @@ export class ProfileComponent {
     ngOnInit() {
 
       this.dataUser = [];
+      this.dataCourse = [];
 
-      this.lodadUser.getProfile()
-      .subscribe(response => {
+       /*Show Profile User Student*/
+    if (this.roleUser == 'Estudiante') {
+      this.idUser = this.dataLoginJ.id_student;
+      this.lodadUser.getProfile().subscribe((response) => {
         this.responseApi = response;
         this.dataUser.push(this.responseApi.usuario);
-        console.log(this.dataUser);
-        // this.nameUser = this.responseApi.usuario.nombre;
-        // console.log(this.nameUser);
+        // console.log(this.dataUser);
       });
+      this.lodadUser.getCourse().subscribe((response) => {
+        this.responseApiCourse = response;
+        this.dataCourse.push(this.responseApiCourse.grado + '° Grado, ');
+        this.dataCourse.push('Sección ' + this.responseApiCourse.seccion + ', ');
+        this.dataCourse.push(this.responseApiCourse.anio);
+        console.log(this.dataCourse);
+      });
+    /*Show Profile User Teacher*/
+    } else if (this.roleUser == 'Profesor') {
+      this.idUser = this.dataLoginJ.id_teacher;
+      this.lodadUser.getProfileTeacher().subscribe((response) => {
+        this.responseApi = response;
+        this.dataUser.push(this.responseApi.usuario);
+        // console.log(this.dataUser);
+      });
+    }
     }
 }

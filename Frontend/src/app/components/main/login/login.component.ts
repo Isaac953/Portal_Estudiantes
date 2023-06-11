@@ -1,11 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { FormGroup, FormControl, Validators } from '@angular/forms';
 import { LoginService } from '../../../services/login.service';
-import { LoadLoginService } from 'src/app/services/load-login.service';
-import { GetDataService } from 'src/app/services/get-data.service';
 import { Router } from '@angular/router';
-import { faLaptopMedical } from '@fortawesome/free-solid-svg-icons';
-import { toJSDate } from '@ng-bootstrap/ng-bootstrap/datepicker/ngb-calendar';
 
 @Component({
   selector: 'app-login',
@@ -28,7 +24,7 @@ export class LoginComponent implements OnInit {
     rol: new FormControl('e', [Validators.required]),
   });
 
-  constructor(private service: LoginService, private loadLogin: LoadLoginService, private router: Router) { }
+  constructor(private service: LoginService, private router: Router) { }
 
   onSubmit() {
     console.warn(this.loginForm.value);
@@ -42,8 +38,6 @@ export class LoginComponent implements OnInit {
         console.log(this.dataLoginJ.message);
         console.log(this.dataLoginJ.id_student);
         console.log(this.dataLoginJ.rol);
-        this.loadLogin.messageLogin$.emit(this.dataLoginJ.message);
-        this.loadLogin.idUser$.emit(this.dataLoginJ.id_student);
         this.router.navigate(['/home']);
 
         setTimeout(() => {
@@ -62,8 +56,6 @@ export class LoginComponent implements OnInit {
         console.log(this.dataLoginJ.message);
         console.log(this.dataLoginJ.id_student);
         console.log(this.dataLoginJ.rol);
-        this.loadLogin.messageLogin$.emit(this.dataLoginJ.message);
-        this.loadLogin.idUser$.emit(this.dataLoginJ.id_student);
         this.router.navigate(['/home']);
 
         setTimeout(() => {

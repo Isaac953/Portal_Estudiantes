@@ -2,7 +2,6 @@ import { Component, OnInit, AfterViewInit } from '@angular/core';
 import { Router } from '@angular/router';
 import { faChalkboard } from '@fortawesome/free-solid-svg-icons';
 import { GetDataService } from 'src/app/services/get-data.service';
-import { LoadLoginService } from 'src/app/services/load-login.service';
 
 @Component({
   selector: 'header',
@@ -20,17 +19,16 @@ export class HeaderComponent implements OnInit {
   loginData = localStorage.getItem('session');
   dataLoginJ = JSON.parse(this.loginData || '{}');
   messageLogin = this.dataLoginJ.message;
-  idUser = this.dataLoginJ.id_student;
-  //Asignar el id de usuario a la ruta
-  routerL = '/profile/' + this.idUser;
+  idUser: any;
+  roleUser = this.dataLoginJ.rol;
+  routerL: any;
   responseApi: any;
   nameUser: any;
 
   constructor(
-    private loadLogin: LoadLoginService,
     private lodadUser: GetDataService,
     private router: Router
-  ) {}
+  ) { }
 
   logOut = () => {
     localStorage.clear();
@@ -41,30 +39,31 @@ export class HeaderComponent implements OnInit {
 
     setTimeout(() => {
       location.reload();
-  }, 0);
+    }, 0);
   };
 
   ngOnInit() {
 
-    this.loadLogin.messageLogin$.subscribe((mesage) => {
-      this.messageLogin = mesage;
-      this.routerLogo = '/home';
-      // console.log(this.messageLogin);
-    });
-
-    // this.loadLogin.idUser$.subscribe((id) => {
-    //   this.idUser = id;
-    // });
-if(this.idUser != null){
-  this.lodadUser.getProfile().subscribe((response) => {
-    this.responseApi = response;
-    this.nameUser = this.responseApi.usuario.nombre;
-    console.log(this.nameUser);
-    this.routerLogo = '/home';
-  });
-}else{
-
-}
-
+    /*Show name User Student in Header*/
+    if (this.roleUser == 'Estudiante') {
+      this.idUser = this.dataLoginJ.id_student;
+      this.routerL = '/profile/' + this.idUser;
+      this.lodadUser.getProfile().subscribe((response) => {
+        this.responseApi = response;
+        this.nameUser = this.responseApi.usuario.nombre;
+        // console.log(this.nameUser);
+        this.routerLogo = '/home';
+      });
+    /*Show name User Teacher in Header*/
+    } else if (this.roleUser == 'Profesor') {
+      this.idUser = this.dataLoginJ.id_teacher;
+      this.routerL = '/profile/' + this.idUser;
+      this.lodadUser.getProfileTeacher().subscribe((response) => {
+        this.responseApi = response;
+        this.nameUser = this.responseApi.usuario.nombre;
+        // console.log(this.nameUser);
+        this.routerLogo = '/home';
+      });
+    }
   }
 }

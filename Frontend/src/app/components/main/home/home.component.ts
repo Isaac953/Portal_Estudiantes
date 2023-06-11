@@ -16,6 +16,13 @@ export class HomeComponent implements OnInit {
   asignatureItems: any;
   faFileLines = faFileLines;
 
+  //Recuperar datos en localstorage de la sesion Login
+  loginData = localStorage.getItem('session');
+  dataLoginJ = JSON.parse(this.loginData || '{}');
+  roleUser = this.dataLoginJ.rol;
+  idUser: any;
+  //Asignar el id de usuario a la ruta
+
   // asignatureItems: any[] = [
   //   {
   //     id: 0,
@@ -43,26 +50,35 @@ export class HomeComponent implements OnInit {
   //   },
   // ];
 
-    sendAsignature = (id:any) => {
-      this.idAsignatature = id;
-      window.scrollTo(0, 0);
-     // window.scrollTo(0, 0);
-      // console.log(this.nameAsignature);
-      // console.log(this.idAsignatature);
-    };
+  sendAsignature = (id: any) => {
+    this.idAsignatature = id;
+    window.scrollTo(0, 0);
+    // window.scrollTo(0, 0);
+    // console.log(this.nameAsignature);
+    // console.log(this.idAsignatature);
+  };
 
-    constructor( private _route:ActivatedRoute, private loadAsignature: GetDataService
-    ) {}
+  constructor(private _route: ActivatedRoute, private loadAsignature: GetDataService
+  ) { }
 
-    ngOnInit() {
-      this.asignatureItems = [];
+  ngOnInit() {
+    this.asignatureItems = [];
+    /*Show Profile User Student*/
+    if (this.roleUser == 'Estudiante') {
       this.loadAsignature.getAsignatures()
-      .subscribe(response => {
-        this.responseApi = response;
-        this.asignatureItems = this.responseApi;
-        console.log(this.asignatureItems);
-        // this.nameUser = this.responseApi.usuario.nombre;
-        // console.log(this.nameUser);
-      });
+        .subscribe(response => {
+          this.responseApi = response;
+          this.asignatureItems = this.responseApi;
+          console.log(this.asignatureItems);
+        });
+      /*Show Profile User Teacher*/
+    } else if (this.roleUser == 'Profesor') {
+      this.loadAsignature.getAsignaturesTeacher()
+        .subscribe(response => {
+          this.responseApi = response;
+          this.asignatureItems = this.responseApi;
+          console.log(this.asignatureItems);
+        });
     }
+  }
 }

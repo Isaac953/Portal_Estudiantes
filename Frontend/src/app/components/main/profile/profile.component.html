@@ -4,8 +4,9 @@
     <img class="profile-img" src="./assets/Profile-2.png" alt="">
     <div class="d-flex flex-column" *ngFor="let data of dataUser">
       <span>{{data.nombre}} {{data.apellido}}</span>
-      <span>{{roleUser}}</span>
       <span>{{data.email}}</span>
+      <span>{{roleUser}}</span>
+      <span>{{dataCourse[0]}} {{dataCourse[1]}} {{dataCourse[2]}}</span>
       <!-- <span>Grado</span> -->
     </div>
   </div>
