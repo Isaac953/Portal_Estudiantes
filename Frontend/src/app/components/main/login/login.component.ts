@@ -5,6 +5,7 @@ import { LoadLoginService } from 'src/app/services/load-login.service';
 import { GetDataService } from 'src/app/services/get-data.service';
 import { Router } from '@angular/router';
 import { faLaptopMedical } from '@fortawesome/free-solid-svg-icons';
+import { toJSDate } from '@ng-bootstrap/ng-bootstrap/datepicker/ngb-calendar';
 
 @Component({
   selector: 'app-login',
@@ -19,34 +20,76 @@ export class LoginComponent implements OnInit {
   userProfile: any;
   routeC = '/login';
   role: any;
+  checked = true;
 
   loginForm = new FormGroup({
-    username: new FormControl(''),
-    password: new FormControl(''),
+    username: new FormControl('', Validators.required),
+    password: new FormControl('', Validators.required),
+    rol: new FormControl('e', [Validators.required]),
   });
 
   constructor(private service: LoginService, private loadLogin: LoadLoginService, private router: Router) { }
 
   onSubmit() {
     console.warn(this.loginForm.value);
-    this.service.sendData(this.loginForm.value).subscribe((response)=>{
-      // console.warn(response);
-      response.rol = 'Estudiante';
-      this.routeC = '/home';
-      localStorage.setItem('session', JSON.stringify(response));
-      this.dataLogin = localStorage.getItem('session');
-      this.dataLoginJ = JSON.parse(this.dataLogin);
-      console.log(this.dataLoginJ.message);
-      console.log(this.dataLoginJ.id_student);
-      console.log(this.dataLoginJ.rol);
-      this.loadLogin.messageLogin$.emit(this.dataLoginJ.message);
-      this.loadLogin.idUser$.emit(this.dataLoginJ.id_student);
-      this.router.navigate(['/home']);
+    if (this.loginForm.controls.rol.value == 'e') {
+      this.role = 'Estudiante';
+      this.service.sendData(this.loginForm.value).subscribe((response) => {
+        response.rol = this.role;
+        localStorage.setItem('session', JSON.stringify(response));
+        this.dataLogin = localStorage.getItem('session');
+        this.dataLoginJ = JSON.parse(this.dataLogin);
+        console.log(this.dataLoginJ.message);
+        console.log(this.dataLoginJ.id_student);
+        console.log(this.dataLoginJ.rol);
+        this.loadLogin.messageLogin$.emit(this.dataLoginJ.message);
+        this.loadLogin.idUser$.emit(this.dataLoginJ.id_student);
+        this.router.navigate(['/home']);
 
-      setTimeout(() => {
-        location.reload();
-    }, -100);
-    })
+        setTimeout(() => {
+          location.reload();
+        }, -100);
+      })
+
+    } else if (this.loginForm.controls.rol.value == 'p') {
+      this.role = 'Profesor';
+
+      this.service.sendDataTeacher(this.loginForm.value).subscribe((response) => {
+        response.rol = this.role;
+        localStorage.setItem('session', JSON.stringify(response));
+        this.dataLogin = localStorage.getItem('session');
+        this.dataLoginJ = JSON.parse(this.dataLogin);
+        console.log(this.dataLoginJ.message);
+        console.log(this.dataLoginJ.id_student);
+        console.log(this.dataLoginJ.rol);
+        this.loadLogin.messageLogin$.emit(this.dataLoginJ.message);
+        this.loadLogin.idUser$.emit(this.dataLoginJ.id_student);
+        this.router.navigate(['/home']);
+
+        setTimeout(() => {
+          location.reload();
+        }, -100);
+      })
+    }
+    //  console.warn(this.loginForm.value);
+    //     this.service.sendData(this.loginForm.value).subscribe((response)=>{
+    //       // console.warn(response);
+    //       response.rol = 'Estudiante';
+    //       this.routeC = '/home';
+    //       localStorage.setItem('session', JSON.stringify(response));
+    //       this.dataLogin = localStorage.getItem('session');
+    //       this.dataLoginJ = JSON.parse(this.dataLogin);
+    //       console.log(this.dataLoginJ.message);
+    //       console.log(this.dataLoginJ.id_student);
+    //       console.log(this.dataLoginJ.rol);
+    //       this.loadLogin.messageLogin$.emit(this.dataLoginJ.message);
+    //       this.loadLogin.idUser$.emit(this.dataLoginJ.id_student);
+    //       this.router.navigate(['/home']);
+
+    //       setTimeout(() => {
+    //         location.reload();
+    //     }, -100);
+    //     })
   }
   ngOnInit() {
   }

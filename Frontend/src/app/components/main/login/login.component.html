@@ -1,17 +1,17 @@
 <form [formGroup]="loginForm" (ngSubmit)="onSubmit()">
   <div class="login-container d-flex flex-column align-items-center justify-content-between">
     <h3 class="text-center fw-bold">Login</h3>
-    <div>
-      <input type="radio" id="estudiante" name="role" value="estudiante" checked />
-      <label for="estudiante">Estudiante</label>
-      <input type="radio" id="profesor" name="role" value="profesor" />
-      <label for="profesor">Profesor</label>
+    <div class="d-flex flex-row align-items-center">
+      <input class="login-radio" type="radio" id="e" name="rol" value="e" formControlName="rol"/>
+      <label for="e">Estudiante</label>
+      <input class="login-radio" type="radio" id="p" name="rol" value="p" formControlName="rol"/>
+      <label for="p">Profesor</label>
     </div>
     <div class="d-flex flex-column align-items-center">
       <input class="login-input" type="username" placeholder="Usuario" formControlName="username" />
       <input class="login-input" type="password" placeholder="Contraseña" formControlName="password" />
     </div>
-    <button class="login-btn fw-bold text-white" type="submit" [disabled]="!loginForm.valid" routerLink="{{ routeC }}">
+    <button class="login-btn fw-bold text-white" type="submit" [disabled]="!loginForm.valid">
       Ingresar
     </button>
   </div>

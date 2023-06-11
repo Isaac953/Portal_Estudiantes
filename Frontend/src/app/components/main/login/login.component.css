@@ -20,6 +20,10 @@
   outline: 2px solid #526D82;
 }
 
+.login-radio{
+  margin: 0px 5px;
+}
+
 .login-btn{
   background-color: #1f7f55;
   border: none;

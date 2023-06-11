@@ -31,3 +31,4 @@ Parte Frontend del proyecto para acceso a la educación del Hackaton creado en A
 - HT-11.2: Configurando rutas al estar validado el Login Parte II.
 - HT-11.3: Controlar cargar la página al ingresar con el Login.
 - HT-12: Agregar rol en local Storage y finalizar diseños de Perfil y Login.
+- HT-12.1: Funcionalidad de Login para profesor y estudiante implementado.
