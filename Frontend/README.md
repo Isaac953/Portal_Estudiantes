@@ -35,3 +35,4 @@ Parte Frontend del proyecto para acceso a la educación del Hackaton creado en A
 - HT-12.2: Implementación de recuperar información de asignaturas y perfil para estudiantes y profesores.
 - HT-12.3: Mostrando el contenido de la materia en el modal al abrir la clase.
 - HT-12.4: Agregando boton para profesores puedan ver el crud de contenido.
+- HT-12.5: Recuperando contenido existente en la ventana Modal.

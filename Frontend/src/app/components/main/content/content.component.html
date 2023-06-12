@@ -21,10 +21,16 @@
       <tbody>
           <tr *ngFor="let content of asignatureArray">
             <td>{{content.pk}}</td>
-            <!-- <td>{{content.asignatura}}</td> -->
             <td>{{content.titulo}}</td>
             <td>{{content.tipo_contenido}}</td>
-            <td><button>Editar</button></td>
+            <td>
+              <button class="card-btn btn-eye fw-bold text-white"><fa-icon
+                [icon]="eye" (click)="viewContent(content.pk)"></fa-icon></button>
+              <button class="card-btn btn-edit fw-bold text-white"><fa-icon
+              [icon]="pen"></fa-icon></button>
+              <button class="card-btn btn-delete fw-bold text-white"><fa-icon
+                [icon]="trash"></fa-icon></button>
+            </td>
           </tr>
       </tbody>
     </table>

@@ -18,31 +18,6 @@ h2{
   box-shadow: var(--shadow-card);
 }
 
-.card-btn{
-  border: none;
-  border-radius: 5px;
-  padding: 8px 12px;
-  margin: 0px 5px;
-  font-size: 14px;
-  transition: 0.5s;
-}
-
-.btn-content {
-  background-color: #125C13;
-}
-
-.btn-edit {
-  background-color: #C07F00;
-}
-
-.btn-content:hover{
-  background-color: #1b941d;
-}
-
-.btn-content:hover{
-  background-color: #dd9400;
-}
-
 .asignature-icon{
   font-size: 55px;
   height:inherit;

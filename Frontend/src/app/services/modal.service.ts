@@ -9,6 +9,8 @@ export class ModalService {
   modalTitle$ = new EventEmitter<string>();
   idAsignature$ = new EventEmitter<number>();
   activities$ = new EventEmitter<string[]>();
+  modalType$ = new EventEmitter<string>();
+  idContent$ = new EventEmitter<number>();
 
   constructor() { }
 }

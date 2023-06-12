@@ -11,3 +11,48 @@
 body {
   font-family: "Source Sans Pro", sans-serif, Verdana;
 }
+
+
+
+.card-btn{
+  border: none;
+  border-radius: 5px;
+  padding: 6px 10px;
+  margin: 0px 5px;
+  font-size: 14px;
+  transition: 0.5s;
+  font-size: 16px;
+}
+
+.btn-content {
+  background-color: #125C13;
+}
+
+.btn-eye {
+  background-color: #088395;
+}
+
+.btn-edit {
+  background-color: #c66313;
+}
+
+.btn-delete {
+  background-color: #B31312;
+}
+
+.btn-content:hover{
+  background-color: #1b941d;
+}
+
+.btn-eye:hover{
+  background-color: #09a6be;
+}
+
+.btn-edit:hover{
+  background-color: #ed7614;
+}
+
+.btn-delete:hover{
+  background-color: #d31616;
+}
+

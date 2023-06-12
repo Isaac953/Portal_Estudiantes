@@ -21,10 +21,10 @@ td {
 
 /* Estilos para tarea consumo de API */
 tbody tr:nth-child(even) {
-  background-color: #545454;
+  background-color: #668399;
   }
 
 tbody tr:nth-child(odd) {
 
-  background-color:#848484;
+  background-color:#16775f;
   }

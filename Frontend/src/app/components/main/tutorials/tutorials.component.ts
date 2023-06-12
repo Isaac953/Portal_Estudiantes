@@ -19,6 +19,7 @@ export class TutorialsComponent implements OnInit {
   responseApi: any;
   responseApi2: any;
   activitiesT: any;
+  nameC = "Tutorial";
 
   // contentAsignatures: any[] = [
   //   {
@@ -43,13 +44,14 @@ export class TutorialsComponent implements OnInit {
   //   },
   // ];
 
-  openModal = (arr_names: string[], title: string, idAsig: any) => {
+  openModal = (arr_names: string[]) => {
     this.dataAsignature = arr_names;
     this.modalSwitch = 'enabled';
     this.modalService.modal$.emit(this.modalSwitch);
     this.modalService.modalData$.emit(this.dataAsignature);
     this.modalService.modalTitle$.emit(this.titleAsignature);
     this.modalService.idAsignature$.emit(this.idAsignature);
+    this.modalService.modalType$.emit(this.nameC);
     window.scrollTo(0, 0);
 
     this.activitiesT = [];

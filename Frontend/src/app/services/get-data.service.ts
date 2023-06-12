@@ -19,6 +19,7 @@ export class GetDataService {
   urlt: any;
   urlc: any;
   urla: any;
+  urlcrud: any;
 
   private url = 'http://localhost:8001/users/profile/student/' + this.idUser + '/?format=json';
   private url2 = 'http://localhost:8001/users/profile/teacher/' + this.idTeacher + '/?format=json';
@@ -54,6 +55,11 @@ export class GetDataService {
   getAsigContent(id:any){
     this.urlc = 'http://localhost:8001/courses/students/courses/subjects/'+ id +'/contents/?format=json'
     return this.httpClient.get(this.urlc);
+  }
+
+  getCrudContent(id:any){
+    this.urlcrud = 'http://localhost:8001/courses/teachers/subjects/contents/'+ id +'/?format=json'
+    return this.httpClient.get(this.urlcrud);
   }
 
   // getActivities(id:any){
