@@ -1,6 +1,8 @@
-import { Component, OnInit  } from '@angular/core';
+import { Component, OnInit, AfterViewInit  } from '@angular/core';
 import { ModalService } from 'src/app/services/modal.service';
 import { faXmark } from '@fortawesome/free-solid-svg-icons';
+import { ActivatedRoute } from '@angular/router';
+import { GetDataService } from 'src/app/services/get-data.service';
 
 @Component({
   selector: 'modal',
@@ -13,8 +15,11 @@ export class ModalComponent implements OnInit {
   faXmark = faXmark;
   modalData: any;
   modalTitle: any;
+  idAsignature: any;
+  responseApi: any;
+  activitiesT: any;
 
-  constructor(private modalService: ModalService) {}
+  constructor(private modalService: ModalService, private _route:ActivatedRoute, private loadAsignature: GetDataService) {}
 
     closeModal = () => {
       this.modalSwitch = 'disabled';
@@ -41,5 +46,25 @@ export class ModalComponent implements OnInit {
     this.modalService.modalTitle$.subscribe((title) => {
       this.modalTitle = title;
     });
+
+    this.modalService.idAsignature$.subscribe((id) => {
+      this.idAsignature = id;
+      return this.idAsignature;
+    })
+
+    this.modalService.activities$.subscribe((list) => {
+      this.activitiesT = list;
+      console.log(this.activitiesT);
+    })
+
+    // this.idAsignature = this._route.snapshot.paramMap.get('idAsignature');
+
+
+
+
+  }
+
+  AfterViewInit(){
+
   }
 }

@@ -14,7 +14,7 @@ const routes: Routes = [
   { path: 'home', component: HomeComponent },
   { path: 'profile/:id', component: ProfileComponent },
   { path: 'login', component: LoginComponent },
-  { path: 'tutorials/:asignature', component: TutorialsComponent },
+  { path: 'tutorials/:asignature/:idAsignature', component: TutorialsComponent },
   { path: 'test', component: TestComponent },
   { path: 'pythontest', component: PythontestComponent },
   { path: 'pythondb', component: PythondbComponent },

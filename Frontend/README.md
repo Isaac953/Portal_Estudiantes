@@ -33,3 +33,4 @@ Parte Frontend del proyecto para acceso a la educación del Hackaton creado en A
 - HT-12: Agregar rol en local Storage y finalizar diseños de Perfil y Login.
 - HT-12.1: Funcionalidad de Login para profesor y estudiante implementado.
 - HT-12.2: Implementación de recuperar información de asignaturas y perfil para estudiantes y profesores.
+- HT-12.3: Mostrando el contenido de la materia en el modal al abrir la clase.

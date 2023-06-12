@@ -46,3 +46,74 @@
 .modal__container--btn:hover {
   color: #59ce8f;
 }
+
+.info__title {
+  font-size: 34px;
+
+  position: relative;
+
+  margin-bottom: 12px;
+
+  text-align: center;
+
+  color: black;
+}
+
+.modal__container--info {
+  position: relative;
+
+  display: flex;
+  flex-direction: column;
+
+  width: 97.6%;
+  height: auto;
+  margin-bottom: 12px;
+
+  align-items: center;
+  justify-content: center;
+}
+/* End Media Queries Screens 1024px */
+
+/* Start Media Queries Screens 768px and 1023px */
+@media screen and (min-width: 768px) and (max-width: 1023px) {
+  .modal__container {
+    width: 90vw;
+  }
+
+  .modal__container--btn {
+    font-size: 2.7rem;
+
+    left: 46.7%;
+  }
+
+  .modal__container--info {
+    width: 97%;
+  }
+
+  .info__title {
+    font-size: 32px;
+  }
+}
+/* End Media Queries Screens 768px and 1023px */
+
+/* Start Media Queries Screens 767px */
+@media screen and (max-width: 767px) {
+  .modal__container {
+    width: 95vw;
+  }
+
+  .modal__container--btn {
+    font-size: 2.5rem;
+
+    left: 43.9%;
+  }
+
+  .modal__container--info {
+    width: 96.5%;
+  }
+
+  .info__title {
+    font-size: 30px;
+  }
+}
+/* End Media Queries Screens 767px */

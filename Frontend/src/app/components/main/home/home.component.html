@@ -7,7 +7,8 @@
             [icon]="faFileLines"></fa-icon></figure>
         <div class="d-flex w-100 flex-column justify-content-center align-items-center">
           <h3 class="fw-bold">{{ asignature.nombre_asignatura }}</h3>
-          <button class="card-btn fw-bold text-white"  [routerLink]="['/tutorials', asignature.nombre_asignatura]">Contenido</button>
+          <button class="card-btn fw-bold text-white"  [routerLink]="['/tutorials', asignature.nombre_asignatura, asignature.pk]">Contenido</button>
+          <!-- <span class="teacher">{{asignature.maestro}}</span> -->
         </div>
       </section>
     </div>

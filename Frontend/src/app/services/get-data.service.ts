@@ -16,6 +16,9 @@ export class GetDataService {
 
   idUser= this.dataLoginJ.id_student;
   idTeacher= this.dataLoginJ.id_teacher;
+  urlt: any;
+  urlc: any;
+  urla: any;
 
   private url = 'http://localhost:8001/users/profile/student/' + this.idUser + '/?format=json';
   private url2 = 'http://localhost:8001/users/profile/teacher/' + this.idTeacher + '/?format=json';
@@ -35,6 +38,11 @@ export class GetDataService {
     return this.httpClient.get(this.url3);
   }
 
+  getTeacherSubject(id:any){
+    this.urlt = 'http://localhost:8001/users/profile/teacher/' + id + '/?format=json';
+    return this.httpClient.get(this.urlt);
+  }
+
   getAsignaturesTeacher(){
     return this.httpClient.get(this.url4);
   }
@@ -42,4 +50,15 @@ export class GetDataService {
   getCourse(){
     return this.httpClient.get(this.url5);
   }
+
+  getAsigContent(id:any){
+    this.urlc = 'http://localhost:8001/courses/students/courses/subjects/'+ id +'/contents/?format=json'
+    return this.httpClient.get(this.urlc);
+  }
+
+  // getActivities(id:any){
+  //   http://localhost:8001/courses/teachers/subjects/3/contents/
+  //   this.urla = 'http://localhost:8001/courses/students/courses/subjects/contents/'+ id +'/?format=json'
+  //   return this.httpClient.get(this.urla);
+  // }
 }

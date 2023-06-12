@@ -13,8 +13,12 @@ export class HomeComponent implements OnInit {
   idAsignatature: any;
   btnName = 'Contenido';
   responseApi: any;
+  responseApi2: any;
   asignatureItems: any;
   faFileLines = faFileLines;
+  teacherName: any;
+  teacherData: any;
+  obj: any;
 
   //Recuperar datos en localstorage de la sesion Login
   loginData = localStorage.getItem('session');
@@ -63,6 +67,7 @@ export class HomeComponent implements OnInit {
 
   ngOnInit() {
     this.asignatureItems = [];
+    this.teacherData = [];
     /*Show Profile User Student*/
     if (this.roleUser == 'Estudiante') {
       this.loadAsignature.getAsignatures()
@@ -70,7 +75,29 @@ export class HomeComponent implements OnInit {
           this.responseApi = response;
           this.asignatureItems = this.responseApi;
           console.log(this.asignatureItems);
+
+
+          //  for (let i = 0; i < this.responseApi.length; i++) {
+          //   this.teacherName = [];
+
+          //   this.loadAsignature.getTeacherSubject(this.responseApi[i].profesor).subscribe(response => {
+          //         this.responseApi2 = response;
+          //         this.teacherName.push(this.responseApi2.usuario.nombre);
+          //         // console.log(this.teacherName[i]);
+          //         setTimeout(() => {
+          //           this.asignatureItems[i].maestro = this.teacherName[i];
+          //         }, 300);
+
+          //       });
+
+          //     }
+
+              console.log(this.asignatureItems);
+
         });
+
+
+
       /*Show Profile User Teacher*/
     } else if (this.roleUser == 'Profesor') {
       this.loadAsignature.getAsignaturesTeacher()
