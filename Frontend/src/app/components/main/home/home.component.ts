@@ -1,5 +1,5 @@
 import { Component, OnInit } from '@angular/core';
-import { faCalculator, faMicroscope, faEarthAmericas, faBook, faFileLines } from '@fortawesome/free-solid-svg-icons';
+import { faCalculator, faMicroscope, faEarthAmericas, faBook, faFileLines, faPenToSquare } from '@fortawesome/free-solid-svg-icons';
 import { ActivatedRoute } from '@angular/router';
 import { GetDataService } from 'src/app/services/get-data.service';
 
@@ -16,6 +16,7 @@ export class HomeComponent implements OnInit {
   responseApi2: any;
   asignatureItems: any;
   faFileLines = faFileLines;
+  faPenToSquare = faPenToSquare;
   teacherName: any;
   teacherData: any;
   obj: any;

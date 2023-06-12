@@ -7,7 +7,14 @@
             [icon]="faFileLines"></fa-icon></figure>
         <div class="d-flex w-100 flex-column justify-content-center align-items-center">
           <h3 class="fw-bold">{{ asignature.nombre_asignatura }}</h3>
-          <button class="card-btn fw-bold text-white"  [routerLink]="['/tutorials', asignature.nombre_asignatura, asignature.pk]">Contenido</button>
+          <div class="d-flex w-100 flex-row justify-content-center align-items-center" *ngIf="roleUser == 'Estudiante'">
+            <button class="card-btn fw-bold text-white"  [routerLink]="['/tutorials', asignature.nombre_asignatura, asignature.pk]">Contenido</button>
+          </div>
+        <div class="d-flex w-100 flex-row justify-content-center align-items-center" *ngIf="roleUser == 'Profesor'">
+          <button class="card-btn btn-content fw-bold text-white"  [routerLink]="['/tutorials', asignature.nombre_asignatura, asignature.pk]">Contenido</button>
+          <button class="card-btn btn-edit fw-bold text-white"  [routerLink]="['/content', asignature.nombre_asignatura, asignature.pk]"><fa-icon
+            [icon]="faPenToSquare"></fa-icon></button>
+        </div>
           <!-- <span class="teacher">{{asignature.maestro}}</span> -->
         </div>
       </section>

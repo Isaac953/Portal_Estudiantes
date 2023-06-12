@@ -8,11 +8,13 @@ import { PythontestComponent } from './components/main/pythontest/pythontest.com
 import { HomeComponent } from './components/main/home/home.component';
 import { PythondbComponent } from './components/main/pythondb/pythondb.component';
 import { TutorialsComponent } from './components/main/tutorials/tutorials.component';
+import { ContentComponent } from './components/main/content/content.component';
 
 const routes: Routes = [
   /* Routes */
   { path: 'home', component: HomeComponent },
   { path: 'profile/:id', component: ProfileComponent },
+  { path: 'content/:asignature/:idAsignature', component: ContentComponent },
   { path: 'login', component: LoginComponent },
   { path: 'tutorials/:asignature/:idAsignature', component: TutorialsComponent },
   { path: 'test', component: TestComponent },

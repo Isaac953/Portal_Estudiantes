@@ -1,0 +1,30 @@
+/* Estilos para captura de datos */
+
+table, th, td {
+  border: 1px solid black;
+  border-collapse: collapse;
+}
+
+th {
+  background-color: #2C3333;
+  color: white;
+  font-weight: bold;
+  padding: 5px;
+  font-size: 16px;
+}
+
+td {
+  text-align: center;
+  font-size: 14px;
+  padding: 5px;
+}
+
+/* Estilos para tarea consumo de API */
+tbody tr:nth-child(even) {
+  background-color: #545454;
+  }
+
+tbody tr:nth-child(odd) {
+
+  background-color:#848484;
+  }

@@ -17,6 +17,7 @@ import { ModalComponent } from './components/main/tutorials/modal/modal.componen
 import { CommonModule } from '@angular/common';
 import { PythondbComponent } from './components/main/pythondb/pythondb.component';
 import { ReactiveFormsModule } from '@angular/forms';
+import { ContentComponent } from './components/main/content/content.component';
 
 @NgModule({
   declarations: [
@@ -29,6 +30,7 @@ import { ReactiveFormsModule } from '@angular/forms';
     TutorialsComponent,
     ModalComponent,
     PythondbComponent,
+    ContentComponent,
   ],
   imports: [
     BrowserModule,
