@@ -18,20 +18,32 @@
 
   <section *ngIf="nameC == 'Crud'">
     <div class="modal__container--info">
-      <h1 class="text-black">Crud de contenido</h1>
+      <h1 class="text-black">{{modalTitle}}</h1>
 
       <form [formGroup]="contentForm" (ngSubmit)="onSubmit()">
         <div class="d-flex flex-column align-items-center">
-          <label for="titleA">Titulo:</label>
-          <input class="content-input" type="text" placeholder="Titulo" formControlName="titleA" />
-        </div>
-        <div class="d-flex flex-column align-items-center"> <label for="typeC">Tipo de Contenido:</label>
-          <input class="content-input" type="text" placeholder="Tipo de Contenido" formControlName="typeC" />
+          <label for="asignatura">Id:</label>
+          <input class="content-input" type="text" placeholder="Titulo" formControlName="asignatura" />
         </div>
         <div class="d-flex flex-column align-items-center">
-          <label for="contentC">Contenido:</label>
-          <input class="content-input" type="text" placeholder="Contenido" formControlName="contentC" />
+          <label for="titulo">Titulo:</label>
+          <input class="content-input" type="text" placeholder="Titulo" formControlName="titulo" />
         </div>
+        <div class="d-flex flex-column align-items-center"> <label for="tipo_contenido">Tipo de Contenido:</label>
+          <input class="content-input" type="text" placeholder="Tipo de Contenido" formControlName="tipo_contenido" />
+        </div>
+        <div class="d-flex flex-column align-items-center">
+          <label for="contenido">Contenido:</label>
+          <input class="content-input" type="text" placeholder="Contenido" formControlName="contenido" />
+        </div>
+        <div class="d-flex flex-column align-items-center"> <button class="crud-btn fw-bold text-white" type="submit"
+            [disabled]="!contentForm.valid">
+            Insertar
+          </button>
+
+          <span class="message">{{messageData}}</span>
+        </div>
+
       </form>
 
     </div>

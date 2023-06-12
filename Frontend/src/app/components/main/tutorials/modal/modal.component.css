@@ -71,7 +71,7 @@
 
   align-items: center;
   justify-content: center;
-  border-style: solid;
+
 }
 
 .content-input{
@@ -85,6 +85,23 @@
 
 .content-input:focus{
   outline: 2px solid #526D82;
+}
+
+.crud-btn{
+  background-color: #0D4C92;
+  border: none;
+  border-radius: 5px;
+  padding: 8px 12px;
+  font-size: 14px;
+  transition: 0.5s;
+}
+
+.crud-btn:hover{
+  background-color: #1265c4;
+}
+
+.crud-btn:disabled {
+  background-color: gray;
 }
 
 /* End Media Queries Screens 1024px */

@@ -1,7 +1,7 @@
 import { Component, OnInit, AfterViewInit  } from '@angular/core';
 import { ModalService } from 'src/app/services/modal.service';
 import { faXmark } from '@fortawesome/free-solid-svg-icons';
-import { ActivatedRoute } from '@angular/router';
+import { ActivatedRoute, Router } from '@angular/router';
 import { GetDataService } from 'src/app/services/get-data.service';
 import { FormGroup, FormControl, Validators } from '@angular/forms';
 
@@ -22,36 +22,92 @@ export class ModalComponent implements OnInit {
   nameC: any;
   idContent: any;
   contents: any;
+  sendContent: any;
+  messageData: any;
+
+  dataDefault = {
+    "asignatura": 3,
+    "titulo": "Clase 2",
+    "tipo_contenido": "enlace",
+    "contenido": "Clase 2"
+}
+
+  idAsignatureV = this._route.snapshot.paramMap.get('idAsignature');
 
   contentForm = new FormGroup({
-    titleA: new FormControl(''),
-    typeC: new FormControl(''),
-    contentC: new FormControl(''),
+    asignatura: new FormControl(''),
+    titulo: new FormControl(''),
+    tipo_contenido: new FormControl(''),
+    contenido: new FormControl(''),
   });
 
-  constructor(private modalService: ModalService, private _route:ActivatedRoute, private loadAsignature: GetDataService) {}
+  constructor(private modalService: ModalService, private _route:ActivatedRoute, private loadAsignature: GetDataService, private router: Router) {}
 
     closeModal = () => {
       this.modalSwitch = 'disabled';
       setTimeout(() => {
         this.modalService.modal$.emit(this.modalSwitch);
+            this.clearValues();
       }, 200);
     };
 
     onSubmit() {
       console.warn(this.contentForm.value);
+
+      this.loadAsignature.insertContent(this.contentForm.value, this.idAsignature).subscribe((response) => {
+        this.messageData = "Registro realizado con exito";
+
+        console.log(response);
+
+      setTimeout(() => {
+          location.reload();
+        }, 1000);
+
+        // setTimeout(() => {
+        //   location.reload();
+        // }, -100);
+        // console.warn(response);
+        // this.sendContent = this.contentForm.value;
+        // this.sendContent = JSON.stringify(response);
+        // response.rol = this.role;
+        // localStorage.setItem('session', JSON.stringify(response));
+        // this.dataLogin = localStorage.getItem('session');
+        // this.dataLoginJ = JSON.parse(this.dataLogin);
+        // console.log(this.dataLoginJ.message);
+        // console.log(this.dataLoginJ.id_student);
+        // console.log(this.dataLoginJ.rol);
+        // this.router.navigate(['/home']);
+      })
+    }
+
+    setId(){
+      this.contentForm.setValue(
+        {asignatura: this.idAsignature,
+          titulo: '',
+          tipo_contenido: '',
+          contenido: ''},
+        );
     }
 
     setValue(){
       this.contentForm.setValue(
-        {titleA: this.modalData.titulo,
-        typeC: this.modalData.tipo_contenido,
-        contentC: this.modalData.contenido},
+        {asignatura: this.idAsignature,
+          titulo: this.modalData.titulo,
+          tipo_contenido: this.modalData.tipo_contenido,
+          contenido: this.modalData.contenido},
+        );
+    }
+
+    clearValues(){
+      this.contentForm.setValue(
+        {asignatura: this.idAsignature,
+          titulo: '',
+        tipo_contenido: '',
+        contenido: ''},
         );
     }
 
   ngOnInit() {
-
     this.modalData = [];
 
     this.modalService.modal$.subscribe((modalValue) => {
@@ -73,7 +129,8 @@ export class ModalComponent implements OnInit {
 
     this.modalService.idAsignature$.subscribe((id) => {
       this.idAsignature = id;
-      return this.idAsignature;
+      this.setId();
+      // return this.idAsignature;
     })
 
     this.modalService.activities$.subscribe((list) => {

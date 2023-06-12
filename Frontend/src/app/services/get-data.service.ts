@@ -1,5 +1,7 @@
-import { HttpClient } from '@angular/common/http';
+import { HttpClient, HttpHeaders } from '@angular/common/http';
 import { EventEmitter, Injectable } from '@angular/core';
+import { Observable, throwError } from 'rxjs';
+import { catchError, retry } from 'rxjs/operators';
 
 @Injectable({
   providedIn: 'root'
@@ -20,6 +22,7 @@ export class GetDataService {
   urlc: any;
   urla: any;
   urlcrud: any;
+  urlintc: any;
 
   private url = 'http://localhost:8001/users/profile/student/' + this.idUser + '/?format=json';
   private url2 = 'http://localhost:8001/users/profile/teacher/' + this.idTeacher + '/?format=json';
@@ -61,6 +64,18 @@ export class GetDataService {
     this.urlcrud = 'http://localhost:8001/courses/teachers/subjects/contents/'+ id +'/?format=json'
     return this.httpClient.get(this.urlcrud);
   }
+
+    // Servicio para validar datos de login en el servidor
+    insertContent(data: any, id:any): Observable<any> {
+      const headers = new HttpHeaders({'Content-Type':'application/json'});
+      this.urlintc = 'http://localhost:8001/courses/teachers/subjects/'+ id +'/contents/create/';
+      return this.httpClient.post(this.urlintc, data, {headers:headers});
+    }
+
+  // insertContent(id:any){
+  //   this.urlintc = 'http://localhost:8001/courses/teachers/subjects/'+ id +'/contents/create/';
+  //   return this.httpClient.get(this.urlintc);
+  // }
 
   // getActivities(id:any){
   //   http://localhost:8001/courses/teachers/subjects/3/contents/

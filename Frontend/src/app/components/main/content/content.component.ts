@@ -1,7 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { ActivatedRoute } from '@angular/router';
 import { GetDataService } from 'src/app/services/get-data.service';
-import { faPenToSquare, faEye, faTrash } from '@fortawesome/free-solid-svg-icons';
+import { faPenToSquare, faEye, faTrash, faPlus, faTachographDigital } from '@fortawesome/free-solid-svg-icons';
 import { ModalService } from 'src/app/services/modal.service';
 
 @Component({
@@ -14,9 +14,13 @@ export class ContentComponent implements OnInit {
   idAsignature: any;
   responseApi: any;
   asignatureArray:any;
+
+  /*Font Awesome Icons*/
   eye = faEye;
   pen = faPenToSquare;
   trash = faTrash;
+  plus = faPlus;
+
   modalSwitch: any;
   dataContent: any;
   nameC = "Crud";
@@ -26,6 +30,18 @@ export class ContentComponent implements OnInit {
   constructor(private _route:ActivatedRoute, private loadAsignature: GetDataService, private modalService: ModalService
     ) {}
 
+    addContent = () => {
+
+      this.modalService.idAsignature$.emit(this.idAsignature);
+      this.modalSwitch = 'enabled';
+      this.modalService.modal$.emit(this.modalSwitch);
+      // this.modalService.modalData$.emit(this.dataContent);
+      this.modalService.modalTitle$.emit(this.titleAsignature);
+      this.modalService.idAsignature$.emit(this.idAsignature);
+      this.modalService.modalType$.emit(this.nameC);
+      window.scrollTo(0, 0);
+    }
+
     viewContent = (idA:any) => {
       this.modalSwitch = 'enabled';
       this.idContent = idA;
@@ -34,7 +50,7 @@ export class ContentComponent implements OnInit {
       this.modalService.modalTitle$.emit(this.titleAsignature);
       this.modalService.idAsignature$.emit(this.idAsignature);
       this.modalService.modalType$.emit(this.nameC);
-      this.modalService.modalTitle$.emit(this.idContent);
+      // this.modalService.modalTitle$.emit(this.idContent);
       window.scrollTo(0, 0);
 
       this.loadAsignature.getCrudContent(this.idContent)

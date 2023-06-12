@@ -9,6 +9,8 @@
       </div>
     </form> -->
 
+    <button class="card-btn btn-reg fw-bold text-white" (click)="addContent()"><fa-icon
+      [icon]="plus"></fa-icon> Agregar Registro</button>
     <table>
       <thead>
         <tr>
@@ -24,8 +26,8 @@
             <td>{{content.titulo}}</td>
             <td>{{content.tipo_contenido}}</td>
             <td>
-              <button class="card-btn btn-eye fw-bold text-white"><fa-icon
-                [icon]="eye" (click)="viewContent(content.pk)"></fa-icon></button>
+              <button class="card-btn btn-eye fw-bold text-white" (click)="viewContent(content.pk)"><fa-icon
+                [icon]="eye"></fa-icon></button>
               <button class="card-btn btn-edit fw-bold text-white"><fa-icon
               [icon]="pen"></fa-icon></button>
               <button class="card-btn btn-delete fw-bold text-white"><fa-icon
