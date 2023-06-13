@@ -5,14 +5,18 @@
 
   <section *ngIf="nameC == 'Tutorial'">
     <div class="modal__container--info">
-      <h1 class="text-black fw-bold">{{modalData.title}} {{modalTitle}}</h1>
+      <h1 class="text-black fw-bold">{{modalData.titulo}}</h1>
 
-      <ul>
-        <li>{{activitiesT}}</li>
-        <!-- <li>Enlace</li>
-      <li>Imagenes</li> -->
-      </ul>
+      <section class="class-item d-flex flex-row justify-content-between">
+        <a class="text-white text-decoration-none fw-bold" (click)="openContent()">
+          <div class="item-info">
+            <fa-icon class="info-icon" [icon]="faPlay"></fa-icon>
+            <span>{{typeActivity.tipo_contenido}}</span>
+          </div>
+        </a>
+      </section>
 
+      <span class="view">{{typeActivity.contenido}}</span>
     </div>
   </section>
 

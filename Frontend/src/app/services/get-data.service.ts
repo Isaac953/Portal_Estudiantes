@@ -34,6 +34,7 @@ export class GetDataService {
   urlInsertC: any;
   urlPutC: any;
   urlDeleteC: any;
+  urlContentSubE: any;
 
   //API para obtener información del perfil de estudiante
   getProfile() {
@@ -75,6 +76,12 @@ export class GetDataService {
   getSubjectContent(id: any) {
     this.urlContentSub = this.urlServer + '/courses/students/courses/subjects/' + id + '/contents/?format=json'
     return this.httpClient.get(this.urlContentSub);
+  }
+
+  //API para obtener el contenido de asignatura especifico
+  getActivityContent(id: any) {
+    this.urlContentSubE = this.urlServer + '/courses/students/courses/subjects/contents/' + id + '/?format=json'
+    return this.httpClient.get(this.urlContentSubE);
   }
 
   //API para obtener el crud de contenidos Profesor

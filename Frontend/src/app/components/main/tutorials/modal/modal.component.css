@@ -117,6 +117,36 @@ textarea {
   width: 35vw;
 }
 
+.class-item{
+  box-shadow: var(--shadow-card);
+  border-radius: 10px;
+  margin: 12px 0px;
+  background-color: #27374D;
+  width: 20vw;
+}
+
+.class-item a{
+  width: 100%;
+  text-align: center;
+  cursor: pointer;
+}
+
+.item-info{
+  padding: 12px 10px;
+  width: 100%;
+}
+
+.info-icon{
+  margin-right: 5px;
+}
+
+.view{
+  width: 50vw;
+  height: 30vh;
+  border: 2px solid #11009E;
+  border-radius: 12px;
+}
+
 /* End Media Queries Screens 1024px */
 
 /* Start Media Queries Screens 768px and 1023px */

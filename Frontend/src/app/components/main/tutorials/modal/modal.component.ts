@@ -1,6 +1,6 @@
 import { Component, OnInit, AfterViewInit } from '@angular/core';
 import { ModalService } from 'src/app/services/modal.service';
-import { faXmark } from '@fortawesome/free-solid-svg-icons';
+import { faXmark, faPlay } from '@fortawesome/free-solid-svg-icons';
 import { ActivatedRoute, Router } from '@angular/router';
 import { GetDataService } from 'src/app/services/get-data.service';
 import { FormGroup, FormControl, Validators } from '@angular/forms';
@@ -26,6 +26,8 @@ export class ModalComponent implements OnInit {
   messageData: any;
   typeCrud: any;
   dataUpdate: any;
+  faPlay = faPlay;
+  typeActivity: any;
 
   idAsignatureV = this._route.snapshot.paramMap.get('idAsignature');
 
@@ -46,6 +48,10 @@ export class ModalComponent implements OnInit {
       this.clearValues();
     }, 200);
   };
+
+  openContent = () => {
+
+  }
 
   /* Crud Actions */
   onSubmit() {
@@ -163,7 +169,10 @@ export class ModalComponent implements OnInit {
 
     this.modalService.activities$.subscribe((list) => {
       this.activitiesT = list;
-      console.log(this.activitiesT);
+    })
+
+    this.modalService.typeActivity$.subscribe((description) => {
+      this.typeActivity = description;
     })
 
     this.modalService.modalType$.subscribe((namec) => {
