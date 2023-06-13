@@ -5,7 +5,7 @@
 
   <section *ngIf="nameC == 'Tutorial'">
     <div class="modal__container--info">
-      <h1 class="text-black">{{modalData.title}} {{modalTitle}}</h1>
+      <h1 class="text-black fw-bold">{{modalData.title}} {{modalTitle}}</h1>
 
       <ul>
         <li>{{activitiesT}}</li>
@@ -18,14 +18,14 @@
 
   <section *ngIf="nameC == 'Crud'">
     <div class="modal__container--info">
-      <h1 class="text-black">{{modalTitle}}</h1>
+      <h1 class="text-black fw-bold">{{modalTitle}}</h1>
 
       <form [formGroup]="contentForm" (ngSubmit)="onSubmit()">
         <div class="d-flex flex-column align-items-center" class="id_content">
           <label for="asignatura">Id:</label>
           <input class="content-input" type="text" placeholder="Titulo" formControlName="asignatura" />
         </div>
-        <div class="d-flex flex-column align-items-center">
+        <div class="d-flex flex-column align-items-center item">
           <label for="titulo">Titulo:</label>
           <input class="content-input" type="text" placeholder="Titulo" formControlName="titulo" />
         </div>
@@ -34,7 +34,13 @@
         </div>
         <div class="d-flex flex-column align-items-center">
           <label for="contenido">Contenido:</label>
-          <input class="content-input" type="text" placeholder="Contenido" formControlName="contenido" />
+          <textarea
+            cols="30"
+            rows="5"
+            maxlength="50"
+            placeholder="Contenido" formControlName="contenido"
+          ></textarea>
+          <!-- <input class="content-input" type="text" placeholder="Contenido" formControlName="contenido" /> -->
         </div>
         <div class="d-flex flex-column align-items-center" *ngIf="typeCrud == 'Insertar'">
           <button class="card-btn btn-reg fw-bold text-white" type="submit"

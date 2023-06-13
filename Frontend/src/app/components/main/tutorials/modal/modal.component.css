@@ -80,7 +80,7 @@
   box-shadow: inset 0 1px 3px #ddd;
   border-radius: 4px;
   padding: 6px;
-
+  width: 35vw;
 }
 
 .content-input:focus{
@@ -108,6 +108,15 @@
   display: none;
 }
 
+textarea {
+  margin: 8px 0px;
+  border: 1px solid #ccc;
+  box-shadow: inset 0 1px 3px #ddd;
+  border-radius: 4px;
+  padding: 8px;
+  width: 35vw;
+}
+
 /* End Media Queries Screens 1024px */
 
 /* Start Media Queries Screens 768px and 1023px */
@@ -123,7 +132,15 @@
   }
 
   .modal__container--info {
-    width: 97%;
+    width: 70vw;
+  }
+
+  .content-input{
+    width: 40vw;
+  }
+
+  textarea {
+    width: 40vw;
   }
 
   .info__title {
@@ -145,7 +162,15 @@
   }
 
   .modal__container--info {
-    width: 96.5%;
+    width: 70vw;
+  }
+
+  .content-input{
+    width: 55vw;
+  }
+
+  textarea {
+    width: 55vw;
   }
 
   .info__title {

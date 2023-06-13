@@ -1,5 +1,9 @@
 /* Estilos para captura de datos */
 
+.tutorials-component{
+  width: 85vw;
+}
+
 table, th, td {
   border: 1px solid black;
   border-collapse: collapse;
