@@ -12,6 +12,10 @@
   background-color: #e8f9fd;
 }
 
+h1{
+  text-align: center;
+}
+
 .enabled {
   top: 7%;
 
@@ -146,8 +150,8 @@ textarea {
 }
 
 .view {
-  width: 50vw;
-  height: 30vh;
+  width: 45vw;
+  /* height: 30vh; */
   border: 2px solid #11009e;
   border-radius: 12px;
 }
@@ -184,6 +188,10 @@ textarea {
   .info__title {
     font-size: 32px;
   }
+
+  .view {
+    width: 55vw;
+  }
 }
 /* End Media Queries Screens 768px and 1023px */
 
@@ -216,6 +224,10 @@ textarea {
 
   .info__title {
     font-size: 30px;
+  }
+
+  .view {
+    width: 70vw;
   }
 }
 /* End Media Queries Screens 767px */
