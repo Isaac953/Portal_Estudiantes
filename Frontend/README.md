@@ -37,3 +37,4 @@ Parte Frontend del proyecto para acceso a la educación del Hackaton creado en A
 - HT-12.4: Agregando boton para profesores puedan ver el crud de contenido.
 - HT-12.5: Recuperando contenido existente en la ventana Modal.
 - HT-12.6: Registrar nuevo contenido desde el crud.
+- HT-12.7: Completar actualizar y eliminar registro en crud.

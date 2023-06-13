@@ -21,7 +21,7 @@
       <h1 class="text-black">{{modalTitle}}</h1>
 
       <form [formGroup]="contentForm" (ngSubmit)="onSubmit()">
-        <div class="d-flex flex-column align-items-center">
+        <div class="d-flex flex-column align-items-center" class="id_content">
           <label for="asignatura">Id:</label>
           <input class="content-input" type="text" placeholder="Titulo" formControlName="asignatura" />
         </div>
@@ -37,7 +37,7 @@
           <input class="content-input" type="text" placeholder="Contenido" formControlName="contenido" />
         </div>
         <div class="d-flex flex-column align-items-center" *ngIf="typeCrud == 'Insertar'">
-          <button class="crud-btn fw-bold text-white" type="submit"
+          <button class="card-btn btn-reg fw-bold text-white" type="submit"
             [disabled]="!contentForm.valid">
             Insertar
           </button>
@@ -45,9 +45,17 @@
         </div>
 
         <div class="d-flex flex-column align-items-center" *ngIf="typeCrud == 'Actualizar'">
-          <button class="crud-btn fw-bold text-white" type="submit"
+          <button class="card-btn btn-edit fw-bold text-white" type="submit"
             [disabled]="!contentForm.valid">
             Actualizar
+          </button>
+          <span class="message">{{messageData}}</span>
+        </div>
+
+        <div class="d-flex flex-column align-items-center" *ngIf="typeCrud == 'Eliminar'">
+          <button class="card-btn btn-delete fw-bold text-white" type="submit"
+            [disabled]="!contentForm.valid">
+            Eliminar
           </button>
           <span class="message">{{messageData}}</span>
         </div>

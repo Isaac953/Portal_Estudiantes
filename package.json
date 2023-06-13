@@ -1,5 +1,6 @@
 {
   "dependencies": {
-    "@ng-bootstrap/ng-bootstrap": "^15.0.0"
+    "@ng-bootstrap/ng-bootstrap": "^15.0.0",
+    "cors": "^2.8.5"
   }
 }

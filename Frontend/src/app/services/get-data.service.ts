@@ -76,9 +76,16 @@ export class GetDataService {
         // Servicio para validar datos de login en el servidor
         updateContent(data: any, id:any): Observable<any> {
           const headers = new HttpHeaders({'Content-Type':'application/json'});
-          this.urlupdc = 'localhost:8001/courses/teachers/subjects/contents/'+ id +'/';
-          return this.httpClient.put<any>(this.urlupdc, data, {headers:headers});
+          this.urlupdc = 'http://localhost:8001/courses/teachers/subjects/contents/'+ id +'/';
+          return this.httpClient.put(this.urlupdc, data, {headers:headers});
         }
+
+              // Servicio para validar datos de login en el servidor
+              deleteContent(data: any, id:any): Observable<any> {
+                const headers = new HttpHeaders({'Content-Type':'application/json'});
+                this.urlupdc = 'http://localhost:8001/courses/teachers/subjects/contents/'+ id +'/';
+                return this.httpClient.delete(this.urlupdc, data);
+              }
 
   // insertContent(id:any){
   //   this.urlintc = 'http://localhost:8001/courses/teachers/subjects/'+ id +'/contents/create/';

@@ -49,7 +49,7 @@ export class ModalComponent implements OnInit {
 
   /* Crud Actions */
   onSubmit() {
-    console.warn(this.contentForm.value);
+    // console.warn(this.contentForm.value);
     if (this.typeCrud == "Insertar") {
       this.loadAsignature.insertContent(this.contentForm.value, this.idAsignature).subscribe((response) => {
         this.messageData = "Registro realizado con exito";
@@ -61,18 +61,43 @@ export class ModalComponent implements OnInit {
         }, 1000);
       })
     } else if (this.typeCrud == "Actualizar") {
-      this.dataUpdate = [];
-      this.dataUpdate.push(this.contentForm.value);
+      this.dataUpdate = {};
+      // this.dataUpdate = this.contentForm.value;
+      this.dataUpdate.pk = this.idContent;
+      this.dataUpdate.asignatura = this.contentForm.controls.asignatura.value;
+      this.dataUpdate.titulo = this.contentForm.controls.titulo.value;
+      this.dataUpdate.tipo_contenido = this.contentForm.controls.tipo_contenido.value;
+      this.dataUpdate.contenido = this.contentForm.controls.contenido.value;
       console.log(this.dataUpdate);
-      // this.loadAsignature.updateContent(this.contentForm.value, this.idAsignature).subscribe((response) => {
-      //   this.messageData = "Registro actualizado con exito";
 
-      //   console.log(response);
+      this.loadAsignature.updateContent(this.dataUpdate, this.idContent).subscribe((response) => {
+        this.messageData = "Registro actualizado con exito";
 
-      //   setTimeout(() => {
-      //     location.reload();
-      //   }, 1000);
-      // })
+        console.log(response);
+
+        setTimeout(() => {
+          location.reload();
+        }, 1000);
+      })
+    }else if (this.typeCrud == "Eliminar") {
+      this.dataUpdate = {};
+      // this.dataUpdate = this.contentForm.value;
+      this.dataUpdate.pk = this.idContent;
+      // this.dataUpdate.asignatura = this.contentForm.controls.asignatura.value;
+      // this.dataUpdate.titulo = this.contentForm.controls.titulo.value;
+      // this.dataUpdate.tipo_contenido = this.contentForm.controls.tipo_contenido.value;
+      // this.dataUpdate.contenido = this.contentForm.controls.contenido.value;
+      console.log(this.dataUpdate);
+
+      this.loadAsignature.deleteContent(this.dataUpdate, this.idContent).subscribe((response) => {
+        this.messageData = "Registro eliminado";
+
+        console.log(response);
+
+        setTimeout(() => {
+          location.reload();
+        }, 1000);
+      })
     }
 
   }
@@ -147,6 +172,7 @@ export class ModalComponent implements OnInit {
 
     this.modalService.idContent$.subscribe((idContent) => {
       this.idContent = idContent;
+      return this.idContent;
     })
 
     this.modalService.typeCrud$.subscribe((crud) => {
