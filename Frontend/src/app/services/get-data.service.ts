@@ -16,78 +16,98 @@ export class GetDataService {
 
   constructor(private httpClient: HttpClient) { }
 
-  idUser= this.dataLoginJ.id_student;
-  idTeacher= this.dataLoginJ.id_teacher;
-  urlt: any;
-  urlc: any;
-  urla: any;
-  urlcrud: any;
-  urlintc: any;
-  urlupdc: any;
+  idUser = this.dataLoginJ.id_student;
+  idTeacher = this.dataLoginJ.id_teacher;
 
-  private url = 'http://localhost:8001/users/profile/student/' + this.idUser + '/?format=json';
-  private url2 = 'http://localhost:8001/users/profile/teacher/' + this.idTeacher + '/?format=json';
-  private url3 = 'http://localhost:8001/courses/students/courses/' + this.idUser + '/subjects/?format=json';
-  private url4 = 'http://localhost:8001/courses/teachers/' + this.idTeacher + '/subjects/?format=json';
-  private url5 = 'http://localhost:8001/courses/students/' + this.idUser + '/courses/current/';
+  // public urlServer = 'http://localhost:8001'; //Servidor Django Docker
+  public urlServer = 'https://student-portal-fomas.herokuapp.com'; //Servidor Heroku
 
-  getProfile(){
-    return this.httpClient.get(this.url);
+  // Variables para URLs APIs
+  urlProfileStudent: any;
+  urlProfileTeacher: any;
+  urlTeacherName: any;
+  urlSubjectStudent: any;
+  urlSubjectTeacher: any;
+  urlCourseStudent: any;
+  urlContentSub: any;
+  urlCrudContent: any;
+  urlInsertC: any;
+  urlPutC: any;
+  urlDeleteC: any;
+  urlContentSubE: any;
+
+  //API para obtener información del perfil de estudiante
+  getProfile() {
+    this.urlProfileStudent = this.urlServer + '/users/profile/student/' + this.idUser + '/?format=json'
+    return this.httpClient.get(this.urlProfileStudent);
   }
 
-  getProfileTeacher(){
-    return this.httpClient.get(this.url2);
+  //API para obtener información del perfil de profesor
+  getProfileTeacher() {
+    this.urlProfileTeacher = this.urlServer + '/users/profile/teacher/' + this.idTeacher + '/?format=json';
+    return this.httpClient.get(this.urlProfileTeacher);
   }
 
-  getAsignatures(){
-    return this.httpClient.get(this.url3);
+  //API para obtener el nombre del profesor
+  getTeacherName(id: any) {
+    this.urlTeacherName = this.urlServer + '/users/profile/teacher/' + id + '/?format=json';
+    return this.httpClient.get(this.urlTeacherName);
   }
 
-  getTeacherSubject(id:any){
-    this.urlt = 'http://localhost:8001/users/profile/teacher/' + id + '/?format=json';
-    return this.httpClient.get(this.urlt);
+  //API para obtener el nombre de las Asignaturas Estudiante
+  getEstudentSubject() {
+    this.urlSubjectStudent = this.urlServer + '/courses/students/courses/' + this.idUser + '/subjects/?format=json'
+    return this.httpClient.get(this.urlSubjectStudent);
   }
 
-  getAsignaturesTeacher(){
-    return this.httpClient.get(this.url4);
+  //API para obtener el nombre de las Asignaturas Profesor
+  getTeacherSubject() {
+    this.urlSubjectTeacher = this.urlServer + '/courses/teachers/' + this.idTeacher + '/subjects/?format=json'
+    return this.httpClient.get(this.urlSubjectTeacher);
   }
 
-  getCourse(){
-    return this.httpClient.get(this.url5);
+  //API para obtener el nombre del curso actual del Estudiante
+  getCourseStudent() {
+    this.urlCourseStudent = this.urlServer + '/courses/students/' + this.idUser + '/courses/current/?format=json'
+    return this.httpClient.get(this.urlCourseStudent);
   }
 
-  getAsigContent(id:any){
-    this.urlc = 'http://localhost:8001/courses/students/courses/subjects/'+ id +'/contents/?format=json'
-    return this.httpClient.get(this.urlc);
+  //API para obtener el contenido de asignatura especifico
+  getSubjectContent(id: any) {
+    this.urlContentSub = this.urlServer + '/courses/students/courses/subjects/' + id + '/contents/?format=json'
+    return this.httpClient.get(this.urlContentSub);
   }
 
-  getCrudContent(id:any){
-    this.urlcrud = 'http://localhost:8001/courses/teachers/subjects/contents/'+ id +'/?format=json'
-    return this.httpClient.get(this.urlcrud);
+  //API para obtener el contenido de asignatura especifico
+  getActivityContent(id: any) {
+    this.urlContentSubE = this.urlServer + '/courses/students/courses/subjects/contents/' + id + '/?format=json'
+    return this.httpClient.get(this.urlContentSubE);
   }
 
-    // Servicio para validar datos de login en el servidor
-    insertContent(data: any, id:any): Observable<any> {
-      const headers = new HttpHeaders({'Content-Type':'application/json'});
-      this.urlintc = 'http://localhost:8001/courses/teachers/subjects/'+ id +'/contents/create/';
-      return this.httpClient.post(this.urlintc, data, {headers:headers});
-    }
+  //API para obtener el crud de contenidos Profesor
+  getCrudContent(id: any) {
+    this.urlCrudContent = this.urlServer + '/courses/teachers/subjects/contents/' + id + '/?format=json'
+    return this.httpClient.get(this.urlCrudContent);
+  }
 
-        // Servicio para validar datos de login en el servidor
-        updateContent(data: any, id:any): Observable<any> {
-          const headers = new HttpHeaders({'Content-Type':'application/json'});
-          this.urlupdc = 'localhost:8001/courses/teachers/subjects/contents/'+ id +'/';
-          return this.httpClient.put<any>(this.urlupdc, data, {headers:headers});
-        }
+  //API para insertar contenidos Profesor
+  insertContent(data: any, id: any): Observable<any> {
+    const headers = new HttpHeaders({ 'Content-Type': 'application/json' });
+    this.urlInsertC = this.urlServer + '/courses/teachers/subjects/' + id + '/contents/create/?format=json';
+    return this.httpClient.post(this.urlInsertC, data, { headers: headers });
+  }
 
-  // insertContent(id:any){
-  //   this.urlintc = 'http://localhost:8001/courses/teachers/subjects/'+ id +'/contents/create/';
-  //   return this.httpClient.get(this.urlintc);
-  // }
+  //API para actualizar contenidos Profesor
+  updateContent(data: any, id: any): Observable<any> {
+    const headers = new HttpHeaders({ 'Content-Type': 'application/json' });
+    this.urlPutC = this.urlServer + '/courses/teachers/subjects/contents/' + id + '/?format=json';
+    return this.httpClient.put(this.urlPutC, data, { headers: headers });
+  }
 
-  // getActivities(id:any){
-  //   http://localhost:8001/courses/teachers/subjects/3/contents/
-  //   this.urla = 'http://localhost:8001/courses/students/courses/subjects/contents/'+ id +'/?format=json'
-  //   return this.httpClient.get(this.urla);
-  // }
+  //API para eliminar contenidos Profesor
+  deleteContent(data: any, id: any): Observable<any> {
+    const headers = new HttpHeaders({ 'Content-Type': 'application/json' });
+    this.urlDeleteC = this.urlServer + '/courses/teachers/subjects/contents/' + id + '/';
+    return this.httpClient.delete(this.urlDeleteC, data);
+  }
 }

@@ -30,7 +30,7 @@
                 [icon]="eye"></fa-icon></button>
               <button class="card-btn btn-edit fw-bold text-white" (click)="updateContent(content.pk)"><fa-icon
               [icon]="pen"></fa-icon></button>
-              <button class="card-btn btn-delete fw-bold text-white"><fa-icon
+              <button class="card-btn btn-delete fw-bold text-white" (click)="deleteContent(content.pk)"><fa-icon
                 [icon]="trash"></fa-icon></button>
             </td>
           </tr>

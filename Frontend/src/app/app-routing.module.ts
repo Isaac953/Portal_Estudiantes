@@ -9,12 +9,14 @@ import { HomeComponent } from './components/main/home/home.component';
 import { PythondbComponent } from './components/main/pythondb/pythondb.component';
 import { TutorialsComponent } from './components/main/tutorials/tutorials.component';
 import { ContentComponent } from './components/main/content/content.component';
+import { AboutComponent } from './components/main/about/about.component';
 
 const routes: Routes = [
   /* Routes */
   { path: 'home', component: HomeComponent },
   { path: 'profile/:id', component: ProfileComponent },
   { path: 'content/:asignature/:idAsignature', component: ContentComponent },
+  { path: 'about', component: AboutComponent },
   { path: 'login', component: LoginComponent },
   { path: 'tutorials/:asignature/:idAsignature', component: TutorialsComponent },
   { path: 'test', component: TestComponent },

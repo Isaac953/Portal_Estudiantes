@@ -7,21 +7,24 @@ import { catchError, retry } from 'rxjs/operators';
   providedIn: 'root'
 })
 export class LoginService {
+  // public urlServer = 'http://localhost:8001'; //Servidor Django Docker
+  public urlServer = 'https://student-portal-fomas.herokuapp.com'; //Servidor Heroku
 
-  public urlLogin = 'http://localhost:8001/users/login/student/';
-  public urlLogin2 = 'http://localhost:8001/users/login/teacher/';
+  //Urls Login Pruebas
+  public urlLoginStudent =  this.urlServer + '/users/login/student/';
+  public urlLoginTeacher = this.urlServer + '/users/login/teacher/';
 
   constructor(private httpClient: HttpClient) { }
 
-  // Servicio para validar datos de login en el servidor
+  // Servicio para validar datos de login de estudiante en el servidor
   sendData(data: any): Observable<any> {
     const headers = new HttpHeaders({'Content-Type':'application/json'});
-    return this.httpClient.post(this.urlLogin, data, {headers:headers});
+    return this.httpClient.post(this.urlLoginStudent, data, {headers:headers});
   }
 
-  // Servicio para validar datos de login en el servidor
+  // Servicio para validar datos de login de profesor en el servidor
   sendDataTeacher(data: any): Observable<any> {
     const headers = new HttpHeaders({'Content-Type':'application/json'});
-    return this.httpClient.post(this.urlLogin2, data, {headers:headers});
+    return this.httpClient.post(this.urlLoginTeacher, data, {headers:headers});
   }
 }

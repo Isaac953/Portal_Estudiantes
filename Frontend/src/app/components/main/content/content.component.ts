@@ -74,6 +74,29 @@ export class ContentComponent implements OnInit {
       this.modalService.modalTitle$.emit(this.titleAsignature);
       this.modalService.idAsignature$.emit(this.idAsignature);
       this.modalService.modalType$.emit(this.nameC);
+      this.modalService.idContent$.emit(this.idContent);
+      window.scrollTo(0, 0);
+
+      this.loadAsignature.getCrudContent(this.idContent)
+      .subscribe(response => {
+        this.responseApi = response;
+        this.contents = this.responseApi;
+        this.modalService.modalData$.emit(this.contents);
+        this.modalService.typeCrud$.emit(this.typeCrud);
+        console.log(this.contents);
+      });
+    };
+
+    deleteContent = (idA:any) => {
+      this.typeCrud = "Eliminar";
+
+      this.modalSwitch = 'enabled';
+      this.idContent = idA;
+      this.modalService.modal$.emit(this.modalSwitch);
+      this.modalService.modalTitle$.emit(this.titleAsignature);
+      this.modalService.idAsignature$.emit(this.idAsignature);
+      this.modalService.modalType$.emit(this.nameC);
+      this.modalService.idContent$.emit(this.idContent);
       window.scrollTo(0, 0);
 
       this.loadAsignature.getCrudContent(this.idContent)
@@ -87,6 +110,7 @@ export class ContentComponent implements OnInit {
     };
 
 
+
     ngOnInit() {
       this.titleAsignature = this._route.snapshot.paramMap.get('asignature');
       this.idAsignature = this._route.snapshot.paramMap.get('idAsignature');
@@ -94,7 +118,7 @@ export class ContentComponent implements OnInit {
       this.asignatureArray = [];
 
 
-    this.loadAsignature.getAsigContent(this.idAsignature)
+    this.loadAsignature.getSubjectContent(this.idAsignature)
     .subscribe(response => {
       this.responseApi = response;
       this.asignatureArray = this.responseApi;

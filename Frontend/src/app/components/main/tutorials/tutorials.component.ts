@@ -44,7 +44,7 @@ export class TutorialsComponent implements OnInit {
   //   },
   // ];
 
-  openModal = (arr_names: string[]) => {
+  openModal = (arr_names: string[], idCont:any) => {
     this.dataAsignature = arr_names;
     this.modalSwitch = 'enabled';
     this.modalService.modal$.emit(this.modalSwitch);
@@ -54,23 +54,19 @@ export class TutorialsComponent implements OnInit {
     this.modalService.modalType$.emit(this.nameC);
     window.scrollTo(0, 0);
 
+    console.log(idCont);
+
+    console.log(this.dataAsignature);
+
+    this.loadAsignature.getActivityContent(idCont)
+    .subscribe(response => {
+      this.responseApi = response;
+      console.log(this.responseApi);
+      this.modalService.typeActivity$.emit(this.responseApi);
+
+    });
     this.activitiesT = [];
-    this.loadAsignature.getAsigContent(this.idAsignature)
-        .subscribe(response => {
-          this.responseApi = response;
-          this.activitiesT = this.responseApi[0].tipo_contenido;
-          this.modalService.activities$.emit(this.activitiesT);
-        });
 
-    // this.loadAsignature.getActivities(this.idAsignature)
-    // .subscribe(response => {
-    //   this.responseApi2 = response;
-    //   this.activitiesT = this.responseApi2.tipo_contenido;
-    //   console.log(this.responseApi2.tipo_contenido);
-    //   this.modalService.activities$.emit(this.activitiesT);
-
-    // });
-    // console.log(this.modalSwitch);
   };
 
 
@@ -82,20 +78,21 @@ export class TutorialsComponent implements OnInit {
     this.titleAsignature = this._route.snapshot.paramMap.get('asignature');
     this.idAsignature = this._route.snapshot.paramMap.get('idAsignature');
 
-    this.loadAsignature.getAsigContent(this.idAsignature)
+    this.loadAsignature.getSubjectContent(this.idAsignature)
         .subscribe(response => {
           this.responseApi = response;
           this.contentAsignatures = this.responseApi;
-          console.log(this.contentAsignatures);
+          console.log(this.responseApi);
+
+          // this.loadAsignature.getActivityContent(this.responseApi.pk)
+          // .subscribe(response => {
+          //   this.responseApi2 = response;
+          //   console.log(this.responseApi2.contenido);
+          //   // this.modalService.typeActivity$.emit(this.responseApi2.contenido);
+
+          // });
 
         });
-
-        // this.loadAsignature.getActivities(this.idAsignature)
-        // .subscribe(response => {
-        //   this.responseApi2 = response;
-        //   console.log(this.responseApi2.tipo_contenido);
-
-        // });
 
   }
 }

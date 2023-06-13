@@ -37,3 +37,10 @@ Parte Frontend del proyecto para acceso a la educación del Hackaton creado en A
 - HT-12.4: Agregando boton para profesores puedan ver el crud de contenido.
 - HT-12.5: Recuperando contenido existente en la ventana Modal.
 - HT-12.6: Registrar nuevo contenido desde el crud.
+- HT-12.7: Completar actualizar y eliminar registro en crud.
+- HT-12.8: Comenzar a redirigir las URLs de las API al servidor Heroku.
+- HT-12.9: Rutas redirigidas al servidor Heroku.
+- HT-13: Ajustes visuales a Modal.
+- HT-13.1: Arreglando error al visualizar el contenido.
+- HT-13.2: Agregando select de tipo de contenido enlace y lectura.
+- HT-13.3: Cambios finales en Frontend.
