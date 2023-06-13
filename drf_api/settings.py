@@ -84,17 +84,17 @@ WSGI_APPLICATION = 'drf_api.wsgi.application'
 # https://docs.djangoproject.com/en/4.2/ref/settings/#databases
 
 DATABASES = {
-    'default':dj_database_url.config(
-        default=config('DATABASE_URL')
-    ),
-    # 'local': {
-    #     'ENGINE': 'django.db.backends.postgresql',
-    #     'NAME': config('POSTGRES_DB'),
-    #     'USER': config('POSTGRES_USER'),
-    #     'PASSWORD': config('POSTGRES_PASSWORD'),
-    #     'HOST': 'db',
-    #     'PORT': '5432',
-    # }
+    # 'default':dj_database_url.config(
+    #     default=config('DATABASE_URL')
+    # ),
+    'default': {
+        'ENGINE': 'django.db.backends.postgresql',
+        'NAME': config('POSTGRES_DB'),
+        'USER': config('POSTGRES_USER'),
+        'PASSWORD': config('POSTGRES_PASSWORD'),
+        'HOST': 'db',
+        'PORT': '5432',
+    }
 }
 
 

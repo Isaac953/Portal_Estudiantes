@@ -3,10 +3,10 @@ version: '3'
 services:
   backend-server:
     build:
-      context: ./Backend
+      context: .
       dockerfile: Dockerfile
     volumes:
-      - ./Backend:/app
+      - .:/app
     ports:
       - '8001:8001'
     depends_on:
@@ -29,7 +29,7 @@ services:
   db:
     image: postgres:latest
     env_file:
-      - ./Backend/.env
+      - .env
     ports:
       - '5432:5432'
     volumes:

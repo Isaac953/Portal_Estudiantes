@@ -1,13 +1,23 @@
-# Etapa 1: Compilar la aplicación Angular
-FROM node:latest as build-stage
+# Etapa 1: Construir la aplicación Angular
+FROM node:latest as build
+
 WORKDIR /app
-COPY package*.json /app
-RUN npm install
+
+COPY package*.json ./
+
+RUN npm install && npm audit fix
+
 RUN npm install -g @angular/cli
-COPY . /app
 
-# Etapa 2: Ejecutar la aplicación en un servidor de desarrollo
-FROM node:latest as production-stage
-WORKDIR /app
-COPY --from=build-stage /app/dist /app/dist
+COPY . .
 
+CMD ["npm", "run", "build", "--prod"]
+
+# Etapa 2: Ejecutar la aplicación en un servidor HTTP ligero
+FROM nginx:latest
+
+COPY --from=build /app/dist/frontend-isaac /usr/share/nginx/html
+
+EXPOSE 4200
+
+CMD ["nginx", "-g", "daemon off;"]
