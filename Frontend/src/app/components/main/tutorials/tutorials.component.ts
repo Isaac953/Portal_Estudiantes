@@ -55,7 +55,7 @@ export class TutorialsComponent implements OnInit {
     window.scrollTo(0, 0);
 
     this.activitiesT = [];
-    this.loadAsignature.getAsigContent(this.idAsignature)
+    this.loadAsignature.getSubjectContent(this.idAsignature)
         .subscribe(response => {
           this.responseApi = response;
           this.activitiesT = this.responseApi[0].tipo_contenido;
@@ -82,7 +82,7 @@ export class TutorialsComponent implements OnInit {
     this.titleAsignature = this._route.snapshot.paramMap.get('asignature');
     this.idAsignature = this._route.snapshot.paramMap.get('idAsignature');
 
-    this.loadAsignature.getAsigContent(this.idAsignature)
+    this.loadAsignature.getSubjectContent(this.idAsignature)
         .subscribe(response => {
           this.responseApi = response;
           this.contentAsignatures = this.responseApi;

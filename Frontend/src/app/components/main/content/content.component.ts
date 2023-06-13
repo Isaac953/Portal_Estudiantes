@@ -118,7 +118,7 @@ export class ContentComponent implements OnInit {
       this.asignatureArray = [];
 
 
-    this.loadAsignature.getAsigContent(this.idAsignature)
+    this.loadAsignature.getSubjectContent(this.idAsignature)
     .subscribe(response => {
       this.responseApi = response;
       this.asignatureArray = this.responseApi;

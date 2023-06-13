@@ -7,7 +7,7 @@ import { catchError, retry } from 'rxjs/operators';
   providedIn: 'root'
 })
 export class LoginService {
-  // public urlServer = 'http://localhost:8001';
+  // public urlServer = 'http://localhost:8001'; //Servidor Django Docker
   public urlServer = 'https://student-portal-fomas.herokuapp.com'; //Servidor Heroku
 
   //Urls Login Pruebas
