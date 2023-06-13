@@ -42,3 +42,4 @@ Parte Frontend del proyecto para acceso a la educación del Hackaton creado en A
 - HT-12.9: Rutas redirigidas al servidor Heroku.
 - HT-13: Ajustes visuales a Modal.
 - HT-13.1: Arreglando error al visualizar el contenido.
+- HT-13.2: Agregando select de tipo de contenido enlace y lectura.
