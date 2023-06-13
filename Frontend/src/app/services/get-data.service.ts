@@ -19,8 +19,8 @@ export class GetDataService {
   idUser = this.dataLoginJ.id_student;
   idTeacher = this.dataLoginJ.id_teacher;
 
-  public urlServer = 'http://localhost:8001'; //Servidor Django Docker
-  // public urlServer = 'https://student-portal-fomas.herokuapp.com'; //Servidor Heroku
+  // public urlServer = 'http://localhost:8001'; //Servidor Django Docker
+  public urlServer = 'https://student-portal-fomas.herokuapp.com'; //Servidor Heroku
 
   // Variables para URLs APIs
   urlProfileStudent: any;
