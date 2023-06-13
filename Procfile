@@ -1,0 +1,1 @@
+web: gunicorn student-portal-formas.wsgi --log-file -
