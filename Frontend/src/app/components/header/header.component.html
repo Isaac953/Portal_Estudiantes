@@ -5,10 +5,11 @@
 <section class="perfil" *ngIf="messageLogin">
   <div class="d-flex justify-content-center align-items-center" routerLink="{{routerLogo}}">
     <img class="perfil-user" src="{{imgProfile}}" alt="{{altname}}">
-    <span class="fw-bold fw-light">{{nameUser}}</span>
+    <span class="perfil-name" class="fw-bold fw-light">{{nameUser}}</span>
   </div>
   <div class="perfil-nav">
     <li class="nav-item"><a routerLink="{{routerL}}" class="nav-link text-white text-decoration-none w-100">Cuenta</a></li>
+    <li class="nav-item"><a routerLink="/about" class="nav-link text-white text-decoration-none w-100">Acerca de</a></li>
     <li class="nav-item"><a routerLink="/login" (click)="logOut()" class="nav-link text-white text-decoration-none w-100">Cerrar Sesión</a></li>
   </div>
 </section>

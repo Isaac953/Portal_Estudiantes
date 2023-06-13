@@ -19,14 +19,13 @@
 }
 
 .modal__container--btn {
-  font-size: 3rem;
-  font-weight: bold;
+  display: flex;
 
   position: relative;
   top: 5px;
   left: 47.4%;
-
-  display: flex;
+  font-size: 3rem;
+  font-weight: bold;
 
   width: 33px;
   height: 48px;
@@ -48,9 +47,8 @@
 }
 
 .info__title {
-  font-size: 34px;
-
   position: relative;
+  font-size: 34px;
 
   margin-bottom: 12px;
 
@@ -60,9 +58,8 @@
 }
 
 .modal__container--info {
-  position: relative;
-
   display: flex;
+  position: relative;
   flex-direction: column;
 
   width: 70vw;
@@ -71,10 +68,9 @@
 
   align-items: center;
   justify-content: center;
-
 }
 
-.content-input{
+.content-input {
   margin: 8px 0px;
   border: 1px solid #ccc;
   box-shadow: inset 0 1px 3px #ddd;
@@ -83,7 +79,7 @@
   width: 35vw;
 }
 
-.content-select{
+.content-select {
   margin: 8px 0px;
   border: 1px solid #ccc;
   box-shadow: inset 0 1px 3px #ddd;
@@ -92,12 +88,12 @@
   width: 35vw;
 }
 
-.content-input:focus{
-  outline: 2px solid #526D82;
+.content-input:focus {
+  outline: 2px solid #526d82;
 }
 
-.crud-btn{
-  background-color: #0D4C92;
+.crud-btn {
+  background-color: #0d4c92;
   border: none;
   border-radius: 5px;
   padding: 8px 12px;
@@ -105,7 +101,7 @@
   transition: 0.5s;
 }
 
-.crud-btn:hover{
+.crud-btn:hover {
   background-color: #1265c4;
 }
 
@@ -113,7 +109,7 @@
   background-color: gray;
 }
 
-.id_content{
+.id_content {
   display: none;
 }
 
@@ -126,33 +122,33 @@ textarea {
   width: 35vw;
 }
 
-.class-item{
+.class-item {
   box-shadow: var(--shadow-card);
   border-radius: 10px;
   margin: 12px 0px;
-  background-color: #27374D;
+  background-color: #27374d;
   width: 20vw;
 }
 
-.class-item a{
+.class-item a {
   width: 100%;
   text-align: center;
   cursor: pointer;
 }
 
-.item-info{
+.item-info {
   padding: 12px 10px;
   width: 100%;
 }
 
-.info-icon{
+.info-icon {
   margin-right: 5px;
 }
 
-.view{
+.view {
   width: 50vw;
   height: 30vh;
-  border: 2px solid #11009E;
+  border: 2px solid #11009e;
   border-radius: 12px;
 }
 
@@ -165,16 +161,19 @@ textarea {
   }
 
   .modal__container--btn {
-    font-size: 2.7rem;
-
     left: 46.7%;
+    font-size: 2.7rem;
   }
 
   .modal__container--info {
     width: 70vw;
   }
 
-  .content-input{
+  .content-input {
+    width: 40vw;
+  }
+
+  .content-select {
     width: 40vw;
   }
 
@@ -195,16 +194,19 @@ textarea {
   }
 
   .modal__container--btn {
-    font-size: 2.5rem;
-
     left: 43.9%;
+    font-size: 2.5rem;
   }
 
   .modal__container--info {
     width: 70vw;
   }
 
-  .content-input{
+  .content-input {
+    width: 55vw;
+  }
+
+  .content-select {
     width: 55vw;
   }
 

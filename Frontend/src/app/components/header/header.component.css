@@ -23,6 +23,10 @@
   margin: 5px;
 }
 
+.perfil-name{
+  font-size: 16px;
+}
+
 .perfil:hover{
   background-color: #a77002;
 }
@@ -65,6 +69,18 @@
   .logo{
     font-size: 32px;
   }
+
+  .perfil-user{
+    width: 40px;
+  }
+
+  .perfil-name{
+    font-size: 14px;
+  }
+
+  .perfil-nav {
+    min-width: 155px;
+  }
 }
 /* End Media Queries Screens 1023px */
 
@@ -72,6 +88,18 @@
 @media screen and (max-width: 767px) {
   .logo{
     font-size: 28px;
+  }
+
+  .perfil-user{
+    width: 35px;
+  }
+
+  .perfil-name{
+    font-size: 12px;
+  }
+
+  .perfil-nav {
+    min-width: 150px;
   }
 }
 /* End Media Queries Screens 767px */

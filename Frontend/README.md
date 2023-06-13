@@ -43,3 +43,4 @@ Parte Frontend del proyecto para acceso a la educación del Hackaton creado en A
 - HT-13: Ajustes visuales a Modal.
 - HT-13.1: Arreglando error al visualizar el contenido.
 - HT-13.2: Agregando select de tipo de contenido enlace y lectura.
+- HT-13.3: Cambios finales en Frontend.
