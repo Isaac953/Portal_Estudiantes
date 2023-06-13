@@ -87,14 +87,14 @@ DATABASES = {
     'default':dj_database_url.config(
         default=config('DATABASE_URL')
     ),
-    'local': {
-        'ENGINE': 'django.db.backends.postgresql',
-        'NAME': config('POSTGRES_DB'),
-        'USER': config('POSTGRES_USER'),
-        'PASSWORD': config('POSTGRES_PASSWORD'),
-        'HOST': 'db',
-        'PORT': '5432',
-    }
+    # 'local': {
+    #     'ENGINE': 'django.db.backends.postgresql',
+    #     'NAME': config('POSTGRES_DB'),
+    #     'USER': config('POSTGRES_USER'),
+    #     'PASSWORD': config('POSTGRES_PASSWORD'),
+    #     'HOST': 'db',
+    #     'PORT': '5432',
+    # }
 }
 
 
