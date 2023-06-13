@@ -1,1 +1,1 @@
-web: gunicorn student-portal-formas.wsgi --log-file -
+web: gunicorn drf_api.wsgi --log-file -
