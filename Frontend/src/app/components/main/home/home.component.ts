@@ -20,13 +20,14 @@ export class HomeComponent implements OnInit {
   teacherName: any;
   teacherData: any;
   obj: any;
+  teacherId: any;
 
   //Recuperar datos en localstorage de la sesion Login
   loginData = localStorage.getItem('session');
   dataLoginJ = JSON.parse(this.loginData || '{}');
   roleUser = this.dataLoginJ.rol;
   idUser: any;
-  //Asignar el id de usuario a la ruta
+    //Asignar el id de usuario a la ruta
 
   // asignatureItems: any[] = [
   //   {
@@ -63,45 +64,34 @@ export class HomeComponent implements OnInit {
     // console.log(this.idAsignatature);
   };
 
+  showTeacher = (id: any) => {
+    this.teacherId = id;
+    this.loadAsignature.getTeacherName(this.teacherId)
+        .subscribe(response => {
+          this.responseApi = response;
+
+          console.log(this.responseApi);
+
+        });
+  }
+
   constructor(private _route: ActivatedRoute, private loadAsignature: GetDataService
   ) { }
 
   ngOnInit() {
     this.asignatureItems = [];
-    this.teacherData = [];
-    /*Show Profile User Student*/
+    this.teacherData = [];    /*Show Profile User Student*/
+    this.teacherName = [];
     if (this.roleUser == 'Estudiante') {
-      this.loadAsignature.getAsignatures()
+      this.loadAsignature.getEstudentSubject()
         .subscribe(response => {
           this.responseApi = response;
-          this.asignatureItems = this.responseApi;
-          console.log(this.asignatureItems);
-
-
-          //  for (let i = 0; i < this.responseApi.length; i++) {
-          //   this.teacherName = [];
-
-          //   this.loadAsignature.getTeacherSubject(this.responseApi[i].profesor).subscribe(response => {
-          //         this.responseApi2 = response;
-          //         this.teacherName.push(this.responseApi2.usuario.nombre);
-          //         // console.log(this.teacherName[i]);
-          //         setTimeout(() => {
-          //           this.asignatureItems[i].maestro = this.teacherName[i];
-          //         }, 300);
-
-          //       });
-
-          //     }
-
-              console.log(this.asignatureItems);
-
+          // this.showTeacher(this.responseApi.profesor);
         });
-
-
 
       /*Show Profile User Teacher*/
     } else if (this.roleUser == 'Profesor') {
-      this.loadAsignature.getAsignaturesTeacher()
+      this.loadAsignature.getTeacherSubject()
         .subscribe(response => {
           this.responseApi = response;
           this.asignatureItems = this.responseApi;

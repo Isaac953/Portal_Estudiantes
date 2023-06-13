@@ -16,8 +16,20 @@ export class GetDataService {
 
   constructor(private httpClient: HttpClient) { }
 
-  idUser= this.dataLoginJ.id_student;
-  idTeacher= this.dataLoginJ.id_teacher;
+  idUser = this.dataLoginJ.id_student;
+  idTeacher = this.dataLoginJ.id_teacher;
+
+  // public urlServer = 'http://localhost:8001';
+  public urlServer = 'https://student-portal-fomas.herokuapp.com'; //Servidor Heroku
+
+  urlProfileStudent: any;
+  urlProfileTeacher: any;
+  urlTeacherName: any;
+  urlSubjectStudent: any;
+  urlSubjectTeacher: any;
+  urlCourseStudent: any;
+
+
   urlt: any;
   urlc: any;
   urla: any;
@@ -25,67 +37,90 @@ export class GetDataService {
   urlintc: any;
   urlupdc: any;
 
-  private url = 'http://localhost:8001/users/profile/student/' + this.idUser + '/?format=json';
-  private url2 = 'http://localhost:8001/users/profile/teacher/' + this.idTeacher + '/?format=json';
-  private url3 = 'http://localhost:8001/courses/students/courses/' + this.idUser + '/subjects/?format=json';
-  private url4 = 'http://localhost:8001/courses/teachers/' + this.idTeacher + '/subjects/?format=json';
-  private url5 = 'http://localhost:8001/courses/students/' + this.idUser + '/courses/current/';
-
-  getProfile(){
-    return this.httpClient.get(this.url);
+  //API para obtener información del perfil de estudiante
+  getProfile() {
+    this.urlProfileStudent = this.urlServer + '/users/profile/student/' + this.idUser + '/?format=json'
+    return this.httpClient.get(this.urlProfileStudent);
   }
 
-  getProfileTeacher(){
-    return this.httpClient.get(this.url2);
+  //API para obtener información del perfil de profesor
+  getProfileTeacher() {
+    this.urlProfileTeacher = this.urlServer + '/users/profile/teacher/' + this.idTeacher + '/?format=json';
+    return this.httpClient.get(this.urlProfileTeacher);
   }
 
-  getAsignatures(){
-    return this.httpClient.get(this.url3);
+  //API para obtener el nombre del profesor
+  getTeacherName(id: any) {
+    this.urlTeacherName = this.urlServer + '/users/profile/teacher/' + id + '/?format=json';
+    return this.httpClient.get(this.urlTeacherName);
   }
 
-  getTeacherSubject(id:any){
-    this.urlt = 'http://localhost:8001/users/profile/teacher/' + id + '/?format=json';
-    return this.httpClient.get(this.urlt);
+  //API para obtener el nombre de las Asignaturas Estudiante
+  getEstudentSubject() {
+    this.urlSubjectStudent = this.urlServer + '/courses/students/courses/' + this.idUser + '/subjects/?format=json'
+    return this.httpClient.get(this.urlSubjectStudent);
   }
 
-  getAsignaturesTeacher(){
-    return this.httpClient.get(this.url4);
+  //API para obtener el nombre de las Asignaturas Profesor
+  getTeacherSubject() {
+    this.urlSubjectTeacher = this.urlServer + '/courses/teachers/' + this.idTeacher + '/subjects/?format=json'
+    return this.httpClient.get(this.urlSubjectTeacher);
   }
 
-  getCourse(){
-    return this.httpClient.get(this.url5);
+  getCourseStudent() {
+    this.urlCourseStudent = this.urlServer + '/courses/students/' + this.idUser + '/courses/current/?format=json'
+    return this.httpClient.get(this.urlCourseStudent);
   }
 
-  getAsigContent(id:any){
-    this.urlc = 'http://localhost:8001/courses/students/courses/subjects/'+ id +'/contents/?format=json'
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+  getAsigContent(id: any) {
+    this.urlc = 'http://localhost:8001/courses/students/courses/subjects/' + id + '/contents/?format=json'
     return this.httpClient.get(this.urlc);
   }
 
-  getCrudContent(id:any){
-    this.urlcrud = 'http://localhost:8001/courses/teachers/subjects/contents/'+ id +'/?format=json'
+  getCrudContent(id: any) {
+    this.urlcrud = 'http://localhost:8001/courses/teachers/subjects/contents/' + id + '/?format=json'
     return this.httpClient.get(this.urlcrud);
   }
 
-    // Servicio para validar datos de login en el servidor
-    insertContent(data: any, id:any): Observable<any> {
-      const headers = new HttpHeaders({'Content-Type':'application/json'});
-      this.urlintc = 'http://localhost:8001/courses/teachers/subjects/'+ id +'/contents/create/';
-      return this.httpClient.post(this.urlintc, data, {headers:headers});
-    }
+  // Servicio para validar datos de login en el servidor
+  insertContent(data: any, id: any): Observable<any> {
+    const headers = new HttpHeaders({ 'Content-Type': 'application/json' });
+    this.urlintc = 'http://localhost:8001/courses/teachers/subjects/' + id + '/contents/create/';
+    return this.httpClient.post(this.urlintc, data, { headers: headers });
+  }
 
-        // Servicio para validar datos de login en el servidor
-        updateContent(data: any, id:any): Observable<any> {
-          const headers = new HttpHeaders({'Content-Type':'application/json'});
-          this.urlupdc = 'http://localhost:8001/courses/teachers/subjects/contents/'+ id +'/';
-          return this.httpClient.put(this.urlupdc, data, {headers:headers});
-        }
+  // Servicio para validar datos de login en el servidor
+  updateContent(data: any, id: any): Observable<any> {
+    const headers = new HttpHeaders({ 'Content-Type': 'application/json' });
+    this.urlupdc = 'http://localhost:8001/courses/teachers/subjects/contents/' + id + '/';
+    return this.httpClient.put(this.urlupdc, data, { headers: headers });
+  }
 
-              // Servicio para validar datos de login en el servidor
-              deleteContent(data: any, id:any): Observable<any> {
-                const headers = new HttpHeaders({'Content-Type':'application/json'});
-                this.urlupdc = 'http://localhost:8001/courses/teachers/subjects/contents/'+ id +'/';
-                return this.httpClient.delete(this.urlupdc, data);
-              }
+  // Servicio para validar datos de login en el servidor
+  deleteContent(data: any, id: any): Observable<any> {
+    const headers = new HttpHeaders({ 'Content-Type': 'application/json' });
+    this.urlupdc = 'http://localhost:8001/courses/teachers/subjects/contents/' + id + '/';
+    return this.httpClient.delete(this.urlupdc, data);
+  }
 
   // insertContent(id:any){
   //   this.urlintc = 'http://localhost:8001/courses/teachers/subjects/'+ id +'/contents/create/';
@@ -96,5 +131,10 @@ export class GetDataService {
   //   http://localhost:8001/courses/teachers/subjects/3/contents/
   //   this.urla = 'http://localhost:8001/courses/students/courses/subjects/contents/'+ id +'/?format=json'
   //   return this.httpClient.get(this.urla);
+  // }
+
+    // getTeacherSubject(id: any) {
+  //   this.urlt = 'http://localhost:8001/users/profile/teacher/' + id + '/?format=json';
+  //   return this.httpClient.get(this.urlt);
   // }
 }

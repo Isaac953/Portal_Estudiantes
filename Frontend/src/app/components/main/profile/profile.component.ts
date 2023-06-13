@@ -36,7 +36,7 @@ export class ProfileComponent {
         this.dataUser.push(this.responseApi.usuario);
         // console.log(this.dataUser);
       });
-      this.lodadUser.getCourse().subscribe((response) => {
+      this.lodadUser.getCourseStudent().subscribe((response) => {
         this.responseApiCourse = response;
         this.dataCourse.push(this.responseApiCourse.grado + '° Grado, ');
         this.dataCourse.push('Sección ' + this.responseApiCourse.seccion + ', ');
