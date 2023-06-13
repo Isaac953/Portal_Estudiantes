@@ -23,6 +23,7 @@ export class GetDataService {
   urla: any;
   urlcrud: any;
   urlintc: any;
+  urlupdc: any;
 
   private url = 'http://localhost:8001/users/profile/student/' + this.idUser + '/?format=json';
   private url2 = 'http://localhost:8001/users/profile/teacher/' + this.idTeacher + '/?format=json';
@@ -71,6 +72,13 @@ export class GetDataService {
       this.urlintc = 'http://localhost:8001/courses/teachers/subjects/'+ id +'/contents/create/';
       return this.httpClient.post(this.urlintc, data, {headers:headers});
     }
+
+        // Servicio para validar datos de login en el servidor
+        updateContent(data: any, id:any): Observable<any> {
+          const headers = new HttpHeaders({'Content-Type':'application/json'});
+          this.urlupdc = 'localhost:8001/courses/teachers/subjects/contents/'+ id +'/';
+          return this.httpClient.put<any>(this.urlupdc, data, {headers:headers});
+        }
 
   // insertContent(id:any){
   //   this.urlintc = 'http://localhost:8001/courses/teachers/subjects/'+ id +'/contents/create/';

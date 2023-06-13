@@ -1,4 +1,4 @@
-import { Component, OnInit, AfterViewInit  } from '@angular/core';
+import { Component, OnInit, AfterViewInit } from '@angular/core';
 import { ModalService } from 'src/app/services/modal.service';
 import { faXmark } from '@fortawesome/free-solid-svg-icons';
 import { ActivatedRoute, Router } from '@angular/router';
@@ -24,13 +24,8 @@ export class ModalComponent implements OnInit {
   contents: any;
   sendContent: any;
   messageData: any;
-
-  dataDefault = {
-    "asignatura": 3,
-    "titulo": "Clase 2",
-    "tipo_contenido": "enlace",
-    "contenido": "Clase 2"
-}
+  typeCrud: any;
+  dataUpdate: any;
 
   idAsignatureV = this._route.snapshot.paramMap.get('idAsignature');
 
@@ -41,71 +36,79 @@ export class ModalComponent implements OnInit {
     contenido: new FormControl(''),
   });
 
-  constructor(private modalService: ModalService, private _route:ActivatedRoute, private loadAsignature: GetDataService, private router: Router) {}
+  constructor(private modalService: ModalService, private _route: ActivatedRoute, private loadAsignature: GetDataService, private router: Router) { }
 
-    closeModal = () => {
-      this.modalSwitch = 'disabled';
-      setTimeout(() => {
-        this.modalService.modal$.emit(this.modalSwitch);
-            this.clearValues();
-      }, 200);
-    };
+  closeModal = () => {
+    this.modalSwitch = 'disabled';
+    this.typeCrud = '';
+    setTimeout(() => {
+      this.modalService.modal$.emit(this.modalSwitch);
+      this.clearValues();
+    }, 200);
+  };
 
-    onSubmit() {
-      console.warn(this.contentForm.value);
-
+  /* Crud Actions */
+  onSubmit() {
+    console.warn(this.contentForm.value);
+    if (this.typeCrud == "Insertar") {
       this.loadAsignature.insertContent(this.contentForm.value, this.idAsignature).subscribe((response) => {
         this.messageData = "Registro realizado con exito";
 
         console.log(response);
 
-      setTimeout(() => {
+        setTimeout(() => {
           location.reload();
         }, 1000);
-
-        // setTimeout(() => {
-        //   location.reload();
-        // }, -100);
-        // console.warn(response);
-        // this.sendContent = this.contentForm.value;
-        // this.sendContent = JSON.stringify(response);
-        // response.rol = this.role;
-        // localStorage.setItem('session', JSON.stringify(response));
-        // this.dataLogin = localStorage.getItem('session');
-        // this.dataLoginJ = JSON.parse(this.dataLogin);
-        // console.log(this.dataLoginJ.message);
-        // console.log(this.dataLoginJ.id_student);
-        // console.log(this.dataLoginJ.rol);
-        // this.router.navigate(['/home']);
       })
+    } else if (this.typeCrud == "Actualizar") {
+      this.dataUpdate = [];
+      this.dataUpdate.push(this.contentForm.value);
+      console.log(this.dataUpdate);
+      // this.loadAsignature.updateContent(this.contentForm.value, this.idAsignature).subscribe((response) => {
+      //   this.messageData = "Registro actualizado con exito";
+
+      //   console.log(response);
+
+      //   setTimeout(() => {
+      //     location.reload();
+      //   }, 1000);
+      // })
     }
 
-    setId(){
-      this.contentForm.setValue(
-        {asignatura: this.idAsignature,
-          titulo: '',
-          tipo_contenido: '',
-          contenido: ''},
-        );
-    }
+  }
 
-    setValue(){
-      this.contentForm.setValue(
-        {asignatura: this.idAsignature,
-          titulo: this.modalData.titulo,
-          tipo_contenido: this.modalData.tipo_contenido,
-          contenido: this.modalData.contenido},
-        );
-    }
-
-    clearValues(){
-      this.contentForm.setValue(
-        {asignatura: this.idAsignature,
-          titulo: '',
+  setId() {
+    this.contentForm.setValue(
+      {
+        asignatura: this.idAsignature,
+        titulo: '',
         tipo_contenido: '',
-        contenido: ''},
-        );
-    }
+        contenido: ''
+      },
+    );
+  }
+
+  setValue() {
+    this.contentForm.setValue(
+      {
+        asignatura: this.idAsignature,
+        titulo: this.modalData.titulo,
+        tipo_contenido: this.modalData.tipo_contenido,
+        contenido: this.modalData.contenido
+      },
+    );
+  }
+
+  clearValues() {
+    this.contentForm.setValue(
+      {
+        asignatura: this.idAsignature,
+        titulo: '',
+        tipo_contenido: '',
+        contenido: ''
+      },
+    );
+  }
 
   ngOnInit() {
     this.modalData = [];
@@ -146,12 +149,16 @@ export class ModalComponent implements OnInit {
       this.idContent = idContent;
     })
 
+    this.modalService.typeCrud$.subscribe((crud) => {
+      this.typeCrud = crud;
+    })
+
     // this.idAsignature = this._route.snapshot.paramMap.get('idAsignature')
 
 
   }
 
-  AfterViewInit(){
+  AfterViewInit() {
 
   }
 }

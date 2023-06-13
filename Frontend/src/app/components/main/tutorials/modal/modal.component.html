@@ -36,11 +36,19 @@
           <label for="contenido">Contenido:</label>
           <input class="content-input" type="text" placeholder="Contenido" formControlName="contenido" />
         </div>
-        <div class="d-flex flex-column align-items-center"> <button class="crud-btn fw-bold text-white" type="submit"
+        <div class="d-flex flex-column align-items-center" *ngIf="typeCrud == 'Insertar'">
+          <button class="crud-btn fw-bold text-white" type="submit"
             [disabled]="!contentForm.valid">
             Insertar
           </button>
+          <span class="message">{{messageData}}</span>
+        </div>
 
+        <div class="d-flex flex-column align-items-center" *ngIf="typeCrud == 'Actualizar'">
+          <button class="crud-btn fw-bold text-white" type="submit"
+            [disabled]="!contentForm.valid">
+            Actualizar
+          </button>
           <span class="message">{{messageData}}</span>
         </div>
 

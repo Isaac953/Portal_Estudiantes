@@ -28,7 +28,7 @@
             <td>
               <button class="card-btn btn-eye fw-bold text-white" (click)="viewContent(content.pk)"><fa-icon
                 [icon]="eye"></fa-icon></button>
-              <button class="card-btn btn-edit fw-bold text-white"><fa-icon
+              <button class="card-btn btn-edit fw-bold text-white" (click)="updateContent(content.pk)"><fa-icon
               [icon]="pen"></fa-icon></button>
               <button class="card-btn btn-delete fw-bold text-white"><fa-icon
                 [icon]="trash"></fa-icon></button>
