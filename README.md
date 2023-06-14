@@ -56,3 +56,21 @@ Parte Frontend del proyecto para acceso a la educación del Hackaton creado en A
 - HT-12: Agregar rol en local Storage y finalizar diseños de Perfil y Login.
 - HT-12.1: Funcionalidad de Login para profesor y estudiante implementado.
 - HT-12.2: Implementación de recuperar información de asignaturas y perfil para estudiantes y profesores.
+
+## Implementación en Docker
+Nos ubicamos en el directorio Frontend e instalamos las dependencias.
+1- ```shell
+   npm install
+   ```
+Antes de ejecutar docker-compose es necesario crear el directorio dist de dist/ del Frontend.
+2- ```shell
+   npm run build
+   ```
+Construimos los servicios de docker-compose
+3- ```shell
+   docker-compose build
+   ```
+Levantamos los servicios de docker-compose
+4- ```shell
+   docker-compose up -d
+   ```
