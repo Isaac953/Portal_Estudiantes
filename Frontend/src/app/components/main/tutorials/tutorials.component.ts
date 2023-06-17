@@ -49,8 +49,6 @@ export class TutorialsComponent implements OnInit {
     this.modalSwitch = 'enabled';
     this.modalService.modal$.emit(this.modalSwitch);
     this.modalService.modalData$.emit(this.dataAsignature);
-    this.modalService.modalTitle$.emit(this.titleAsignature);
-    this.modalService.idAsignature$.emit(this.idAsignature);
     this.modalService.modalType$.emit(this.nameC);
     window.scrollTo(0, 0);
 
@@ -61,7 +59,7 @@ export class TutorialsComponent implements OnInit {
     this.loadAsignature.getActivityContent(idCont)
       .subscribe(response => {
         this.responseApi = response;
-        this.modalService.typeActivity$.emit(this.responseApi);
+        this.modalService.modalData$.emit(this.responseApi);
       });
     this.activitiesT = [];
 

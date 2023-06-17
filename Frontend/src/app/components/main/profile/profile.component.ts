@@ -38,6 +38,7 @@ export class ProfileComponent {
         this.responseApiCourse = response;
         this.dataCourse.push(this.responseApiCourse.grado + '° Grado, ');
         this.dataCourse.push('Sección ' + this.responseApiCourse.seccion + ', ');
+        this.dataCourse.push(this.responseApiCourse.anio);
       });
       /*Show Profile User Teacher*/
     } else if (this.roleUser == 'Profesor') {

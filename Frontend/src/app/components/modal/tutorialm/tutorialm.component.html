@@ -1,1 +1,12 @@
-<p>tutorialm works!</p>
+<h1 class="text-black fw-bold">{{modalDataT.titulo}}</h1>
+
+<section class="class-item d-flex flex-row justify-content-between">
+  <a class="text-white text-decoration-none fw-bold">
+    <div class="item-info">
+      <fa-icon class="info-icon" [icon]="faPlay"></fa-icon>
+      <span>{{modalDataT.tipo_contenido}}</span>
+    </div>
+  </a>
+</section>
+
+<span class="view">{{modalDataT.contenido}}</span>
