@@ -45,3 +45,4 @@ Parte Frontend del proyecto para acceso a la educación del Hackaton creado en A
 - HT-13.2: Agregando select de tipo de contenido enlace y lectura.
 - HT-13.3: Cambios finales en Frontend.
 - HT-13.4: Ajustes a código de Login.
+- HT-13.5: Ajustes de carga de información en home y header component.

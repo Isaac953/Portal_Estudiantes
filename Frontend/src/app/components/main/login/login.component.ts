@@ -38,7 +38,7 @@ export class LoginComponent implements OnInit {
         setTimeout(() => {
           this.service.loginData$.emit(this.dataLoginJ);
           this.router.navigate(['/home']);
-        }, 1000);
+        }, 800);
       })
 
     //Haciendo login de profesor
@@ -52,7 +52,7 @@ export class LoginComponent implements OnInit {
         setTimeout(() => {
           this.service.loginData$.emit(this.dataLoginJ);
           this.router.navigate(['/home']);
-        }, 1000);
+        }, 800);
       })
     }
   }

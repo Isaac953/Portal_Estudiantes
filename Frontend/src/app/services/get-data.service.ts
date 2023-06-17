@@ -7,17 +7,8 @@ import { catchError, retry } from 'rxjs/operators';
   providedIn: 'root'
 })
 export class GetDataService {
-  userName$ = new EventEmitter<string>();
-
-  //Recuperar datos en localstorage de la sesion Login
-  loginData = localStorage.getItem('session');
-  dataLoginJ = JSON.parse(this.loginData || '{}');
-  rolUser = this.dataLoginJ.rol;
 
   constructor(private httpClient: HttpClient) { }
-
-  idUser = this.dataLoginJ.id_student;
-  idTeacher = this.dataLoginJ.id_teacher;
 
   public urlServer = 'http://localhost:8001'; //Servidor Django Docker
   // public urlServer = 'https://student-portal-fomas.herokuapp.com'; //Servidor Heroku
@@ -55,20 +46,20 @@ export class GetDataService {
   }
 
   //API para obtener el nombre de las Asignaturas Estudiante
-  getEstudentSubject() {
-    this.urlSubjectStudent = this.urlServer + '/courses/students/courses/' + this.idUser + '/subjects/?format=json'
+  getEstudentSubject(id: any) {
+    this.urlSubjectStudent = this.urlServer + '/courses/students/courses/' + id + '/subjects/?format=json'
     return this.httpClient.get(this.urlSubjectStudent);
   }
 
   //API para obtener el nombre de las Asignaturas Profesor
-  getTeacherSubject() {
-    this.urlSubjectTeacher = this.urlServer + '/courses/teachers/' + this.idTeacher + '/subjects/?format=json'
+  getTeacherSubject(id: any) {
+    this.urlSubjectTeacher = this.urlServer + '/courses/teachers/' + id + '/subjects/?format=json'
     return this.httpClient.get(this.urlSubjectTeacher);
   }
 
   //API para obtener el nombre del curso actual del Estudiante
-  getCourseStudent() {
-    this.urlCourseStudent = this.urlServer + '/courses/students/' + this.idUser + '/courses/current/?format=json'
+  getCourseStudent(id: any) {
+    this.urlCourseStudent = this.urlServer + '/courses/students/' + id + '/courses/current/?format=json'
     return this.httpClient.get(this.urlCourseStudent);
   }
 

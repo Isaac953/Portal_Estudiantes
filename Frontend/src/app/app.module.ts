@@ -13,11 +13,12 @@ import { HttpClientModule } from '@angular/common/http';
 import { HomeComponent } from './components/main/home/home.component';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { TutorialsComponent } from './components/main/tutorials/tutorials.component';
-import { ModalComponent } from './components/main/tutorials/modal/modal.component';
+import { ModalComponent } from './components/modal/modal.component';
 import { CommonModule } from '@angular/common';
 import { PythondbComponent } from './components/main/pythondb/pythondb.component';
 import { ReactiveFormsModule } from '@angular/forms';
 import { ContentComponent } from './components/main/content/content.component';
+import { TutorialmComponent } from './components/modal/tutorialm/tutorialm.component';
 
 @NgModule({
   declarations: [
@@ -31,6 +32,7 @@ import { ContentComponent } from './components/main/content/content.component';
     ModalComponent,
     PythondbComponent,
     ContentComponent,
+    TutorialmComponent,
   ],
   imports: [
     BrowserModule,

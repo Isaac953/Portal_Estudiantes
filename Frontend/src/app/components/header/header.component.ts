@@ -38,11 +38,8 @@ export class HeaderComponent implements OnInit {
     this.messageLogin = '';
     this.nameUser = '';
     this.responseApi = '';
+    this.routerLogo = '/login';
     this.router.navigate(['/login']);
-
-    setTimeout(() => {
-      location.reload();
-    }, 0);
   };
 
   loginDataF = () => {
@@ -51,14 +48,11 @@ export class HeaderComponent implements OnInit {
       this.routerL = '/profile/' + this.idStudent;
       this.lodadUser.getProfile(this.idStudent).subscribe((response) => {
         this.responseApi = response;
-        console.log(this.responseApi);
         this.nameUser = this.responseApi.usuario.nombre;
-        // console.log(this.nameUser);
         this.routerLogo = '/home';
       });
       /*Show name User Teacher in Header*/
     } else if (this.roleUser == 'Profesor') {
-      this.idTeacher = this.dataLoginJ.id_teacher;
       this.routerL = '/profile/' + this.idTeacher;
       this.lodadUser.getProfileTeacher(this.idTeacher).subscribe((response) => {
         this.responseApi = response;
@@ -69,7 +63,6 @@ export class HeaderComponent implements OnInit {
   }
 
   ngOnInit() {
-
     this.login.loginData$.subscribe((data) => {
       this.dataLoginJ = data;
       this.roleUser = this.dataLoginJ.rol;

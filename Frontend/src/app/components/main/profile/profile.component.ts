@@ -1,6 +1,7 @@
 import { Component } from '@angular/core';
 import { ActivatedRoute } from '@angular/router';
 import { GetDataService } from 'src/app/services/get-data.service';
+import { LoginService } from 'src/app/services/login.service';
 
 @Component({
   selector: 'app-profile',
@@ -14,43 +15,50 @@ export class ProfileComponent {
   dataUser: any;
   dataCourse: any;
 
-    //Recuperar datos en localstorage de la sesion Login
-    loginData = localStorage.getItem('session');
-    dataLoginJ = JSON.parse(this.loginData || '{}');
-    messageLogin = this.dataLoginJ.message;
-    roleUser = this.dataLoginJ.rol;
-    //Asignar el id de usuario a la ruta
+  //Recuperar datos en localstorage de la sesion Login
+  loginData = localStorage.getItem('session');
+  dataLoginJ = JSON.parse(this.loginData || '{}');
+  messageLogin = this.dataLoginJ.message;
+  roleUser = this.dataLoginJ.rol;
+  idStudent = this.dataLoginJ.id_student;
+  idTeacher = this.dataLoginJ.id_teacher;
+  //Asignar el id de usuario a la ruta
 
-  constructor(private _route:ActivatedRoute, private lodadUser: GetDataService) {}
+  showProfile = () => {
+    this.dataUser = [];
+    this.dataCourse = [];
 
-    ngOnInit() {
-
-      this.dataUser = [];
-      this.dataCourse = [];
-
-       /*Show Profile User Student*/
+    /*Show Profile User Student*/
     if (this.roleUser == 'Estudiante') {
-      this.idUser = this.dataLoginJ.id_student;
-      this.lodadUser.getProfile(this.idUser).subscribe((response) => {
+      this.lodadUser.getProfile(this.idStudent).subscribe((response) => {
         this.responseApi = response;
         this.dataUser.push(this.responseApi.usuario);
-        // console.log(this.dataUser);
       });
-      this.lodadUser.getCourseStudent().subscribe((response) => {
+      this.lodadUser.getCourseStudent(this.idStudent).subscribe((response) => {
         this.responseApiCourse = response;
         this.dataCourse.push(this.responseApiCourse.grado + '° Grado, ');
         this.dataCourse.push('Sección ' + this.responseApiCourse.seccion + ', ');
-        this.dataCourse.push(this.responseApiCourse.anio);
-        console.log(this.dataCourse);
       });
-    /*Show Profile User Teacher*/
+      /*Show Profile User Teacher*/
     } else if (this.roleUser == 'Profesor') {
-      this.idUser = this.dataLoginJ.id_teacher;
-      this.lodadUser.getProfileTeacher(this.idUser).subscribe((response) => {
+      this.lodadUser.getProfileTeacher(this.idTeacher).subscribe((response) => {
         this.responseApi = response;
         this.dataUser.push(this.responseApi.usuario);
-        // console.log(this.dataUser);
       });
     }
-    }
+  }
+
+  constructor(private _route: ActivatedRoute, private lodadUser: GetDataService, private login: LoginService) { }
+
+  ngOnInit() {
+    this.login.loginData$.subscribe((data) => {
+      this.dataLoginJ = data;
+      this.idStudent = this.dataLoginJ.id_student;
+      this.idTeacher = this.dataLoginJ.id_teacher;
+      this.roleUser = this.dataLoginJ.rol;
+      this.showProfile();
+    });
+
+    this.showProfile();
+  }
 }
