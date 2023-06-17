@@ -27,6 +27,8 @@ export class GetDataService {
   urlDeleteC: any;
   urlContentSubE: any;
 
+  idSubject$ = new EventEmitter<string>();
+
   //API para obtener información del perfil de estudiante
   getProfile(id:any) {
     this.urlProfileStudent = this.urlServer + '/users/profile/student/' + id + '/?format=json'

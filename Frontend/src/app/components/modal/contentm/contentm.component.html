@@ -1,0 +1,47 @@
+<h1 class="text-black fw-bold">{{titleM}}</h1>
+
+<form [formGroup]="contentForm" (ngSubmit)="onSubmit()">
+  <div class="d-flex flex-column align-items-center" class="id_content">
+    <label for="asignatura">Id:</label>
+    <input class="content-input" type="text" placeholder="Titulo" formControlName="asignatura" />
+  </div>
+  <div class="d-flex flex-column align-items-center item">
+    <label for="titulo">Titulo:</label>
+    <input class="content-input" type="text" placeholder="Titulo" formControlName="titulo" />
+  </div>
+  <div class="d-flex flex-column align-items-center"> <label for="tipo_contenido">Tipo de Contenido:</label>
+
+    <select class="content-select" formControlName="tipo_contenido">
+      <option value="" disabled selected>Seleccione una opción</option>
+      <option value="lectura">Lectura</option>
+      <option value="enlace">Enlace</option>
+    </select>
+    <!-- <input class="content-input" type="text" placeholder="Tipo de Contenido" formControlName="tipo_contenido" /> -->
+  </div>
+  <div class="d-flex flex-column align-items-center">
+    <label for="contenido">Contenido:</label>
+    <textarea cols="30" rows="5" placeholder="Contenido" formControlName="contenido"></textarea>
+    <!-- <input class="content-input" type="text" placeholder="Contenido" formControlName="contenido" /> -->
+  </div>
+  <div class="d-flex flex-column align-items-center" *ngIf="typeCrud == 'Insertar'">
+    <button class="card-btn btn-reg fw-bold text-white" type="submit" [disabled]="!contentForm.valid">
+      Insertar
+    </button>
+    <span class="message">{{messageData}}</span>
+  </div>
+
+  <div class="d-flex flex-column align-items-center" *ngIf="typeCrud == 'Actualizar'">
+    <button class="card-btn btn-edit fw-bold text-white" type="submit" [disabled]="!contentForm.valid">
+      Actualizar
+    </button>
+    <span class="message">{{messageData}}</span>
+  </div>
+
+  <div class="d-flex flex-column align-items-center" *ngIf="typeCrud == 'Eliminar'">
+    <button class="card-btn btn-delete fw-bold text-white" type="submit" [disabled]="!contentForm.valid">
+      Eliminar
+    </button>
+    <span class="message">{{messageData}}</span>
+  </div>
+
+</form>

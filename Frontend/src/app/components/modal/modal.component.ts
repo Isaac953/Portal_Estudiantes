@@ -17,11 +17,15 @@ export class ModalComponent implements OnInit {
   faXmark = faXmark;
   nameOperation: any;
   typeActivity: any;
+  typeCrud: any;
+  modalTitle: any;
+  idAsignature: any;
 
   constructor(private modalService: ModalService, private _route: ActivatedRoute, private loadAsignature: GetDataService, private router: Router) { }
 
   closeModal = () => {
     this.modalSwitch = 'disabled';
+    this.typeCrud = '';
     setTimeout(() => {
       this.modalService.modal$.emit(this.modalSwitch);
     }, 200);
@@ -43,17 +47,23 @@ export class ModalComponent implements OnInit {
 
     this.modalService.modalData$.subscribe((infoModal) => {
       this.modalData = infoModal;
-      console.log(this.modalData.titulo);
     });
 
     this.modalService.modalType$.subscribe((namec) => {
       this.nameOperation = namec;
-      console.log(this.nameOperation);
     });
 
-    this.modalService.typeActivity$.subscribe((description) => {
-      this.typeActivity = description;
-      console.log(this.typeActivity);
+    this.modalService.typeCrud$.subscribe((crud) => {
+      this.typeCrud = crud;
     });
+
+
+    this.modalService.modalTitle$.subscribe((title) => {
+      this.modalTitle = title;
+    });
+
+    this.modalService.idAsignature$.subscribe((id) => {
+      this.idAsignature = id;
+    })
   }
 }
