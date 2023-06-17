@@ -38,9 +38,9 @@
   background-color: gray;
 }
 
-/* .id_content {
+.id_content {
   display: none;
-} */
+}
 
 textarea {
   margin: 8px 0px;

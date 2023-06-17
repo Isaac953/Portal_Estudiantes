@@ -20,12 +20,14 @@ export class ModalComponent implements OnInit {
   typeCrud: any;
   modalTitle: any;
   idAsignature: any;
+  idContent: any;
 
   constructor(private modalService: ModalService, private _route: ActivatedRoute, private loadAsignature: GetDataService, private router: Router) { }
 
   closeModal = () => {
     this.modalSwitch = 'disabled';
     this.typeCrud = '';
+    this.modalData = '';
     setTimeout(() => {
       this.modalService.modal$.emit(this.modalSwitch);
     }, 200);
@@ -53,17 +55,20 @@ export class ModalComponent implements OnInit {
       this.nameOperation = namec;
     });
 
-    this.modalService.typeCrud$.subscribe((crud) => {
-      this.typeCrud = crud;
-    });
-
-
     this.modalService.modalTitle$.subscribe((title) => {
       this.modalTitle = title;
     });
 
     this.modalService.idAsignature$.subscribe((id) => {
       this.idAsignature = id;
-    })
+    });
+
+    this.modalService.idContent$.subscribe((idContent) => {
+      this.idContent = idContent;
+    });
+
+    this.modalService.typeCrud$.subscribe((crud) => {
+      this.typeCrud = crud;
+    });
   }
 }

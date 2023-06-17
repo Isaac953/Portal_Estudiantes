@@ -48,3 +48,4 @@ Parte Frontend del proyecto para acceso a la educación del Hackaton creado en A
 - HT-13.5: Ajustes de carga de información en home y header component.
 - HT-13.6: Rework de código de modal para ver contenido.
 - HT-13.7: Rework de código de modal para insertar contenido.
+- HT-13.8: Rework de código de modal para ver, actualizar y eliminar contenido.

@@ -1,4 +1,4 @@
-import { Component, OnInit, Input } from '@angular/core';
+import { Component, OnInit, Input, getNgModuleById } from '@angular/core';
 import { FormGroup, FormControl, Validators } from '@angular/forms';
 import { Router } from '@angular/router';
 import { GetDataService } from 'src/app/services/get-data.service';
@@ -17,6 +17,8 @@ export class ContentmComponent implements OnInit {
   @Input() idSub: any;
   modalSwitch: any;
   responseApi: any;
+  dataUpdate: any;
+  @Input() idCont: any;
 
   contentForm = new FormGroup({
     asignatura: new FormControl(''),
@@ -27,7 +29,18 @@ export class ContentmComponent implements OnInit {
 
   constructor(private loadAsignature: GetDataService, private router: Router, private modalService: ModalService) { }
 
-  setId = () => {
+  setValueD = () => {
+    this.contentForm.setValue(
+      {
+        asignatura: this.idSub,
+        titulo: this.modalDataT.titulo,
+        tipo_contenido: this.modalDataT.tipo_contenido,
+        contenido: this.modalDataT.contenido,
+      },
+    );
+  }
+
+  defaultValue = () => {
     this.contentForm.setValue(
       {
         asignatura: this.idSub,
@@ -48,11 +61,7 @@ export class ContentmComponent implements OnInit {
     this.loadAsignature.getSubjectContent(id)
     .subscribe(response => {
       this.loadAsignature.idSubject$.emit(id);
-      // this.router.navigate(['/content/' + this.titleM + '/' + this.idSub]);
-
-      // this.contentAsignatures = this.responseApi;
-      // console.log(this.asignatureArray);
-
+      this.defaultValue();
     });
 
   };
@@ -61,23 +70,64 @@ export class ContentmComponent implements OnInit {
   onSubmit = () => {
 
     if (this.typeCrud == "Insertar") {
-      this.loadAsignature.insertContent(this.contentForm.value, this.idSub).subscribe((response) => {
+      this.loadAsignature.insertContent(this.contentForm.value, this.idSub).subscribe(() => {
         this.messageData = "Registro realizado con exito";
-
           setTimeout(() => {
             this.closeModal(this.idSub);
-          }, 1000);
+          }, 800);
+      })
+    }
+    else if (this.typeCrud == "Actualizar") {
+      this.dataUpdate = {};
+      // this.dataUpdate = this.contentForm.value;
+      this.dataUpdate.pk = this.idCont;
+      this.dataUpdate.asignatura = this.contentForm.controls.asignatura.value;
+      this.dataUpdate.titulo = this.contentForm.controls.titulo.value;
+      this.dataUpdate.tipo_contenido = this.contentForm.controls.tipo_contenido.value;
+      this.dataUpdate.contenido = this.contentForm.controls.contenido.value;
+      console.log(this.dataUpdate);
 
+      this.loadAsignature.updateContent(this.dataUpdate, this.idCont).subscribe((response) => {
+        this.messageData = "Registro actualizado con exito";
+        setTimeout(() => {
+          this.closeModal(this.idSub);
+        }, 800);
+      })
+    }    else if (this.typeCrud == "Eliminar") {
+      this.dataUpdate = {};
+      // this.dataUpdate = this.contentForm.value;
+      this.dataUpdate.pk = this.idCont;
+      // this.dataUpdate.asignatura = this.contentForm.controls.asignatura.value;
+      // this.dataUpdate.titulo = this.contentForm.controls.titulo.value;
+      // this.dataUpdate.tipo_contenido = this.contentForm.controls.tipo_contenido.value;
+      // this.dataUpdate.contenido = this.contentForm.controls.contenido.value;
+      console.log(this.dataUpdate);
 
-      //   setTimeout(() => {
-      //   this.router.navigate(['/content/' + this.titleM + '/' + this.idSub]);
-      // }, 1000);
+      this.loadAsignature.deleteContent(this.dataUpdate, this.idCont).subscribe((response) => {
+        this.messageData = "Registro eliminado";
+        setTimeout(() => {
+          this.closeModal(this.idSub);
+        }, 800);
       })
     }
   }
 
   ngOnInit() {
-    this.setId();
+
+    this.modalService.typeCrud$.subscribe((crud) => {
+      this.typeCrud = crud
+
+      if(this.typeCrud == "Insertar"){
+        this.defaultValue();
+      }
+    })
+
+    this.modalService.modalData$.subscribe((data) => {
+      this.modalDataT = data;
+      console.log(this.modalDataT);
+          this.defaultValue();
+          this.setValueD();
+    })
   }
 
 }
