@@ -31,7 +31,7 @@ export class ProfileComponent {
        /*Show Profile User Student*/
     if (this.roleUser == 'Estudiante') {
       this.idUser = this.dataLoginJ.id_student;
-      this.lodadUser.getProfile().subscribe((response) => {
+      this.lodadUser.getProfile(this.idUser).subscribe((response) => {
         this.responseApi = response;
         this.dataUser.push(this.responseApi.usuario);
         // console.log(this.dataUser);
@@ -46,7 +46,7 @@ export class ProfileComponent {
     /*Show Profile User Teacher*/
     } else if (this.roleUser == 'Profesor') {
       this.idUser = this.dataLoginJ.id_teacher;
-      this.lodadUser.getProfileTeacher().subscribe((response) => {
+      this.lodadUser.getProfileTeacher(this.idUser).subscribe((response) => {
         this.responseApi = response;
         this.dataUser.push(this.responseApi.usuario);
         // console.log(this.dataUser);

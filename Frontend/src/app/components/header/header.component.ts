@@ -2,6 +2,7 @@ import { Component, OnInit, AfterViewInit } from '@angular/core';
 import { Router } from '@angular/router';
 import { faChalkboard } from '@fortawesome/free-solid-svg-icons';
 import { GetDataService } from 'src/app/services/get-data.service';
+import { LoginService } from 'src/app/services/login.service';
 
 @Component({
   selector: 'header',
@@ -18,21 +19,23 @@ export class HeaderComponent implements OnInit {
   //Recuperar datos en localstorage de la sesion Login
   loginData = localStorage.getItem('session');
   dataLoginJ = JSON.parse(this.loginData || '{}');
-  messageLogin = this.dataLoginJ.message;
-  idUser: any;
   roleUser = this.dataLoginJ.rol;
+  idStudent = this.dataLoginJ.id_student;
+  idTeacher = this.dataLoginJ.id_teacher;
+  messageLogin = this.dataLoginJ.message;
   routerL: any;
   responseApi: any;
   nameUser: any;
 
   constructor(
     private lodadUser: GetDataService,
+    private login: LoginService,
     private router: Router
   ) { }
 
   logOut = () => {
     localStorage.clear();
-    this.messageLogin = null;
+    this.messageLogin = '';
     this.nameUser = '';
     this.responseApi = '';
     this.router.navigate(['/login']);
@@ -42,28 +45,40 @@ export class HeaderComponent implements OnInit {
     }, 0);
   };
 
-  ngOnInit() {
-
+  loginDataF = () => {
     /*Show name User Student in Header*/
     if (this.roleUser == 'Estudiante') {
-      this.idUser = this.dataLoginJ.id_student;
-      this.routerL = '/profile/' + this.idUser;
-      this.lodadUser.getProfile().subscribe((response) => {
+      this.routerL = '/profile/' + this.idStudent;
+      this.lodadUser.getProfile(this.idStudent).subscribe((response) => {
         this.responseApi = response;
+        console.log(this.responseApi);
         this.nameUser = this.responseApi.usuario.nombre;
         // console.log(this.nameUser);
         this.routerLogo = '/home';
       });
-    /*Show name User Teacher in Header*/
+      /*Show name User Teacher in Header*/
     } else if (this.roleUser == 'Profesor') {
-      this.idUser = this.dataLoginJ.id_teacher;
-      this.routerL = '/profile/' + this.idUser;
-      this.lodadUser.getProfileTeacher().subscribe((response) => {
+      this.idTeacher = this.dataLoginJ.id_teacher;
+      this.routerL = '/profile/' + this.idTeacher;
+      this.lodadUser.getProfileTeacher(this.idTeacher).subscribe((response) => {
         this.responseApi = response;
         this.nameUser = this.responseApi.usuario.nombre;
-        // console.log(this.nameUser);
         this.routerLogo = '/home';
       });
     }
+  }
+
+  ngOnInit() {
+
+    this.login.loginData$.subscribe((data) => {
+      this.dataLoginJ = data;
+      this.roleUser = this.dataLoginJ.rol;
+      this.idStudent = this.dataLoginJ.id_student;
+      this.idTeacher = this.dataLoginJ.id_teacher;
+      this.messageLogin = this.dataLoginJ.message;
+      this.loginDataF();
+    });
+
+    this.loginDataF();
   }
 }

@@ -86,7 +86,6 @@ export class HomeComponent implements OnInit {
       this.loadAsignature.getEstudentSubject()
         .subscribe(response => {
           this.responseApi = response;
-          // this.showTeacher(this.responseApi.profesor);
         });
 
       /*Show Profile User Teacher*/

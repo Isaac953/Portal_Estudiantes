@@ -27,7 +27,7 @@ export class LoginComponent implements OnInit {
   constructor(private service: LoginService, private router: Router) { }
 
   onSubmit() {
-    console.warn(this.loginForm.value);
+    //Haciendo login de estudiante
     if (this.loginForm.controls.rol.value == 'e') {
       this.role = 'Estudiante';
       this.service.sendData(this.loginForm.value).subscribe((response) => {
@@ -35,53 +35,26 @@ export class LoginComponent implements OnInit {
         localStorage.setItem('session', JSON.stringify(response));
         this.dataLogin = localStorage.getItem('session');
         this.dataLoginJ = JSON.parse(this.dataLogin);
-        console.log(this.dataLoginJ.message);
-        console.log(this.dataLoginJ.id_student);
-        console.log(this.dataLoginJ.rol);
-        this.router.navigate(['/home']);
-
         setTimeout(() => {
-          location.reload();
-        }, -100);
+          this.service.loginData$.emit(this.dataLoginJ);
+          this.router.navigate(['/home']);
+        }, 1000);
       })
 
+    //Haciendo login de profesor
     } else if (this.loginForm.controls.rol.value == 'p') {
       this.role = 'Profesor';
-
       this.service.sendDataTeacher(this.loginForm.value).subscribe((response) => {
         response.rol = this.role;
         localStorage.setItem('session', JSON.stringify(response));
         this.dataLogin = localStorage.getItem('session');
         this.dataLoginJ = JSON.parse(this.dataLogin);
-        console.log(this.dataLoginJ.message);
-        console.log(this.dataLoginJ.id_student);
-        console.log(this.dataLoginJ.rol);
-        this.router.navigate(['/home']);
-
         setTimeout(() => {
-          location.reload();
-        }, -100);
+          this.service.loginData$.emit(this.dataLoginJ);
+          this.router.navigate(['/home']);
+        }, 1000);
       })
     }
-    //  console.warn(this.loginForm.value);
-    //     this.service.sendData(this.loginForm.value).subscribe((response)=>{
-    //       // console.warn(response);
-    //       response.rol = 'Estudiante';
-    //       this.routeC = '/home';
-    //       localStorage.setItem('session', JSON.stringify(response));
-    //       this.dataLogin = localStorage.getItem('session');
-    //       this.dataLoginJ = JSON.parse(this.dataLogin);
-    //       console.log(this.dataLoginJ.message);
-    //       console.log(this.dataLoginJ.id_student);
-    //       console.log(this.dataLoginJ.rol);
-    //       this.loadLogin.messageLogin$.emit(this.dataLoginJ.message);
-    //       this.loadLogin.idUser$.emit(this.dataLoginJ.id_student);
-    //       this.router.navigate(['/home']);
-
-    //       setTimeout(() => {
-    //         location.reload();
-    //     }, -100);
-    //     })
   }
   ngOnInit() {
   }

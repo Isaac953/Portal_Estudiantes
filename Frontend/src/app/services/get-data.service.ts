@@ -19,8 +19,8 @@ export class GetDataService {
   idUser = this.dataLoginJ.id_student;
   idTeacher = this.dataLoginJ.id_teacher;
 
-  // public urlServer = 'http://localhost:8001'; //Servidor Django Docker
-  public urlServer = 'https://student-portal-fomas.herokuapp.com'; //Servidor Heroku
+  public urlServer = 'http://localhost:8001'; //Servidor Django Docker
+  // public urlServer = 'https://student-portal-fomas.herokuapp.com'; //Servidor Heroku
 
   // Variables para URLs APIs
   urlProfileStudent: any;
@@ -37,14 +37,14 @@ export class GetDataService {
   urlContentSubE: any;
 
   //API para obtener información del perfil de estudiante
-  getProfile() {
-    this.urlProfileStudent = this.urlServer + '/users/profile/student/' + this.idUser + '/?format=json'
+  getProfile(id:any) {
+    this.urlProfileStudent = this.urlServer + '/users/profile/student/' + id + '/?format=json'
     return this.httpClient.get(this.urlProfileStudent);
   }
 
   //API para obtener información del perfil de profesor
-  getProfileTeacher() {
-    this.urlProfileTeacher = this.urlServer + '/users/profile/teacher/' + this.idTeacher + '/?format=json';
+  getProfileTeacher(id:any) {
+    this.urlProfileTeacher = this.urlServer + '/users/profile/teacher/' + id + '/?format=json';
     return this.httpClient.get(this.urlProfileTeacher);
   }
 
