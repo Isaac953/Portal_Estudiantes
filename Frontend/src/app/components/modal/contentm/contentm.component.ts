@@ -19,6 +19,7 @@ export class ContentmComponent implements OnInit {
   responseApi: any;
   dataUpdate: any;
   @Input() idCont: any;
+  dialog = 'dialog-disabled';
 
   contentForm = new FormGroup({
     asignatura: new FormControl(''),
@@ -40,10 +41,10 @@ export class ContentmComponent implements OnInit {
     );
   }
 
-  defaultValue = () => {
+  defaultValue = (id:any) => {
     this.contentForm.setValue(
       {
-        asignatura: this.idSub,
+        asignatura: id,
         titulo: '',
         tipo_contenido: '',
         contenido: ''
@@ -57,14 +58,20 @@ export class ContentmComponent implements OnInit {
     }, 200);
     this.modalSwitch = 'disabled';
     this.typeCrud = '';
+    this.messageData = '';
+    this.dialog = "dialog-disabled";
 
     this.loadAsignature.getSubjectContent(id)
     .subscribe(response => {
       this.loadAsignature.idSubject$.emit(id);
-      this.defaultValue();
+      this.defaultValue(id);
     });
 
   };
+
+  changeClass = () => {
+    this.dialog = "dialog-enabled";
+  }
 
   /* Crud Actions */
   onSubmit = () => {
@@ -114,18 +121,22 @@ export class ContentmComponent implements OnInit {
 
   ngOnInit() {
 
+    this.defaultValue(this.idSub);
+
     this.modalService.typeCrud$.subscribe((crud) => {
       this.typeCrud = crud
 
+      console.log(this.idSub);
+
       if(this.typeCrud == "Insertar"){
-        this.defaultValue();
+        this.defaultValue(this.idSub);
       }
     })
 
     this.modalService.modalData$.subscribe((data) => {
       this.modalDataT = data;
       console.log(this.modalDataT);
-          this.defaultValue();
+          this.defaultValue(this.idSub);
           this.setValueD();
     })
   }

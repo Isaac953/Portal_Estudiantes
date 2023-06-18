@@ -33,11 +33,6 @@ export class ModalComponent implements OnInit {
     }, 200);
   };
 
-  /* Crud Actions */
-  onSubmit() {
-
-  }
-
   ngOnInit() {
     this.modalData = [];
 

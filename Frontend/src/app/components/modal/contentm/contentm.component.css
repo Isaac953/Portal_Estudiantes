@@ -1,4 +1,15 @@
 /* Start Media Queries Screens 1024px */
+.info-title {
+  position: relative;
+  font-size: 34px;
+
+  margin-bottom: 12px;
+
+  text-align: center;
+
+  color: black;
+}
+
 .content-input {
   margin: 8px 0px;
   border: 1px solid #ccc;
@@ -50,10 +61,32 @@ textarea {
   padding: 8px;
   width: 35vw;
 }
+
+.dialog-disabled{
+  display: none;
+}
+
+.dialog-enabled{
+  display: inline;
+}
+
+.btn-dialog{
+  background-color: #1F8A70;
+  width: 40px;
+  text-align: center;
+}
+
+.btn-dialog:hover{
+  background-color: #2db492;
+}
 /* End Media Queries Screens 1024px */
 
 /* Start Media Queries Screens 768px and 1023px */
 @media screen and (min-width: 768px) and (max-width: 1023px) {
+  .info-title {
+    font-size: 32px;
+  }
+
   .content-input {
     width: 40vw;
   }
@@ -70,6 +103,10 @@ textarea {
 
 /* Start Media Queries Screens 767px */
 @media screen and (max-width: 767px) {
+  .info-title {
+    font-size: 30px;
+  }
+
   .content-input {
     width: 55vw;
   }

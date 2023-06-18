@@ -1,4 +1,4 @@
-<h1 class="text-black fw-bold">{{titleM}}</h1>
+<h1 class="info-title text-black fw-bold">{{titleM}}</h1>
 
 <form [formGroup]="contentForm" (ngSubmit)="onSubmit()">
   <div class="d-flex flex-column align-items-center" class="id_content">
@@ -38,9 +38,21 @@
   </div>
 
   <div class="d-flex flex-column align-items-center" *ngIf="typeCrud == 'Eliminar'">
-    <button class="card-btn btn-delete fw-bold text-white" type="submit" [disabled]="!contentForm.valid">
+    <button class="card-btn btn-delete fw-bold text-white" type="button" (click)="changeClass()">
       Eliminar
     </button>
+
+    <div [ngClass]="dialog">
+      <span>¿Está seguro que desea eliminar el registro?</span>
+      <div class="d-flex flex-row justify-content-center">
+        <button class="card-btn btn-dialog fw-bold text-white" type="submit">
+          Si
+        </button>
+        <button class="card-btn btn-dialog fw-bold text-white" type="button" (click)="closeModal(this.idSub)">
+          No
+        </button>
+      </div>
+    </div>
     <span class="message">{{messageData}}</span>
   </div>
 
