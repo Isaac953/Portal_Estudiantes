@@ -53,8 +53,8 @@ h2{
 }
 /* End Media Queries Screens 1023px */
 
-/* Start Media Queries Screens 767px */
-@media screen and (max-width: 767px) {
+/* Start Media Queries Screens 730px */
+@media screen and (max-width: 730px) {
   .asignature-card{
     height: 130px;
   }
@@ -68,4 +68,4 @@ h2{
     width: 65px;
   }
 }
-/* End Media Queries Screens 767px */
+/* End Media Queries Screens 730px */

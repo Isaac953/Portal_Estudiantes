@@ -35,14 +35,6 @@ export class HomeComponent implements OnInit {
     window.scrollTo(0, 0);
   };
 
-  loadTeacherName = (id:any) => {
-    this.loadAsignature.getTeacherName(id)
-    .subscribe(response => {
-      this.responseApi2 = response;
-      console.log(this.responseApi2);
-    });
-  }
-
   showSubjects = () => {
     this.asignatureItems = [];
     this.teacherData = [];
@@ -52,6 +44,7 @@ export class HomeComponent implements OnInit {
       this.loadAsignature.getEstudentSubject(this.idStudent)
         .subscribe(response => {
           this.responseApi = response;
+          console.log(this.responseApi);
         });
 
       /*Show Subjects Teacher*/

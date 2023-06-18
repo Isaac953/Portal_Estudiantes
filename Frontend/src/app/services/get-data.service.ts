@@ -10,8 +10,8 @@ export class GetDataService {
 
   constructor(private httpClient: HttpClient) { }
 
-  public urlServer = 'http://localhost:8001'; //Servidor Django Docker
-  // public urlServer = 'https://student-portal-fomas.herokuapp.com'; //Servidor Heroku
+  // public urlServer = 'http://localhost:8001'; //Servidor Django Docker
+  public urlServer = 'https://student-portal-fomas.herokuapp.com'; //Servidor Heroku
 
   // Variables para URLs APIs
   urlProfileStudent: any;
@@ -28,6 +28,7 @@ export class GetDataService {
   urlContentSubE: any;
 
   idSubject$ = new EventEmitter<string>();
+  idTeacher$ = new EventEmitter<string>();
 
   //API para obtener información del perfil de estudiante
   getProfile(id:any) {

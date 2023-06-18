@@ -61,8 +61,8 @@
 
 /* End Media Queries Screens 1024px */
 
-/* Start Media Queries Screens 768px and 1023px */
-@media screen and (min-width: 768px) and (max-width: 1023px) {
+/* Start Media Queries Screens 731px and 1023px */
+@media screen and (min-width: 731px) and (max-width: 1023px) {
   .modal__container {
     width: 90vw;
   }
@@ -78,8 +78,8 @@
 }
 /* End Media Queries Screens 768px and 1023px */
 
-/* Start Media Queries Screens 767px */
-@media screen and (max-width: 767px) {
+/* Start Media Queries Screens 730px */
+@media screen and (max-width: 730px) {
   .modal__container {
     width: 95vw;
   }
@@ -93,4 +93,4 @@
     width: 70vw;
   }
 }
-/* End Media Queries Screens 767px */
+/* End Media Queries Screens 730px */

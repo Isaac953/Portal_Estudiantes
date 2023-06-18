@@ -3,10 +3,7 @@ import { RouterModule, Routes } from '@angular/router';
 import { MainComponent } from './components/main/main.component';
 import { ProfileComponent } from './components/main/profile/profile.component';
 import { LoginComponent } from './components/main/login/login.component';
-import { TestComponent } from './components/main/test/test.component';
-import { PythontestComponent } from './components/main/pythontest/pythontest.component';
 import { HomeComponent } from './components/main/home/home.component';
-import { PythondbComponent } from './components/main/pythondb/pythondb.component';
 import { TutorialsComponent } from './components/main/tutorials/tutorials.component';
 import { ContentComponent } from './components/main/content/content.component';
 import { AboutComponent } from './components/main/about/about.component';
@@ -18,10 +15,7 @@ const routes: Routes = [
   { path: 'content/:asignature/:idAsignature', component: ContentComponent },
   { path: 'about', component: AboutComponent },
   { path: 'login', component: LoginComponent },
-  { path: 'tutorials/:asignature/:idAsignature', component: TutorialsComponent },
-  { path: 'test', component: TestComponent },
-  { path: 'pythontest', component: PythontestComponent },
-  { path: 'pythondb', component: PythondbComponent },
+  { path: 'tutorials/:asignature/:idAsignature/:idTeacher', component: TutorialsComponent },
   { path: '', redirectTo: 'login', pathMatch: 'full' },
 ];
 
@@ -35,6 +29,4 @@ export const routingComponents = [
   MainComponent,
   ProfileComponent,
   LoginComponent,
-  TestComponent,
-  PythontestComponent,
 ];

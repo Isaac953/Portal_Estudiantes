@@ -20,6 +20,8 @@ export class TutorialsComponent implements OnInit {
   responseApi2: any;
   activitiesT: any;
   nameC = "Tutorial";
+  idTeacher: any;
+  dataTeacher: any;
 
   // contentAsignatures: any[] = [
   //   {
@@ -71,11 +73,22 @@ export class TutorialsComponent implements OnInit {
   ngOnInit() {
     this.titleAsignature = this._route.snapshot.paramMap.get('asignature');
     this.idAsignature = this._route.snapshot.paramMap.get('idAsignature');
+    this.idTeacher = this._route.snapshot.paramMap.get('idTeacher');
+
+    this.dataTeacher = [];
 
     this.loadAsignature.getSubjectContent(this.idAsignature)
       .subscribe(response => {
         this.responseApi = response;
         this.contentAsignatures = this.responseApi;
+        console.log(this.responseApi)
+      });
+
+      this.loadAsignature.getTeacherName(this.idTeacher)
+      .subscribe(response => {
+        this.responseApi = response;
+        this.dataTeacher.push('Profesor: ' + this.responseApi.usuario.nombre + ' ' + this.responseApi.usuario.apellido);
+        console.log(this.responseApi)
       });
   }
 }
