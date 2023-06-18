@@ -29,6 +29,10 @@ h2{
   background-color: #4c6e99;
 }
 
+.asignature-icon > img{
+  width: 75px;
+}
+
 /* End Media Queries Screens 1024px */
 
 /* Start Media Queries Screens 1023px */
@@ -40,6 +44,10 @@ h2{
   .asignature-icon{
     font-size: 52px;
     width: 170px;
+  }
+
+  .asignature-icon > img{
+    width: 70px;
   }
 
 }
@@ -54,6 +62,10 @@ h2{
   .asignature-icon{
     font-size: 49px;
     width: 160px
+  }
+
+  .asignature-icon > img{
+    width: 65px;
   }
 }
 /* End Media Queries Screens 767px */

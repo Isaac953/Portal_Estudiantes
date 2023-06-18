@@ -26,7 +26,7 @@ export class LoginComponent implements OnInit {
 
   constructor(private service: LoginService, private router: Router) { }
 
-  onSubmit() {
+  onSubmit = () => {
     //Haciendo login de estudiante
     if (this.loginForm.controls.rol.value == 'e') {
       this.role = 'Estudiante';

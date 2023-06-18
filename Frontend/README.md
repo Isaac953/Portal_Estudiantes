@@ -14,7 +14,7 @@ Parte Frontend del proyecto para acceso a la educación del Hackaton creado en A
 
 5- Instalar iconos: ng add @fortawesome/angular-fontawesome y ver el siguiente sitio https://www.npmjs.com/package/@fortawesome/angular-fontawesome
 
-## Frontend de Portal de Estudiantes (June 01-11)
+## Frontend de Portal de Estudiantes (June 01-13)
 
 - HT-01: Realizar la creción del proyecto con el framework Frontend Angular y hacer el diseño inicial del Layout.
 - HT-02: Completar diseño inicial de Layout.
@@ -44,9 +44,13 @@ Parte Frontend del proyecto para acceso a la educación del Hackaton creado en A
 - HT-13.1: Arreglando error al visualizar el contenido.
 - HT-13.2: Agregando select de tipo de contenido enlace y lectura.
 - HT-13.3: Cambios finales en Frontend.
-- HT-13.4: Ajustes a código de Login.
-- HT-13.5: Ajustes de carga de información en home y header component.
-- HT-13.6: Rework de código de modal para ver contenido.
-- HT-13.7: Rework de código de modal para insertar contenido.
-- HT-13.8: Rework de código de modal para ver, actualizar y eliminar contenido.
-- HT-13.9: Agregar mensaje de confirmación a la opción eliminar registro.
+
+## Pequeños ajustes de Portal de Estudiantes (June 16)
+
+- AP-01: Ajustes a código de Login.
+- AP-01-1: Ajustes de carga de información en home y header component.
+- AP-01.2: Rework de código de modal para ver contenido.
+- AP-01.3: Rework de código de modal para insertar contenido.
+- AP-01.4: Rework de código de modal para ver, actualizar y eliminar contenido.
+- AP-01.5: Agregar mensaje de confirmación a la opción eliminar registro.
+- AP-01.6: Cambiando icoco de las tarjetas de asignatura.
