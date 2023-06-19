@@ -1,6 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { faCalculator, faMicroscope, faEarthAmericas, faBook, faFileLines, faPenToSquare } from '@fortawesome/free-solid-svg-icons';
-import { ActivatedRoute } from '@angular/router';
+import { ActivatedRoute, Router } from '@angular/router';
 import { GetDataService } from 'src/app/services/get-data.service';
 import { LoginService } from 'src/app/services/login.service';
 
@@ -56,7 +56,7 @@ export class HomeComponent implements OnInit {
     }
   }
 
-  constructor(private _route: ActivatedRoute, private loadAsignature: GetDataService, private login: LoginService
+  constructor(private _route: ActivatedRoute, private loadAsignature: GetDataService, private login: LoginService, private router: Router
   ) { }
 
   ngOnInit() {
@@ -69,5 +69,6 @@ export class HomeComponent implements OnInit {
     });
 
     this.showSubjects();
+
   }
 }

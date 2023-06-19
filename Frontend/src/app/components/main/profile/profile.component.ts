@@ -1,5 +1,5 @@
 import { Component } from '@angular/core';
-import { ActivatedRoute } from '@angular/router';
+import { ActivatedRoute, Router } from '@angular/router';
 import { GetDataService } from 'src/app/services/get-data.service';
 import { LoginService } from 'src/app/services/login.service';
 
@@ -49,7 +49,7 @@ export class ProfileComponent {
     }
   }
 
-  constructor(private _route: ActivatedRoute, private lodadUser: GetDataService, private login: LoginService) { }
+  constructor(private _route: ActivatedRoute, private lodadUser: GetDataService, private login: LoginService, private router: Router) { }
 
   ngOnInit() {
     this.login.loginData$.subscribe((data) => {

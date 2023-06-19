@@ -54,9 +54,9 @@ export class TutorialsComponent implements OnInit {
     this.modalService.modalType$.emit(this.nameC);
     window.scrollTo(0, 0);
 
-    console.log(idCont);
+    // console.log(idCont);
 
-    console.log(this.dataAsignature);
+    // console.log(this.dataAsignature);
 
     this.loadAsignature.getActivityContent(idCont)
       .subscribe(response => {
@@ -81,14 +81,14 @@ export class TutorialsComponent implements OnInit {
       .subscribe(response => {
         this.responseApi = response;
         this.contentAsignatures = this.responseApi;
-        console.log(this.responseApi)
+        // console.log(this.responseApi)
       });
 
       this.loadAsignature.getTeacherName(this.idTeacher)
       .subscribe(response => {
         this.responseApi = response;
         this.dataTeacher.push('Profesor: ' + this.responseApi.usuario.nombre + ' ' + this.responseApi.usuario.apellido);
-        console.log(this.responseApi)
+        // console.log(this.responseApi)
       });
   }
 }
