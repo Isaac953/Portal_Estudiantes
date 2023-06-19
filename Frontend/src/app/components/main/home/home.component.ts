@@ -1,7 +1,8 @@
 import { Component, OnInit } from '@angular/core';
 import { faCalculator, faMicroscope, faEarthAmericas, faBook, faFileLines, faPenToSquare } from '@fortawesome/free-solid-svg-icons';
-import { ActivatedRoute } from '@angular/router';
+import { ActivatedRoute, Router } from '@angular/router';
 import { GetDataService } from 'src/app/services/get-data.service';
+import { LoginService } from 'src/app/services/login.service';
 
 @Component({
   selector: 'app-home',
@@ -26,77 +27,48 @@ export class HomeComponent implements OnInit {
   loginData = localStorage.getItem('session');
   dataLoginJ = JSON.parse(this.loginData || '{}');
   roleUser = this.dataLoginJ.rol;
-  idUser: any;
-    //Asignar el id de usuario a la ruta
-
-  // asignatureItems: any[] = [
-  //   {
-  //     id: 0,
-  //     title: 'Matemáticas',
-  //     icon: faCalculator,
-  //     button: this.btnName,
-  //   },
-  //   {
-  //     id: 1,
-  //     title: 'Ciencias',
-  //     icon: faMicroscope,
-  //     button: this.btnName,
-  //   },
-  //   {
-  //     id: 2,
-  //     title: 'Sociales',
-  //     icon: faEarthAmericas,
-  //     button: this.btnName,
-  //   },
-  //   {
-  //     id: 3,
-  //     title: 'Lenguaje',
-  //     icon: faBook,
-  //     button: this.btnName,
-  //   },
-  // ];
+  idStudent = this.dataLoginJ.id_student;
+  idTeacher = this.dataLoginJ.id_teacher;
 
   sendAsignature = (id: any) => {
     this.idAsignatature = id;
     window.scrollTo(0, 0);
-    // window.scrollTo(0, 0);
-    // console.log(this.nameAsignature);
-    // console.log(this.idAsignatature);
   };
 
-  showTeacher = (id: any) => {
-    this.teacherId = id;
-    this.loadAsignature.getTeacherName(this.teacherId)
+  showSubjects = () => {
+    this.asignatureItems = [];
+    this.teacherData = [];
+    this.teacherName = [];
+    /*Show Subjects Student*/
+    if (this.roleUser == 'Estudiante') {
+      this.loadAsignature.getEstudentSubject(this.idStudent)
         .subscribe(response => {
           this.responseApi = response;
-
           console.log(this.responseApi);
-
         });
+
+      /*Show Subjects Teacher*/
+    } else if (this.roleUser == 'Profesor') {
+      this.loadAsignature.getTeacherSubject(this.idTeacher)
+        .subscribe(response => {
+          this.responseApi = response;
+        });
+    }
   }
 
-  constructor(private _route: ActivatedRoute, private loadAsignature: GetDataService
+  constructor(private _route: ActivatedRoute, private loadAsignature: GetDataService, private login: LoginService, private router: Router
   ) { }
 
   ngOnInit() {
-    this.asignatureItems = [];
-    this.teacherData = [];    /*Show Profile User Student*/
-    this.teacherName = [];
-    if (this.roleUser == 'Estudiante') {
-      this.loadAsignature.getEstudentSubject()
-        .subscribe(response => {
-          this.responseApi = response;
-          // this.showTeacher(this.responseApi.profesor);
-        });
+    this.login.loginData$.subscribe((data) => {
+      this.dataLoginJ = data;
+      this.idStudent = this.dataLoginJ.id_student;
+      this.idTeacher = this.dataLoginJ.id_teacher;
+      this.roleUser = this.dataLoginJ.rol;
+      this.showSubjects();
+    });
 
-      /*Show Profile User Teacher*/
-    } else if (this.roleUser == 'Profesor') {
-      this.loadAsignature.getTeacherSubject()
-        .subscribe(response => {
-          this.responseApi = response;
-          this.asignatureItems = this.responseApi;
-          console.log(this.asignatureItems);
-        });
-    }
+    this.showSubjects();
+
   }
 }

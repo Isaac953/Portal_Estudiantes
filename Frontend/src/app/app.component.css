@@ -16,7 +16,6 @@ footer {
   height: 70px;
 }
 
-
 .modal {
   position: absolute;
   top: 0;
@@ -83,8 +82,8 @@ footer {
 }
 /* End Media Queries Screens 1023px */
 
-/* Start Media Queries Screens 767px */
-@media screen and (max-width: 767px) {
+/* Start Media Queries Screens 730px */
+@media screen and (max-width: 730px) {
   header {
     height: 60px;
   }
@@ -101,5 +100,5 @@ footer {
     height: 139.9vh;
   }
 }
-/* End Media Queries Screens 767px */
+/* End Media Queries Screens 730px */
 

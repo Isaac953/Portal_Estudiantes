@@ -13,7 +13,7 @@ export class ContentComponent implements OnInit {
   titleAsignature: any;
   idAsignature: any;
   responseApi: any;
-  asignatureArray:any;
+  asignatureArray: any;
 
   /*Font Awesome Icons*/
   eye = faEye;
@@ -28,104 +28,119 @@ export class ContentComponent implements OnInit {
   contents: any;
   typeCrud: any;
 
-  constructor(private _route:ActivatedRoute, private loadAsignature: GetDataService, private modalService: ModalService
-    ) {}
+  constructor(private _route: ActivatedRoute, private loadAsignature: GetDataService, private modalService: ModalService
+  ) { }
 
-    addContent = () => {
-      this.typeCrud = "Insertar";
+  loadContent = () => {
+    this.titleAsignature = this._route.snapshot.paramMap.get('asignature');
+    this.idAsignature = this._route.snapshot.paramMap.get('idAsignature');
 
-      this.modalService.idAsignature$.emit(this.idAsignature);
-      this.modalSwitch = 'enabled';
-      this.modalService.modal$.emit(this.modalSwitch);
-      // this.modalService.modalData$.emit(this.dataContent);
-      this.modalService.modalTitle$.emit(this.titleAsignature);
-      this.modalService.idAsignature$.emit(this.idAsignature);
-      this.modalService.modalType$.emit(this.nameC);
-      this.modalService.typeCrud$.emit(this.typeCrud);
-      window.scrollTo(0, 0);
-    }
+    this.asignatureArray = [];
 
-    viewContent = (idA:any) => {
-      this.modalSwitch = 'enabled';
-      this.idContent = idA;
-      this.modalService.modal$.emit(this.modalSwitch);
-      // this.modalService.modalData$.emit(this.dataContent);
-      this.modalService.modalTitle$.emit(this.titleAsignature);
-      this.modalService.idAsignature$.emit(this.idAsignature);
-      this.modalService.modalType$.emit(this.nameC);
-      // this.modalService.modalTitle$.emit(this.idContent);
-      window.scrollTo(0, 0);
+    this.loadAsignature.idSubject$.subscribe((idsub) => {
+      this.idAsignature = idsub;
 
-      this.loadAsignature.getCrudContent(this.idContent)
-      .subscribe(response => {
-        this.responseApi = response;
-        this.contents = this.responseApi;
-        this.modalService.modalData$.emit(this.contents);
-        console.log(this.contents);
-      });
-    };
+      this.loadAsignature.getSubjectContent(this.idAsignature)
+        .subscribe(response => {
+          this.responseApi = response;
+          this.asignatureArray = this.responseApi;
 
-    updateContent = (idA:any) => {
-      this.typeCrud = "Actualizar";
-
-      this.modalSwitch = 'enabled';
-      this.idContent = idA;
-      this.modalService.modal$.emit(this.modalSwitch);
-      this.modalService.modalTitle$.emit(this.titleAsignature);
-      this.modalService.idAsignature$.emit(this.idAsignature);
-      this.modalService.modalType$.emit(this.nameC);
-      this.modalService.idContent$.emit(this.idContent);
-      window.scrollTo(0, 0);
-
-      this.loadAsignature.getCrudContent(this.idContent)
-      .subscribe(response => {
-        this.responseApi = response;
-        this.contents = this.responseApi;
-        this.modalService.modalData$.emit(this.contents);
-        this.modalService.typeCrud$.emit(this.typeCrud);
-        console.log(this.contents);
-      });
-    };
-
-    deleteContent = (idA:any) => {
-      this.typeCrud = "Eliminar";
-
-      this.modalSwitch = 'enabled';
-      this.idContent = idA;
-      this.modalService.modal$.emit(this.modalSwitch);
-      this.modalService.modalTitle$.emit(this.titleAsignature);
-      this.modalService.idAsignature$.emit(this.idAsignature);
-      this.modalService.modalType$.emit(this.nameC);
-      this.modalService.idContent$.emit(this.idContent);
-      window.scrollTo(0, 0);
-
-      this.loadAsignature.getCrudContent(this.idContent)
-      .subscribe(response => {
-        this.responseApi = response;
-        this.contents = this.responseApi;
-        this.modalService.modalData$.emit(this.contents);
-        this.modalService.typeCrud$.emit(this.typeCrud);
-        console.log(this.contents);
-      });
-    };
-
-
-
-    ngOnInit() {
-      this.titleAsignature = this._route.snapshot.paramMap.get('asignature');
-      this.idAsignature = this._route.snapshot.paramMap.get('idAsignature');
-
-      this.asignatureArray = [];
-
-
-    this.loadAsignature.getSubjectContent(this.idAsignature)
-    .subscribe(response => {
-      this.responseApi = response;
-      this.asignatureArray = this.responseApi;
-      // this.contentAsignatures = this.responseApi;
-      console.log(this.asignatureArray);
-
+        });
     });
 
-    }
+    this.loadAsignature.getSubjectContent(this.idAsignature)
+      .subscribe(response => {
+        this.responseApi = response;
+        this.asignatureArray = this.responseApi;
+
+      });
+
+  }
+
+  addContent = () => {
+    this.typeCrud = "Insertar";
+
+    this.modalService.idAsignature$.emit(this.idAsignature);
+    this.modalSwitch = 'enabled';
+    this.modalService.modal$.emit(this.modalSwitch);
+    // this.modalService.modalData$.emit(this.dataContent);
+    this.modalService.modalTitle$.emit(this.titleAsignature);
+    // this.modalService.idAsignature$.emit(this.idAsignature);
+    this.modalService.modalType$.emit(this.nameC);
+    this.modalService.typeCrud$.emit(this.typeCrud);
+    window.scrollTo(0, 0);
+  }
+
+  viewContent = (idA: any) => {
+    this.typeCrud = "Ver";
+
+    this.modalSwitch = 'enabled';
+    this.idContent = idA;
+    this.modalService.modal$.emit(this.modalSwitch);
+    this.modalService.modalTitle$.emit(this.titleAsignature);
+    this.modalService.idAsignature$.emit(this.idAsignature);
+    this.modalService.modalType$.emit(this.nameC);
+    this.modalService.typeCrud$.emit(this.typeCrud);
+    window.scrollTo(0, 0);
+
+    this.loadAsignature.getCrudContent(this.idContent)
+      .subscribe(response => {
+        this.responseApi = response;
+        this.contents = this.responseApi;
+        this.modalService.modalData$.emit(this.contents);
+        // this.modalService.typeCrud$.emit(this.typeCrud);
+        console.log(this.contents);
+      });
+  };
+
+  updateContent = (idA: any) => {
+    this.typeCrud = "Actualizar";
+
+    this.modalSwitch = 'enabled';
+    this.idContent = idA;
+    this.modalService.modal$.emit(this.modalSwitch);
+    this.modalService.modalTitle$.emit(this.titleAsignature);
+    this.modalService.idAsignature$.emit(this.idAsignature);
+    this.modalService.modalType$.emit(this.nameC);
+    this.modalService.idContent$.emit(this.idContent);
+    window.scrollTo(0, 0);
+
+    this.loadAsignature.getCrudContent(this.idContent)
+      .subscribe(response => {
+        this.responseApi = response;
+        this.contents = this.responseApi;
+        this.modalService.modalData$.emit(this.contents);
+        this.modalService.typeCrud$.emit(this.typeCrud);
+        console.log(this.contents);
+      });
+  };
+
+  deleteContent = (idA: any) => {
+    this.typeCrud = "Eliminar";
+
+    this.modalSwitch = 'enabled';
+    this.idContent = idA;
+    this.modalService.modal$.emit(this.modalSwitch);
+    this.modalService.modalTitle$.emit(this.titleAsignature);
+    this.modalService.idAsignature$.emit(this.idAsignature);
+    this.modalService.modalType$.emit(this.nameC);
+    this.modalService.idContent$.emit(this.idContent);
+    this.modalService.typeCrud$.emit(this.typeCrud);
+    window.scrollTo(0, 0);
+
+    this.loadAsignature.getCrudContent(this.idContent)
+      .subscribe(response => {
+        this.responseApi = response;
+        this.contents = this.responseApi;
+        this.modalService.modalData$.emit(this.contents);
+        this.modalService.typeCrud$.emit(this.typeCrud);
+        // console.log(this.contents);
+      });
+  };
+
+
+
+  ngOnInit() {
+this.loadContent();
+  }
 }
