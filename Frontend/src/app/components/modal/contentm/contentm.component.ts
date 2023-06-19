@@ -92,7 +92,7 @@ export class ContentmComponent implements OnInit {
       this.dataUpdate.titulo = this.contentForm.controls.titulo.value;
       this.dataUpdate.tipo_contenido = this.contentForm.controls.tipo_contenido.value;
       this.dataUpdate.contenido = this.contentForm.controls.contenido.value;
-      console.log(this.dataUpdate);
+      // console.log(this.dataUpdate);
 
       this.loadAsignature.updateContent(this.dataUpdate, this.idCont).subscribe((response) => {
         this.messageData = "Registro actualizado con exito";
@@ -108,7 +108,7 @@ export class ContentmComponent implements OnInit {
       // this.dataUpdate.titulo = this.contentForm.controls.titulo.value;
       // this.dataUpdate.tipo_contenido = this.contentForm.controls.tipo_contenido.value;
       // this.dataUpdate.contenido = this.contentForm.controls.contenido.value;
-      console.log(this.dataUpdate);
+      // console.log(this.dataUpdate);
 
       this.loadAsignature.deleteContent(this.dataUpdate, this.idCont).subscribe((response) => {
         this.messageData = "Registro eliminado";
@@ -126,7 +126,7 @@ export class ContentmComponent implements OnInit {
     this.modalService.typeCrud$.subscribe((crud) => {
       this.typeCrud = crud
 
-      console.log(this.idSub);
+      // console.log(this.idSub);
 
       if(this.typeCrud == "Insertar"){
         this.defaultValue(this.idSub);
@@ -135,7 +135,7 @@ export class ContentmComponent implements OnInit {
 
     this.modalService.modalData$.subscribe((data) => {
       this.modalDataT = data;
-      console.log(this.modalDataT);
+      // console.log(this.modalDataT);
           this.defaultValue(this.idSub);
           this.setValueD();
     })

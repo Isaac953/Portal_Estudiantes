@@ -87,7 +87,7 @@ export class TutorialsComponent implements OnInit {
       this.loadAsignature.getTeacherName(this.idTeacher)
       .subscribe(response => {
         this.responseApi = response;
-        this.dataTeacher.push('Profesor: ' + this.responseApi.usuario.nombre + ' ' + this.responseApi.usuario.apellido);
+        this.dataTeacher.push('Profesor - ' + this.responseApi.usuario.nombre + ' ' + this.responseApi.usuario.apellido);
         // console.log(this.responseApi)
       });
   }

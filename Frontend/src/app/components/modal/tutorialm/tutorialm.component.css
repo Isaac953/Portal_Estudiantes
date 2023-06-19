@@ -10,34 +10,35 @@
   color: black;
 }
 
-.class-item {
+.item-activity {
   box-shadow: var(--shadow-card);
-  border-radius: 10px;
-  margin: 12px 0px;
-  background-color: #27374d;
-  width: 35vw;
-}
-
-.class-item a {
-  width: 100%;
-  text-align: center;
-  cursor: pointer;
-}
-
-.item-info {
-  padding: 12px 10px;
-  width: 100%;
-}
-
-.info-icon {
-  margin-right: 5px;
-}
-
-.view {
-  width: 45vw;
-  /* height: 30vh; */
-  border: 2px solid #0c0077;
   border-radius: 8px;
+  margin: 12px 0px;
+  background-color: #2f74d0;
+  width: 45vw;
+  border: 2px solid #0c0077;
+  overflow-x: hidden;
+}
+
+.item-activity span {
+  width: inherit;
+}
+
+.item-activity a{
+  cursor: pointer;
+  text-decoration: none;
+  color: #F86F03;
+  text-align: justify;
+  font-weight: bold;
+  margin: 0px 10px;
+  font-size: 16px;
+}
+
+.item-reading{
+  font-size: 16px;
+  text-align: justify;
+  color: white;
+  margin: 0px 10px;
 }
 
 /* End Media Queries Screens 1024px */
@@ -48,8 +49,16 @@
     font-size: 32px;
   }
 
-  .view {
+  .item-activity {
     width: 55vw;
+  }
+
+  .item-activity a{
+    font-size: 15px;
+  }
+
+  .item-reading{
+    font-size: 15px;
   }
 }
 /* End Media Queries Screens 731px and 1023px */
@@ -60,8 +69,16 @@
     font-size: 30px;
   }
 
-  .view {
+  .item-activity {
     width: 70vw;
+  }
+
+  .item-activity a{
+    font-size: 14px;
+  }
+
+  .item-reading{
+    font-size: 14px;
   }
 }
 /* End Media Queries Screens 730px */

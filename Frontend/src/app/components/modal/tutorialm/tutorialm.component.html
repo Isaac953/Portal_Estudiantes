@@ -1,12 +1,18 @@
 <h1 class="info-title text-black fw-bold">{{modalDataT.titulo}}</h1>
 
-<section class="class-item d-flex flex-row justify-content-between">
-  <a class="text-white text-decoration-none fw-bold">
-    <div class="item-info">
-      <fa-icon class="info-icon" [icon]="faPlay"></fa-icon>
-      <span>{{modalDataT.tipo_contenido}}</span>
-    </div>
-  </a>
+<section class="item-activity d-flex flex-column justify-content-between align-items-center"
+  *ngIf="modalDataT.tipo_contenido == 'lectura'">
+  <h4 class="fw-bold text-white">Lectura</h4>
+  <span>
+    <p class="item-reading">{{modalDataT.contenido}}
+    </p>
+  </span>
 </section>
 
-<span class="view">{{modalDataT.contenido}}</span>
+<section class="item-activity d-flex flex-column justify-content-between align-items-center"
+  *ngIf="modalDataT.tipo_contenido == 'enlace'">
+  <h4 class="fw-bold text-white">Enlace</h4>
+  <span>
+    <a href="{{modalDataT.contenido}}" target="_blank">{{modalDataT.contenido}}</a>
+  </span>
+</section>
