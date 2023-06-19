@@ -1,0 +1,14 @@
+<div class="modal__container d-flex flex-column align-items-center justify-content-start" [ngClass]="modalSwitch">
+  <button class="modal__container--btn" (click)="closeModal()">
+    <fa-icon [icon]="faXmark"></fa-icon>
+  </button>
+
+  <section *ngIf="nameOperation == 'Tutorial'" class="modal__container--info">
+    <tutorialm [modalDataT]="modalData" class="d-flex flex-column align-items-center"></tutorialm>
+  </section>
+
+  <section *ngIf="nameOperation == 'Crud'" class="modal__container--info">
+    <contentm [modalDataT]="modalData" [typeCrud]="typeCrud" [titleM]="modalTitle" [idSub]="idAsignature" [idCont]="idContent" class="d-flex flex-column align-items-center"></contentm>
+  </section>
+
+</div>

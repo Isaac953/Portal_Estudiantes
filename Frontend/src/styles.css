@@ -28,7 +28,7 @@ body {
 
 .btn-reg {
   width: fit-content;
-  margin: 0px 0px 10px 0px;
+  margin-left: 0px;
   background-color: #27374d;
 }
 
@@ -69,16 +69,20 @@ body {
     margin: 0px 5px;
     font-size: 14px;
   }
+
+  .btn-reg {
+    margin: 10px 0px;
+  }
 }
 
 /* End Media Queries Screens 1023px */
 
-/* Start Media Queries Screens 767px */
-@media screen and (max-width: 767px) {
+/* Start Media Queries Screens 730px */
+@media screen and (max-width: 730px) {
   .card-btn {
     padding: 4px 7px;
     margin: 0px 3px;
     font-size: 12px;
   }
 }
-/* End Media Queries Screens 767px */
+/* End Media Queries Screens 730px */

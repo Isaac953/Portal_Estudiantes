@@ -84,8 +84,8 @@
 }
 /* End Media Queries Screens 1023px */
 
-/* Start Media Queries Screens 767px */
-@media screen and (max-width: 767px) {
+/* Start Media Queries Screens 730px */
+@media screen and (max-width: 730px) {
   .logo{
     font-size: 28px;
   }
@@ -102,5 +102,5 @@
     min-width: 150px;
   }
 }
-/* End Media Queries Screens 767px */
+/* End Media Queries Screens 730px */
 

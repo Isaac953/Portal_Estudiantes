@@ -1,18 +1,18 @@
 import { ComponentFixture, TestBed } from '@angular/core/testing';
 
-import { PythontestComponent } from './pythontest.component';
+import { ContentmComponent } from './contentm.component';
 
-describe('PythontestComponent', () => {
-  let component: PythontestComponent;
-  let fixture: ComponentFixture<PythontestComponent>;
+describe('ContentmComponent', () => {
+  let component: ContentmComponent;
+  let fixture: ComponentFixture<ContentmComponent>;
 
   beforeEach(async () => {
     await TestBed.configureTestingModule({
-      declarations: [ PythontestComponent ]
+      declarations: [ ContentmComponent ]
     })
     .compileComponents();
 
-    fixture = TestBed.createComponent(PythontestComponent);
+    fixture = TestBed.createComponent(ContentmComponent);
     component = fixture.componentInstance;
     fixture.detectChanges();
   });

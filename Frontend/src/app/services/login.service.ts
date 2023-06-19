@@ -1,4 +1,4 @@
-import { Injectable } from '@angular/core';
+import { EventEmitter, Injectable } from '@angular/core';
 import { HttpClient, HttpHeaders, HttpParams } from '@angular/common/http';
 import { Observable, throwError } from 'rxjs';
 import { catchError, retry } from 'rxjs/operators';
@@ -13,6 +13,12 @@ export class LoginService {
   //Urls Login Pruebas
   public urlLoginStudent =  this.urlServer + '/users/login/student/';
   public urlLoginTeacher = this.urlServer + '/users/login/teacher/';
+
+  urlStudentLogin: any;
+  // messageLogin$ = new EventEmitter<string>();
+  // idUser$ = new EventEmitter<number>();
+  // role$ = new EventEmitter<string>();
+  loginData$ = new EventEmitter<string[]>();
 
   constructor(private httpClient: HttpClient) { }
 
