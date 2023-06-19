@@ -44,7 +44,7 @@ export class HomeComponent implements OnInit {
       this.loadAsignature.getEstudentSubject(this.idStudent)
         .subscribe(response => {
           this.responseApi = response;
-          console.log(this.responseApi);
+          // console.log(this.responseApi);
         });
 
       /*Show Subjects Teacher*/
