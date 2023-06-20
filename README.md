@@ -37,7 +37,7 @@ Parte Frontend del proyecto para acceso a la educación del Hackaton creado en A
 
 4- Instalar iconos: ng add @fortawesome/angular-fontawesome y ver el siguiente sitio https://www.npmjs.com/package/@fortawesome/angular-fontawesome
 
-## Frontend de Portal de Estudiantes (June 01-11)
+## Frontend de Portal de Estudiantes (June 01-13)
 
 - HT-01: Realizar la creción del proyecto con el framework Frontend Angular y hacer el diseño inicial del Layout.
 - HT-02: Completar diseño inicial de Layout.
@@ -56,21 +56,49 @@ Parte Frontend del proyecto para acceso a la educación del Hackaton creado en A
 - HT-12: Agregar rol en local Storage y finalizar diseños de Perfil y Login.
 - HT-12.1: Funcionalidad de Login para profesor y estudiante implementado.
 - HT-12.2: Implementación de recuperar información de asignaturas y perfil para estudiantes y profesores.
+- HT-12.3: Mostrando el contenido de la materia en el modal al abrir la clase.
+- HT-12.4: Agregando boton para profesores puedan ver el crud de contenido.
+- HT-12.5: Recuperando contenido existente en la ventana Modal.
+- HT-12.6: Registrar nuevo contenido desde el crud.
+- HT-12.7: Completar actualizar y eliminar registro en crud.
+- HT-12.8: Comenzar a redirigir las URLs de las API al servidor Heroku.
+- HT-12.9: Rutas redirigidas al servidor Heroku.
+- HT-13: Ajustes visuales a Modal.
+- HT-13.1: Arreglando error al visualizar el contenido.
+- HT-13.2: Agregando select de tipo de contenido enlace y lectura.
+- HT-13.3: Cambios finales en Frontend.
+
+## Pequeños ajustes de Portal de Estudiantes (June 16)
+
+- AP-01: Ajustes a código de Login.
+- AP-01-1: Ajustes de carga de información en home y header component.
+- AP-01.2: Rework de código de modal para ver contenido.
+- AP-01.3: Rework de código de modal para insertar contenido.
+- AP-01.4: Rework de código de modal para ver, actualizar y eliminar contenido.
+- AP-01.5: Agregar mensaje de confirmación a la opción eliminar registro.
+- AP-01.6: Cambiando icoco de las tarjetas de asignatura.
+- AP-01.7: Mostrar el nombre del profesor al dar click en contenido.
+- AP-01.8: Mejorando vista actual de contenidos lectura y enlace.
+- AP-01.9: Correción de obtener datos de materias del estudiante.
 
 ## Implementación en Docker
+
 Nos ubicamos en el directorio Frontend e instalamos las dependencias.
 1- ```shell
-   npm install
-   ```
+npm install
+
+````
 Antes de ejecutar docker-compose es necesario crear el directorio dist de dist/ del Frontend.
 2- ```shell
-   npm run build
-   ```
+npm run build
+````
+
 Construimos los servicios de docker-compose
 3- ```shell
-   docker-compose build
-   ```
+docker-compose build
+
+````
 Levantamos los servicios de docker-compose
 4- ```shell
-   docker-compose up -d
-   ```
+docker-compose up -d
+````
