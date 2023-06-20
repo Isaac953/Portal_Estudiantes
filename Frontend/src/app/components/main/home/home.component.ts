@@ -22,6 +22,7 @@ export class HomeComponent implements OnInit {
   teacherData: any;
   obj: any;
   teacherId: any;
+  idCourse: any;
 
   //Recuperar datos en localstorage de la sesion Login
   loginData = localStorage.getItem('session');
@@ -41,11 +42,16 @@ export class HomeComponent implements OnInit {
     this.teacherName = [];
     /*Show Subjects Student*/
     if (this.roleUser == 'Estudiante') {
-      this.loadAsignature.getEstudentSubject(this.idStudent)
+      //Obtener curso del estudiante
+      this.loadAsignature.getCourseStudent(this.idStudent).subscribe((response) => {
+        this.responseApi2 = response;
+        this.idCourse = this.responseApi2.pk;
+        //Obtener las materias del estudiante por medio de su sección
+        this.loadAsignature.getEstudentSubject(this.idCourse)
         .subscribe(response => {
           this.responseApi = response;
-          // console.log(this.responseApi);
         });
+      });
 
       /*Show Subjects Teacher*/
     } else if (this.roleUser == 'Profesor') {

@@ -56,3 +56,4 @@ Parte Frontend del proyecto para acceso a la educación del Hackaton creado en A
 - AP-01.6: Cambiando icoco de las tarjetas de asignatura.
 - AP-01.7: Mostrar el nombre del profesor al dar click en contenido.
 - AP-01.8: Mejorando vista actual de contenidos lectura y enlace.
+- AP-01.9: Correción de obtener datos de materias del estudiante.
